@@ -1,0 +1,1140 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>佩洛洛菜单 | PERORO MENU</title>
+    <style>
+        /* --- 全局重置 --- */
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            /* 基础深色背景 */
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            overflow: hidden; 
+            transition: filter 0.5s;
+        }
+
+        /* 彩蛋：彩光模式 */
+        body.rainbow-mode { animation: rainbowBG 2s linear infinite !important; }
+        @keyframes rainbowBG {
+            0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            100% { background-position: 100% 50%; filter: hue-rotate(360deg); }
+        }
+
+        /* 背景网格 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* --- 粒子特效 --- */
+        .seasonal-particle, .easter-egg-particle {
+            position: fixed;
+            top: -50px;
+            z-index: 9999;
+            pointer-events: none;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+        .easter-egg-particle {
+            font-size: 40px !important;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+        }
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
+            10% { opacity: 1; }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(20px); opacity: 0; }
+        }
+
+        /* --- 主容器 --- */
+        .container {
+            position: relative;
+            z-index: 10;
+            background: rgba(20, 20, 35, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 35px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 850px;
+            display: flex;
+            flex-direction: column;
+            height: 85vh;
+            max-height: 900px;
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(105, 240, 174, 0.5);
+            user-select: none;
+            cursor: pointer;
+            transition: transform 0.1s;
+            flex-shrink: 0;
+        }
+        
+        h2.shake {
+            animation: shake 0.5s;
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffd700;
+        }
+
+        @keyframes shake {
+            0% { transform: translate(1px, 1px) rotate(0deg); }
+            10% { transform: translate(-1px, -2px) rotate(-1deg); }
+            20% { transform: translate(-3px, 0px) rotate(1deg); }
+            30% { transform: translate(3px, 2px) rotate(0deg); }
+            40% { transform: translate(1px, -1px) rotate(1deg); }
+            50% { transform: translate(-1px, 2px) rotate(-1deg); }
+            60% { transform: translate(-3px, 1px) rotate(0deg); }
+            70% { transform: translate(3px, 1px) rotate(-1deg); }
+            80% { transform: translate(-1px, -1px) rotate(1deg); }
+            90% { transform: translate(1px, 2px) rotate(0deg); }
+            100% { transform: translate(1px, -2px) rotate(-1deg); }
+        }
+
+        /* --- 选项卡导航样式 --- */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
+
+        .nav-btn {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
+            padding: 10px 20px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
+        }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+        .nav-btn.active {
+            background: rgba(105, 240, 174, 0.2);
+            border-color: #69f0ae;
+            color: #69f0ae;
+            box-shadow: 0 0 10px rgba(105, 240, 174, 0.1);
+        }
+
+        /* --- 页面内容容器 --- */
+        .page-content {
+            display: none;
+            flex-direction: column;
+            flex-grow: 1;
+            overflow: hidden;
+            animation: fadeInPage 0.4s ease-out;
+            width: 100%;
+        }
+        .page-content.active { display: flex !important; }
+
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 控制区布局 --- */
+        .search-section { 
+            display: flex;
+            gap: 10px; 
+            margin-bottom: 15px; 
+            flex-shrink: 0;
+        }
+        .filters-row { 
+            display: flex;
+            gap: 10px; 
+            margin-bottom: 15px;
+            flex-wrap: wrap; 
+            flex-shrink: 0;
+        }
+
+        /* --- 输入框与按钮 --- */
+        input[type="text"], .dynamic-select, .clear-btn, textarea, .form-input {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #eee;
+            font-family: inherit;
+        }
+        input[type="text"] { flex-grow: 1; min-width: 0; }
+
+        .clear-btn {
+            cursor: pointer;
+            background: rgba(255, 99, 71, 0.15);
+            border-color: rgba(255, 99, 71, 0.3);
+            white-space: nowrap;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+            color: #ffcccb;
+            flex-shrink: 0;
+        }
+        .clear-btn:hover { background: rgba(255, 99, 71, 0.3); }
+
+        .dynamic-select {
+            flex: 1;
+            min-width: 120px; cursor: pointer; appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat; background-position: right 15px center; background-size: 16px;
+        }
+        .dynamic-select option { background-color: #1a1a2e; color: #fff; }
+
+        input[type="text"]:focus, .dynamic-select:focus, textarea:focus, .form-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #69f0ae;
+            box-shadow: 0 0 15px rgba(105, 240, 174, 0.25);
+        }
+
+        /* 错误状态样式 */
+        .form-input.error, .form-group.error {
+            border-color: #ff4081;
+            box-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
+            animation: shake 0.5s;
+        }
+
+        /* --- 结果区域 --- */
+        #result {
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 8px;
+            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+            min-height: 0;
+        }
+        #result::-webkit-scrollbar { width: 6px; }
+        #result::-webkit-scrollbar-track { background: transparent; }
+        #result::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.3); border-radius: 10px; }
+
+        .result-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 18px; border-radius: 16px; margin-bottom: 15px;
+            border-left: 4px solid #69f0ae;
+            animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
+        }
+        .result-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .result-key { font-size: 1.25em; font-weight: bold; color: #fff; }
+
+        .tags-display { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .tag-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); color: #ccc; }
+        .tag-badge.matched { background: rgba(105, 240, 174, 0.15); border-color: #69f0ae; color: #69f0ae; font-weight: 600; box-shadow: 0 0 8px rgba(105, 240, 174, 0.1); }
+
+        .result-desc { font-size: 0.95em; color: #d1d5db; line-height: 1.6; white-space: pre-wrap; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; }
+        .empty-tip { text-align: center; color: rgba(255,255,255,0.5); margin-top: 40px; font-style: italic; }
+        
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- 通用滚动容器 --- */
+        .scroll-container {
+            padding: 10px;
+            color: #e0e0e0;
+            overflow-y: auto;
+            flex-grow: 1;
+            padding-right: 8px;
+            scrollbar-width: thin; 
+            scrollbar-color: rgba(255,255,255,0.3) transparent;
+        }
+        .scroll-container::-webkit-scrollbar { width: 6px; }
+        .scroll-container::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.3); border-radius: 10px; }
+
+        /* 群规样式 */
+        .rules-box {
+            background: rgba(0, 0, 0, 0.2);
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            border-left: 4px solid #7c4dff;
+        }
+        .rules-box h3 {
+            margin-bottom: 15px;
+            color: #fff;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 10px;
+        }
+        .rules-list { padding-left: 20px; line-height: 1.8; }
+        .rules-list li { margin-bottom: 8px; }
+        .tip-card {
+            background: rgba(105, 240, 174, 0.1);
+            border: 1px dashed #69f0ae;
+            border-radius: 12px;
+            padding: 15px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .tip-icon { font-size: 24px; }
+
+        /* --- 审核表单样式 --- */
+        .audit-form {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            padding-bottom: 20px;
+        }
+        .form-group {
+            background: rgba(255, 255, 255, 0.03);
+            padding: 15px;
+            border-radius: 12px;
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s;
+        }
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: bold;
+            color: #69f0ae;
+            display: flex;
+            align-items: center;
+        }
+        .required-mark {
+            color: #ff4081;
+            margin-left: 5px;
+            font-size: 1.2em;
+            line-height: 1;
+        }
+        .form-input { width: 100%; }
+        textarea.form-input { resize: vertical; min-height: 80px; }
+        .checkbox-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .checkbox-label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 8px 12px;
+            border-radius: 8px;
+            transition: background 0.2s;
+        }
+        .checkbox-label:hover { background: rgba(255, 255, 255, 0.2); }
+        .checkbox-label input { accent-color: #69f0ae; }
+        .submit-btn {
+            background: linear-gradient(90deg, #69f0ae, #00c853);
+            color: #0f172a;
+            border: none;
+            padding: 15px;
+            font-size: 16px;
+            font-weight: bold;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(105, 240, 174, 0.4);
+        }
+        .submit-btn:active { transform: translateY(0); }
+
+        /* Toast 提示框 */
+        #toast {
+            visibility: hidden;
+            min-width: 250px;
+            background-color: #333;
+            color: #fff;
+            text-align: center;
+            border-radius: 50px;
+            padding: 16px;
+            position: fixed;
+            z-index: 1000;
+            left: 50%;
+            bottom: 30px;
+            transform: translateX(-50%);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+            border: 1px solid #69f0ae;
+        }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+
+        /* =========================================
+           新增：传送门与许愿墙样式 
+           ========================================= */
+        
+        /* 1. 传送门样式 */
+        .link-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 15px;
+            margin-bottom: 30px;
+        }
+        .link-card {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 16px;
+            padding: 20px;
+            text-align: center;
+            text-decoration: none;
+            color: #fff;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+        }
+        .link-card:hover {
+            background: rgba(105, 240, 174, 0.2);
+            border-color: #69f0ae;
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+        .link-icon { font-size: 28px; margin-bottom: 5px; }
+        .link-title { font-weight: bold; font-size: 1.1em; }
+
+        /* 2. 许愿墙展示样式 */
+        .wish-wall {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            padding-bottom: 20px;
+            align-content: flex-start;
+        }
+        .wish-card {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 12px 12px 12px 0;
+            padding: 15px;
+            /* 电脑端一行两个，手机端一行一个 */
+            width: calc(50% - 8px); 
+            min-width: 150px;
+            position: relative;
+            transition: transform 0.2s;
+            margin-bottom: 15px;
+        }
+        .wish-card:hover {
+            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.12);
+        }
+        /* 装饰用的引号 */
+        .wish-card::before {
+            content: '"';
+            position: absolute;
+            top: 5px; right: 10px;
+            font-size: 40px;
+            color: rgba(255,255,255,0.1);
+            font-family: serif;
+            pointer-events: none;
+        }
+        .wish-content {
+            font-size: 0.95em;
+            margin-bottom: 12px;
+            line-height: 1.6;
+            word-break: break-all;
+            color: #eee;
+        }
+        .wish-footer {
+            font-size: 0.8em;
+            color: #69f0ae; /* 名字用绿色高亮 */
+            text-align: right;
+            border-top: 1px dashed rgba(255,255,255,0.1);
+            padding-top: 8px;
+            font-weight: bold;
+        }
+
+        /* =========================================
+           移动端适配 
+           ========================================= */
+        @media screen and (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 15px; height: 95vh; max-height: none; border-radius: 16px; }
+            h2 { font-size: 1.5rem; margin-bottom: 10px; margin-top: 5px; }
+            .nav-tabs { gap: 8px; margin-bottom: 12px; }
+            .nav-btn { padding: 6px 14px; font-size: 0.9rem; }
+            .search-section { gap: 6px; }
+            input[type="text"] { font-size: 16px; padding: 10px; }
+            
+            .clear-btn {
+                padding: 0 12px;
+                font-size: 0; 
+            }
+            .clear-btn::after { content: "🗑️ 清空"; font-size: 13px; }
+
+            .filters-row { gap: 6px; }
+            .dynamic-select {
+                min-width: 30%;
+                padding: 8px 24px 8px 10px; 
+                background-position: right 8px center;
+                font-size: 13px;
+            }
+
+            .result-item { padding: 14px; margin-bottom: 10px; }
+            .result-header { margin-bottom: 6px; }
+            .result-key { font-size: 1.1em; }
+            
+            /* 许愿卡手机端一行一个 */
+            .wish-card { width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 id="mainTitle">⚡ 佩洛洛菜单</h2>
+        
+        <div class="nav-tabs">
+            <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 群公告/群规</button>
+            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 角色查阅</button>
+            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 入群审核</button>
+            <button class="nav-btn" onclick="switchPage('wishPage', this)">🌟 许愿 & 传送</button>
+        </div>
+
+        <div id="searchPage" class="page-content">
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="在此输入关键词搜索 (试试输入 'order')..." autocomplete="off">
+                <button class="clear-btn" id="clearBtn">🗑️ 清空筛选</button>
+            </div>
+            <div class="filters-row" id="filtersContainer">
+                <select id="statusFilter" class="dynamic-select" style="font-weight:bold; color:#69f0ae;">
+                    <option value="all">全部状态</option>
+                    <option value="occupied">⛔ 已占用</option>
+                    <option value="unoccupied">✅ 未占用 (无人认领)</option>
+                </select>
+            </div>
+          
+            <div id="result">
+                <div class="empty-tip">请搜索或选择筛选条件...</div>
+            </div>
+        </div>
+
+        <div id="rulesPage" class="page-content active">
+            <div class="scroll-container">
+                <div class="rules-box">
+                    <h3>📌 入群须知</h3>
+                    <p>欢迎来到佩洛洛妙妙屋！请仔细阅读以下规则，并确认自己能够遵守！</p>
+                </div>
+                <div class="rules-box">
+                    <h3>⚠️ 雷区与禁令</h3>
+                    <ul class="rules-list">
+                        <li>注意事项 1：请勿发送任何真实的三次元R18图片！</li>
+                        <li>注意事项 2：严厉禁止讨论政治、宗教等敏感话题。</li>
+                        <li>注意事项 3：禁止在此处刷屏或进行人身攻击。</li>
+                        <li>注意事项 4：禁止涉三骚扰他人。</li>
+                        <li>注意事项 5：禁止绑定其他同学（群友）。</li>
+                        <li>注意事项 6：能够明确拒绝不想色的邀请。</li>
+                        <li>注意事项 7：保持活跃度，并且将头像更换为所皮角色（如不方便可以更换小号进群）。</li>
+                        <li>注意事项 8：在群内活跃时须保持角色与头像统一。</li>
+                    </ul>
+                </div>
+                <div class="rules-box">
+                    <h3>📝 审核流程</h3>
+                    <p> 确认阅读上面所有的规则并且确定能够遵守，则点击“角色查阅”选项卡进行搜索，关键词为“无人认领”。(亦可以用下面的选项框进行快速搜索自己心仪的角色）。选好心仪的角色之后便可以点击“入群审核”进行皮解的填写，填写完毕之后向管理员提交。在向管理员提交角色卡后，请耐心等待管理员审核，审核通常会在24小时内完成，完成之后便会有人拉您进群。</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-icon">💡</span>
+                    <div class="tip-text">
+                        <strong>小贴士：</strong> 如果想要修改自己的XP表，请私聊或者直接在群内寻找管理员进行更新!
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="auditPage" class="page-content">
+            <div class="scroll-container">
+                <div class="audit-form">
+                    
+                    <div class="form-group" id="group-q1">
+                        <label class="form-label">1. 偏主动还是被动？<span class="required-mark">*</span></label>
+                        <select id="q1" class="dynamic-select form-input">
+                            <option value="">请选择...</option>
+                            <option value="主动">主动</option>
+                            <option value="被动">被动</option>
+                            <option value="皆可">皆可 (偏主动)</option>
+                            <option value="皆可">皆可 (偏被动)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="group-q2">
+                        <label class="form-label">2. XP是？<span class="required-mark">*</span></label>
+                        <textarea id="q2" class="form-input" placeholder="请列举你的XP..."></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q3">
+                        <label class="form-label">3. 雷区是？<span class="required-mark">*</span></label>
+                        <textarea id="q3" class="form-input" placeholder="请列举你的雷区..."></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q4">
+                        <label class="form-label">4. 对戏长度？（可多选）<span class="required-mark">*</span></label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="句"> 句</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="段"> 段</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="长段"> 长段</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="屏"> 屏</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="group-q5">
+                        <label class="form-label">5. 语c文爱生涯大概多久/是否有经验？<span class="required-mark">*</span></label>
+                        <input type="text" id="q5" class="form-input" placeholder="例如：2年，经验丰富...">
+                    </div>
+
+                    <div class="form-group" id="group-q6">
+                        <label class="form-label">6. 简单介绍一下你想要皮的这个角色吧<span class="required-mark">*</span></label>
+                        <div style="font-size:0.9em; color:#aaa; margin-bottom:5px;">（你想要扮演她的原因是？她的个性如何？怎样与他人互动？）</div>
+                        <textarea id="q6" class="form-input" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q7">
+                        <label class="form-label">7. 自戏 (200字以上)<span class="required-mark">*</span></label>
+                        <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容..."></textarea>
+                    </div>
+
+                    <button class="submit-btn" onclick="copyAuditForm()">📋 生成并复制审核单</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="wishPage" class="page-content">
+            <div class="scroll-container">
+                
+                <h3 style="margin-bottom:15px; border-left:4px solid #69f0ae; padding-left:10px;">🚀 快速传送</h3>
+                <div class="link-grid">
+                    <a href="https://kivo.wiki/" target="_blank" class="link-card">
+                        <div class="link-icon">🕶</div>
+                        <div class="link-title">差分快速获取</div>
+                    </a>
+                    <a href="https://ba.gamekee.com/" target="_blank" class="link-card">
+                        <div class="link-icon">📘</div>
+                        <div class="link-title">BA Wiki</div>
+                    </a>
+                </div>
+
+                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+
+                <h3 style="margin-bottom:15px; border-left:4px solid #ffd700; padding-left:10px;">✨ 佩洛洛许愿墙</h3>
+                <div style="font-size:0.9em; color:#aaa; margin-bottom:20px;">
+                    (想要上墙请私聊管理员，祝大家的愿望都能实现！)
+                </div>
+
+                <div id="wishWallContainer" class="wish-wall"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="toast"></div>
+
+    <script>
+        // --- 1. 配置区域 ---
+        const filtersConfig = [
+            { id: 'school', label: '学院' },
+            { id: 'length', label: '对戏长度' },
+            { id: 'tendency', label: '倾向' }
+        ];
+
+        // 全局变量定义（数据将通过 fetch 加载到这里）
+        let database = {};
+        let wishData = [];
+
+        const searchInput = document.getElementById('searchInput');
+        const filtersContainer = document.getElementById('filtersContainer');
+        const display = document.getElementById('result');
+        const clearBtn = document.getElementById('clearBtn');
+        const selectElements = {};
+        
+        // --- 2. 数据加载 ---
+        function loadData() {
+            fetch('data.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error("HTTP error " + response.status);
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // 将 JSON 数据赋值给全局变量
+                    database = data.database;
+                    wishData = data.wishData;
+
+                    // 数据加载完成后，再初始化界面
+                    initFilters();
+                    renderWishWall();
+                    // 也可以在这里手动触发一次搜索显示默认结果
+                    performSearch();
+                    showToast("✅ 数据加载成功！");
+                })
+                .catch(err => {
+                    console.error("加载数据失败:", err);
+                    showToast("❌ 数据加载失败，请检查 data.json");
+                    document.getElementById('result').innerHTML = "<div class='empty-tip'>无法加载数据，请联系管理员。</div>";
+                });
+        }
+
+        // --- 3. 初始化 ---
+        function initFilters() {
+            // 给新的状态筛选器添加监听
+            document.getElementById('statusFilter').addEventListener('change', performSearch);
+            filtersConfig.forEach(config => {
+                const select = document.createElement('select');
+                select.className = 'dynamic-select';
+                select.dataset.key = config.id;
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = 'all';
+                defaultOption.innerText = '全部' + config.label;
+                select.appendChild(defaultOption);
+
+                if (config.id === 'length') {
+                    const fixedOptions = ["句", "段", "长段", "屏"];
+                    fixedOptions.forEach(val => {
+                        const opt = document.createElement('option');
+                        opt.value = val;
+                        opt.innerText = val;
+                        select.appendChild(opt);
+                    });
+                } else {
+                    const uniqueValues = new Set();
+                    for (let key in database) {
+                        const val = database[key].tags[config.id];
+                        if (val) uniqueValues.add(val);
+                    }
+                    uniqueValues.forEach(val => {
+                        const opt = document.createElement('option');
+                        opt.value = val;
+                        opt.innerText = val;
+                        select.appendChild(opt);
+                    });
+                }
+
+                select.addEventListener('change', performSearch);
+                filtersContainer.appendChild(select);
+                selectElements[config.id] = select;
+            });
+        }
+
+        function clearAllFilters() {
+            searchInput.value = '';
+            // 重置状态筛选器
+            const statusFilter = document.getElementById('statusFilter');
+            if(statusFilter) statusFilter.value = 'all';
+
+            for (let key in selectElements) selectElements[key].value = 'all';
+            performSearch();
+            showToast("筛选已清空");
+        }
+
+        // --- 4. 搜索逻辑 ---
+        function performSearch() {
+            const rawSearch = searchInput.value.trim();
+            const searchText = rawSearch.toLowerCase();
+            
+            // 获取状态筛选值
+            const statusFilter = document.getElementById('statusFilter');
+            const statusVal = statusFilter ? statusFilter.value : 'all';
+
+            // 彩蛋检测
+            checkSearchEasterEggs(searchText);
+            const activeFilters = {};
+            filtersConfig.forEach(config => {
+                if (selectElements[config.id]) {
+                    const val = selectElements[config.id].value;
+                    if (val !== 'all') activeFilters[config.id] = val;
+                }
+            });
+            display.innerHTML = "";
+            let foundCount = 0;
+            
+            // 如果数据还没加载完，database 是空的
+            if (Object.keys(database).length === 0) {
+                 display.innerHTML = "<div class='empty-tip'>正在加载数据...</div>";
+                 return;
+            }
+
+            if (!searchText && Object.keys(activeFilters).length === 0 && statusVal === 'all') {
+                 display.innerHTML = "<div class='empty-tip'>请搜索或选择筛选条件...</div>";
+                 return;
+            }
+
+            for (let key in database) {
+                const item = database[key];
+                const isTextMatch = !searchText || key.toLowerCase().includes(searchText) || item.desc.toLowerCase().includes(searchText);
+                
+                // 状态筛选逻辑：检查描述中是否包含“状态: 未被占用”
+                const isUnoccupied = item.desc.includes("状态: 未被占用");
+                let isStatusMatch = true;
+                if (statusVal === 'occupied' && isUnoccupied) isStatusMatch = false;
+                if (statusVal === 'unoccupied' && !isUnoccupied) isStatusMatch = false;
+
+                let isFilterMatch = true;
+                for (let filterKey in activeFilters) {
+                    const requiredValue = activeFilters[filterKey];
+                    const itemValue = item.tags[filterKey] || "";
+
+                    if (filterKey === 'length') {
+                        const valuesArray = itemValue.split('/');
+                        if (!valuesArray.includes(requiredValue)) {
+                            isFilterMatch = false;
+                            break;
+                        }
+                    } else {
+                        if (itemValue !== requiredValue) {
+                            isFilterMatch = false;
+                            break; 
+                        }
+                    }
+                }
+
+                if (isTextMatch && isFilterMatch && isStatusMatch) {
+                    foundCount++;
+                    renderItem(key, item, activeFilters);
+                }
+            }
+
+            if (foundCount === 0) {
+                display.innerHTML = "<div class='empty-tip' style='color:#ff8a80'>❌ 未找到匹配项</div>";
+            }
+        }
+
+        // 渲染结果
+        function renderItem(key, data, activeFilters) {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "result-item";
+            let tagsHtml = '';
+            
+            filtersConfig.forEach(config => {
+                const tagValue = data.tags[config.id];
+                if (tagValue) {
+                    let isMatched = false;
+                    if (config.id === 'length' && activeFilters[config.id]) {
+                        isMatched = tagValue.split('/').includes(activeFilters[config.id]);
+                    } else {
+                        isMatched = activeFilters[config.id] === tagValue;
+                    }
+                    const highlightClass = isMatched ? 'matched' : '';
+                    tagsHtml += `<span class="tag-badge ${highlightClass}">${tagValue}</span>`;
+                }
+            });
+            itemDiv.innerHTML = `
+                <div class="result-header"><span class="result-key">${key}</span></div>
+                <div class="tags-display">${tagsHtml}</div>
+                <div class="result-desc">${data.desc}</div>
+            `;
+            display.appendChild(itemDiv);
+        }
+
+        // --- 5. 季节特效 ---
+        function initSeasonalEffects() {
+            const now = new Date();
+            const month = now.getMonth() + 1;
+            let seasonType = '';
+            let particleChar = '';
+            if (month >= 3 && month <= 5) { seasonType = 'spring'; particleChar = '🌸'; }
+            else if (month >= 6 && month <= 8) { seasonType = 'summer'; particleChar = '🍃'; }
+            else if (month >= 9 && month <= 11) { seasonType = 'autumn'; particleChar = '🍁'; }
+            else { seasonType = 'winter'; particleChar = '❄️'; }
+
+            setInterval(() => { createParticle(particleChar, seasonType); }, 300);
+        }
+
+        function createParticle(char, type, isEasterEgg = false) {
+            const particle = document.createElement('div');
+            particle.classList.add(isEasterEgg ? 'easter-egg-particle' : 'seasonal-particle');
+            particle.innerText = char;
+            particle.style.left = Math.random() * 100 + 'vw';
+            particle.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            const duration = Math.random() * 7 + 5;
+            particle.style.animationName = 'fall';
+            particle.style.animationDuration = (isEasterEgg ? 3 : duration) + 's';
+
+            if (type === 'winter') {
+                particle.style.opacity = Math.random() * 0.5 + 0.5;
+                particle.style.filter = 'drop-shadow(0 0 2px white)';
+            }
+
+            document.body.appendChild(particle);
+            setTimeout(() => { particle.remove(); }, (isEasterEgg ? 3000 : duration * 1000));
+        }
+
+        // --- 6. 彩蛋逻辑 ---
+        function checkSearchEasterEggs(text) {
+            if (text === 'peroro' || text === '佩洛洛' || text === 'hifumi') {
+                triggerPeroroRain();
+            }
+            if (text === 'order' || text === '点菜' || text === '吃吃') {
+                showToast("今天想吃点什么？");
+            }
+        }
+
+        function triggerPeroroRain() {
+            if (document.body.dataset.raining === 'true') return;
+            document.body.dataset.raining = 'true';
+            showToast("检测到佩洛洛大人！");
+            
+            let count = 0;
+            const rain = setInterval(() => {
+                createParticle('🐥', 'none', true);
+                count++;
+                if (count > 50) {
+                    clearInterval(rain);
+                    document.body.dataset.raining = 'false';
+                }
+            }, 100);
+        }
+
+        let titleClickCount = 0;
+        const mainTitle = document.getElementById('mainTitle');
+        mainTitle.addEventListener('click', () => {
+            titleClickCount++;
+            if (titleClickCount === 5) {
+                mainTitle.classList.add('shake');
+                showToast("⚡ Arona：不要玩弄菜单！");
+                setTimeout(() => mainTitle.classList.remove('shake'), 500);
+                titleClickCount = 0;
+            }
+        });
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    toggleRainbowMode();
+                    konamiIndex = 0;
+                }
+            } else {
+                konamiIndex = 0;
+            }
+        });
+        function toggleRainbowMode() {
+            if (document.body.classList.contains('rainbow-mode')) {
+                document.body.classList.remove('rainbow-mode');
+                showToast("已退出彩光模式");
+            } else {
+                document.body.classList.add('rainbow-mode');
+                showToast("🌈 彩光模式启动！");
+            }
+        }
+
+        function showToast(msg) {
+            const toast = document.getElementById("toast");
+            toast.innerText = msg;
+            toast.className = "show";
+            setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+        }
+
+        // --- 7. 页面切换逻辑 ---
+        function switchPage(pageId, btnElement) {
+            // 1. 隐藏所有页面
+            const pages = document.querySelectorAll('.page-content');
+            pages.forEach(page => {
+                page.style.display = 'none'; 
+                page.classList.remove('active');
+            });
+            // 2. 显示目标页面
+            const targetPage = document.getElementById(pageId);
+            if (targetPage) {
+                targetPage.style.display = 'flex';
+                setTimeout(() => targetPage.classList.add('active'), 10);
+            }
+
+            // 3. 更新按钮状态
+            const buttons = document.querySelectorAll('.nav-btn');
+            buttons.forEach(btn => btn.classList.remove('active'));
+            if (btnElement) {
+                btnElement.classList.add('active');
+            }
+        }
+
+        // --- 8. 自动保存与回填逻辑 (新增) ---
+        const formFields = ['q1', 'q2', 'q3', 'q5', 'q6', 'q7'];
+        // 监听输入并保存
+        function initAutoSave() {
+            // 1. 文本框与下拉框
+            formFields.forEach(id => {
+                const el = document.getElementById(id);
+                if(el) {
+                    // 回填数据
+                    const savedVal = localStorage.getItem('peroro_audit_' + id);
+                    if(savedVal) el.value = savedVal;
+
+                    // 监听改变
+                    el.addEventListener('input', () => {
+                        localStorage.setItem('peroro_audit_' + id, el.value);
+                        // 移除错误样式
+                        el.classList.remove('error');
+                        document.getElementById('group-' + id)?.classList.remove('error');
+                    });
+                }
+            });
+            // 2. 多选框 (q4) 特殊处理
+            const savedQ4 = localStorage.getItem('peroro_audit_q4');
+            if (savedQ4) {
+                const checkedValues = JSON.parse(savedQ4);
+                document.querySelectorAll('input[name="q4"]').forEach(cb => {
+                    if (checkedValues.includes(cb.value)) cb.checked = true;
+                });
+            }
+
+            document.querySelectorAll('input[name="q4"]').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const checked = [];
+                    document.querySelectorAll('input[name="q4"]:checked').forEach(c => checked.push(c.value));
+                    localStorage.setItem('peroro_audit_q4', JSON.stringify(checked));
+                    // 移除错误样式
+                    document.getElementById('group-q4').classList.remove('error');
+                });
+            });
+        }
+
+        // --- 9. 审核表单复制逻辑 (含必填校验) ---
+        function copyAuditForm() {
+            // 1. 必填项检查列表 (q7除外) -> 修改：q7现在是必填
+            const requiredFields = [
+                { id: 'q1', name: '1. 偏主动还是被动' },
+                { id: 'q2', name: '2. XP' },
+                { id: 'q3', name: '3. 雷区' },
+                { id: 'q5', name: '5. 语c生涯' },
+                { id: 'q6', name: '6. 角色介绍' },
+                { id: 'q7', name: '7. 自戏' }
+            ];
+
+            let hasError = false;
+            let firstErrorId = null;
+
+            // 检查普通字段
+            requiredFields.forEach(field => {
+                const el = document.getElementById(field.id);
+                if (!el.value.trim()) {
+                    hasError = true;
+                    el.classList.add('error');
+                    document.getElementById('group-' + field.id).classList.add('error');
+                    if(!firstErrorId) firstErrorId = field.id;
+                }
+            });
+            // 检查多选框 (q4)
+            const q4Checked = document.querySelectorAll('input[name="q4"]:checked');
+            if (q4Checked.length === 0) {
+                hasError = true;
+                document.getElementById('group-q4').classList.add('error');
+                if(!firstErrorId) firstErrorId = 'group-q4'; // 滚动到div
+            }
+
+            if (hasError) {
+                // 震动反馈 (如果设备支持)
+                if (navigator.vibrate) navigator.vibrate(200);
+                showToast("❌ 请填写所有带 * 的必填项！");
+                
+                // 滚动到第一个错误位置
+                const errorEl = document.getElementById(firstErrorId);
+                if(errorEl) errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return; 
+            }
+
+            // 2. 验证通过，提取数据
+            const q1 = document.getElementById('q1').value;
+            const q2 = document.getElementById('q2').value;
+            const q3 = document.getElementById('q3').value;
+            
+            let q4 = [];
+            q4Checked.forEach(el => q4.push(el.value));
+            const q4Str = q4.join(' / ');
+
+            const q5 = document.getElementById('q5').value;
+            const q6 = document.getElementById('q6').value;
+            const q7 = document.getElementById('q7').value; // 必填，不用默认值了
+
+            // 组装文本
+            const finalText = 
+`【入群审核卡】
+--------------------------------
+1. 偏主动还是被动？
+答：${q1}
+
+2. XP是？
+答：${q2}
+
+3. 雷区是？
+答：${q3}
+
+4. 对戏长度？
+答：${q4Str}
+
+5. 语c文爱生涯大概多久/是否有经验？
+答：${q5}
+
+6. 角色介绍（原因/个性/互动）
+答：${q6}
+
+7. 自戏
+答：${q7}
+--------------------------------`;
+            // 复制到剪贴板
+            navigator.clipboard.writeText(finalText).then(() => {
+                showToast("✅ 审核单已复制！请发送给管理员");
+            }).catch(err => {
+                console.error('复制失败: ', err);
+                showToast("❌ 复制失败，请手动截图或复制");
+            });
+        }
+
+        // 渲染许愿墙函数
+        function renderWishWall() {
+            const container = document.getElementById('wishWallContainer');
+            if (!container) return;
+            
+            let html = '';
+            // wishData 现在是从 json 加载的
+            wishData.forEach(item => {
+                html += `
+                    <div class="wish-card">
+                        <div class="wish-content">${item.text}</div>
+                        <div class="wish-footer">—— ${item.author}</div>
+                    </div>
+                `;
+            });
+            container.innerHTML = html;
+        }
+
+        // --- 启动 ---
+        // 页面加载时自动获取数据
+        loadData();
+
+        initSeasonalEffects();
+        initAutoSave(); // 启动自动保存
+        
+        searchInput.addEventListener('input', performSearch);
+        clearBtn.addEventListener('click', clearAllFilters);
+
+    </script>
+</body>
+</html>
