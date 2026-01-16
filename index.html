@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>佩洛洛菜单 | PERORO MENU</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <h2 id="mainTitle">⚡ 佩洛洛菜单</h2>
+
+        <div class="nav-tabs">
+            <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 群公告/群规</button>
+            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 角色查阅</button>
+            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 入群审核</button>
+            <button class="nav-btn" onclick="switchPage('wishPage', this)">🌟 许愿 & 传送</button>
+        </div>
+
+        <div id="searchPage" class="page-content">
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="在此输入关键词搜索 (试试输入 'order')..." autocomplete="off">
+                <button class="clear-btn" id="clearBtn">🗑️ 清空筛选</button>
+            </div>
+            <div class="filters-row" id="filtersContainer">
+                <select id="statusFilter" class="dynamic-select" style="font-weight:bold; color:#69f0ae;">
+                    <option value="all">全部状态</option>
+                    <option value="occupied">⛔ 已占用</option>
+                    <option value="unoccupied">✅ 未占用 (无人认领)</option>
+                </select>
+            </div>
+
+            <div id="result">
+                <div class="empty-tip">请搜索或选择筛选条件...</div>
+            </div>
+        </div>
+
+        <div id="rulesPage" class="page-content active">
+            <div class="scroll-container" id="rulesContainer">
+                <!-- 动态加载群规 -->
+            </div>
+        </div>
+
+        <div id="auditPage" class="page-content">
+            <div class="scroll-container">
+                <div class="audit-form">
+
+                    <div class="form-group" id="group-q1">
+                        <label class="form-label">1. 偏主动还是被动？<span class="required-mark">*</span></label>
+                        <select id="q1" class="dynamic-select form-input">
+                            <option value="">请选择...</option>
+                            <option value="主动">主动</option>
+                            <option value="被动">被动</option>
+                            <option value="皆可">皆可 (偏主动)</option>
+                            <option value="皆可">皆可 (偏被动)</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group" id="group-q2">
+                        <label class="form-label">2. XP是？<span class="required-mark">*</span></label>
+                        <textarea id="q2" class="form-input" placeholder="请列举你的XP..."></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q3">
+                        <label class="form-label">3. 雷区是？<span class="required-mark">*</span></label>
+                        <textarea id="q3" class="form-input" placeholder="请列举你的雷区..."></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q4">
+                        <label class="form-label">4. 对戏长度？（可多选）<span class="required-mark">*</span></label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="句"> 句</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="段"> 段</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="长段"> 长段</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="屏"> 屏</label>
+                        </div>
+                    </div>
+
+                    <div class="form-group" id="group-q5">
+                        <label class="form-label">5. 语c文爱生涯大概多久/是否有经验？<span class="required-mark">*</span></label>
+                        <input type="text" id="q5" class="form-input" placeholder="例如：2年，经验丰富...">
+                    </div>
+
+                    <div class="form-group" id="group-q6">
+                        <label class="form-label">6. 简单介绍一下你想要皮的这个角色吧<span class="required-mark">*</span></label>
+                        <div style="font-size:0.9em; color:#aaa; margin-bottom:5px;">（你想要扮演她的原因是？她的个性如何？怎样与他人互动？）</div>
+                        <textarea id="q6" class="form-input" rows="4"></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q7">
+                        <label class="form-label">7. 自戏 (200字以上)<span class="required-mark">*</span></label>
+                        <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容..."></textarea>
+                    </div>
+
+                    <button class="submit-btn" onclick="copyAuditForm()">📋 生成并复制审核单</button>
+
+                </div>
+            </div>
+        </div>
+
+        <div id="wishPage" class="page-content">
+            <div class="scroll-container">
+
+                <h3 style="margin-bottom:15px; border-left:4px solid #69f0ae; padding-left:10px;">🚀 快速传送</h3>
+                <div class="link-grid" id="linkGrid">
+                    <!-- 动态加载链接 -->
+                </div>
+
+                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 30px 0;">
+
+                <h3 style="margin-bottom:15px; border-left:4px solid #ffd700; padding-left:10px;">✨ 佩洛洛许愿墙</h3>
+                <div style="font-size:0.9em; color:#aaa; margin-bottom:20px;">
+                    (想要上墙请私聊管理员，祝大家的愿望都能实现！)
+                </div>
+
+                <div id="wishWallContainer" class="wish-wall"></div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="toast"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
