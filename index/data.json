@@ -40,7 +40,7 @@
   "鬼方 佳代子": { "desc": "XP:微色情内容(R15)\n雷区:R18G", "tags": { "school": "格黑娜(便利屋)", "length": "句/段/长段", "tendency": "皆可" } },
   "银镜 伊织": { "desc": "XP:都喜欢\n雷区:无。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段", "tendency": "被动" } },
   "天雨 亚子": { "desc": "XP:FUTA,纯百,催眠调教\n雷区:无。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段/长段/屏", "tendency": "被动" } },
-  "火宫 千夏": { "desc": "XP:百合,FUTA均可\n雷区:R18G,过于暴力,不愿对戏请拒绝,对戏认真对待。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段/长段", "tendency": "被动" } },
+  "火宫 千夏": { "desc": "XP:百合,FUTA均可\n雷区:R18G,过于暴力,不愿对戏请拒绝,对戏认真对待,看似开玩笑的言语攻击。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段/长段", "tendency": "被动" } },
   "羽沼 真琴": { "desc": "XP:除雷区外皆可\n雷区:重口,R18G。", "tags": { "school": "格黑娜(万魔殿)", "length": "句/段/长段/屏", "tendency": "皆可" } },
   "丹花 伊吹": { "desc": "XP:皆可\n雷区:R18G。", "tags": { "school": "格黑娜(万魔殿)", "length": "句/段", "tendency": "皆可" } },
   "枣 伊吕波": { "desc": "XP:非雷区均可\n雷区:黄金圣水,血腥,猎奇,气味,身体改造,羞辱强暴。", "tags": { "school": "格黑娜(万魔殿)", "length": "句/段", "tendency": "皆可" } },
@@ -75,7 +75,7 @@
   "才羽 桃井_": { "desc": "目前被占用\n状态: 被占用", "tags": { "school": "千年(游戏部)", "length": "待定", "tendency": "待定" } },
   "砂狼 白子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿拜多斯", "length": "待定", "tendency": "待定" } },
   "栀子 梦": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿拜多斯", "length": "待定", "tendency": "待定" } },
-  "空崎 日奈": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(风纪委)", "length": "待定", "tendency": "待定" } },
+  "空崎 日奈": { "desc": "XP:强暴,指奸,百合调教,中出,种付,异种,子宫按摩,强制高潮,排卵受孕\n雷区:黄金,R18G", "tags": { "school": "格黑娜(风纪委)", "length": "段/屏", "tendency": "被动" } },
   "陆八魔 阿露": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(便利屋)", "length": "待定", "tendency": "待定" } },
   "伊草 遥香_": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(便利屋)", "length": "待定", "tendency": "待定" } },
   "赤司 淳子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(美食研)", "length": "待定", "tendency": "待定" } },
@@ -148,7 +148,7 @@
   "槌永 日和": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
   "梯 昴": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
   "立木 迈亚": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
-  "月雪 宫子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
+  "月雪 宫子": { "desc": "XP:皆可\n雷区:无", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "皆可" } },
   "空井 咲": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
   "霞泽 美游": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
   "风仓 萌绘": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
@@ -172,6 +172,8 @@
   "奥茹": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "十字神明", "length": "待定", "tendency": "待定" } },
   "": { "desc": "XP:雷区:。", "tags": { "school": "", "length": "", "tendency": "" } }
   }
-
 }
+
+
+
 
