@@ -66,7 +66,6 @@
   "胡桃": { "desc": "XP:腹击和粗暴\n雷区:面部毁坏。", "tags": { "school": "SRT(FOX)", "length": "段/长段", "tendency": "被动" } },
   "音葵": { "desc": "XP:屁股和后庭相关的玩弄癖好,打屁股\n雷区:使用前穴,暴力行为(除打屁股之外),R18G。", "tags": { "school": "SRT(FOX)", "length": "句/段/长段/屏", "tendency": "皆可" } },
   "川流 诗乃": { "desc": "XP:SM,受虐\n雷区:暂无。", "tags": { "school": "克罗诺斯(报道部)", "length": "句/段", "tendency": "被动" } },
-  "黑馆 晴奈": { "desc": "?\n状态: 被占用", "tags": { "school": "格黑娜(美食研)", "length": "?", "tendency": "?" } },
   "御稜 名草": { "desc": "?\n状态: 被占用", "tags": { "school": "百鬼夜行(百花缭乱)", "length": "?", "tendency": "?" } },
   "不知火 花耶": { "desc": "XP:能够让其他人露出丑态的几乎所有方式\n雷区:脏污", "tags": { "school": "联邦学生会", "length": "段/长段", "tendency": "主动" } },
   "衣斐 莱娜": { "desc": "XP:抱抱，亲吻前戏,耳语,捆绑,强制高潮,打屁股\n雷区:粪尿癖,臭味系,过度血腥,无理由辱骂角色,过度涉三。", "tags": { "school": "狂猎(神秘学研究会)", "length": "句/段/长段", "tendency": "皆可" } },
@@ -83,7 +82,7 @@
   "下仓 惠": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(温泉开发部)", "length": "待定", "tendency": "待定" } },
   "牛牧 朱莉": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(供给部)", "length": "待定", "tendency": "待定" } },
   "京极 皋月": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(万魔殿)", "length": "待定", "tendency": "待定" } },
-  "黑馆 晴奈_": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(美食研)", "length": "待定", "tendency": "待定" } },
+  "黑馆 晴奈": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(美食研)", "length": "待定", "tendency": "待定" } },
   "旗见 绘里香": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(亮闪闪部)", "length": "待定", "tendency": "待定" } },
   "阿慈谷 日富美": { "desc": "XP:贴贴,亲吻,抚摸或者按摩身体,袜子相关,腿足,调戏,体型差\n雷区: 血腥,恶心的事物.", "tags": { "school": "圣三一（补课部）", "length": "句/段", "tendency": "被动" } },
   "百合园 圣娅": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一(茶会）", "length": "待定", "tendency": "待定" } },
@@ -175,6 +174,7 @@
   "": { "desc": "XP:雷区:。", "tags": { "school": "", "length": "", "tendency": "" } }
   }
 }
+
 
 
 
