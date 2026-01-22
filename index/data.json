@@ -31,7 +31,7 @@
   "调月 莉音": { "desc": "XP:捆绑拘束,露出,项圈,人体彩绘\n雷区:脏污,臭味,排泄。", "tags": { "school": "千年(研讨会)", "length": "?", "tendency": "被动" } },
   "早濑 优香": { "desc": "XP:视觉遮蔽,寸止\n雷区:排泄物,疼痛。", "tags": { "school": "千年(研讨会)", "length": "句/段/长段/屏", "tendency": "皆可" } },
   "一之濑 明日奈": { "desc": "XP:拘束,百合,除雷区外皆可\n雷区:气味癖,污秽。", "tags": { "school": "千年(C&C)", "length": "句/段", "tendency": "皆可" } },
-  "角楣 花凛": { "desc": "XP:亲吻,颜面骑乘\n雷区:药物,黄金。", "tags": { "school": "千年(C&C)", "length": "段/长段/屏", "tendency": "皆可" } },
+  "角楯 花凛": { "desc": "XP:皆可\n雷区:暂无", "tags": { "school": "千年(C&C)", "length": "段/长段/屏", "tendency": "皆可" } },
   "飞鸟马 时": { "desc": "XP:目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
   "鳄渊 明里": { "desc": "XP:拘束\n雷区:纯抽抽插抽插肉戏。", "tags": { "school": "格黑娜(美食研)", "length": "段/屏", "tendency": "主动" } },
   "爱清 枫香": { "desc": "XP:视觉遮蔽,寸止\n雷区:重口R18G。", "tags": { "school": "格黑娜(供给部)", "length": "句/段/长段/屏", "tendency": "被动" } },
@@ -103,7 +103,6 @@
   "生盐 诺亚": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(研讨会)", "length": "待定", "tendency": "待定" } },
   "黑崎 小雪": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(研讨会)", "length": "待定", "tendency": "待定" } },
   "美甘 宁瑠": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
-  "角楯 花凛": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
   "室笠 茜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
   "花冈 柚子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(游戏部)", "length": "待定", "tendency": "待定" } },
   "小涂 真纪": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
@@ -135,6 +134,8 @@
   "佐城 巴": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
   "池仓 玛丽娜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
   "荒槇 八云": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
+  "间宵 时雨": { "desc": "XP:全xp皆可,纯爱,衣裳,抱憾终生,重力\n雷区: R18G", "tags": { "school": "赤冬(227特别班)", "length": "句/段/长段", "tendency": "皆可" } },
+  "天见 和香": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬(227特别班)", "length": "待定", "tendency": "待定" } },
   "秋泉 红叶": { "desc": "XP:个人方面的侍奉欲,百无禁忌\n雷区: 被连续放鸽子", "tags": { "school": "赤冬", "length": "段/长段/屏", "tendency": "被动" } },
   "尾刃 康娜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "瓦尔基里", "length": "待定", "tendency": "待定" } },
   "心华": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "瓦尔基里", "length": "待定", "tendency": "待定" } },
@@ -173,6 +174,7 @@
   "": { "desc": "XP:雷区:。", "tags": { "school": "", "length": "", "tendency": "" } }
   }
 }
+
 
 
 
