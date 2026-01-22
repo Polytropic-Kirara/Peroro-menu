@@ -109,7 +109,7 @@
   "小涂 真纪": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
   "音濑 小玉": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
   "各务 千寻": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
-  "明星 日鞠": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(特异现象调查部)", "length": "待定", "tendency": "待定" } },
+  "明星 日鞠": { "desc": "XP:除雷区皆可\n雷区: R18G,人外,黄金等小众,", "tags": { "school": "千年(特异现象调查部)", "length": "句/段", "tendency": "皆可" } },
   "和泉元 艾米": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(特异现象调查部)", "length": "待定", "tendency": "待定" } },
   "乙花 堇": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(体育训练部）", "length": "待定", "tendency": "待定" } },
   "野正 莱依": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(体育训练部）", "length": "待定", "tendency": "待定" } },
@@ -173,6 +173,7 @@
   "": { "desc": "XP:雷区:。", "tags": { "school": "", "length": "", "tendency": "" } }
   }
 }
+
 
 
 
