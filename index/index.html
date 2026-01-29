@@ -2,7 +2,7 @@
 <html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>佩洛洛菜单 | PERORO MENU</title>
     <style>
         /* --- 全局重置 --- */
@@ -26,7 +26,10 @@
         }
 
         /* 彩蛋：彩光模式 */
-        body.rainbow-mode { animation: rainbowBG 2s linear infinite !important; }
+        body.rainbow-mode {
+            animation: rainbowBG 2s linear infinite !important;
+        }
+
         @keyframes rainbowBG {
             0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
             100% { background-position: 100% 50%; filter: hue-rotate(360deg); }
@@ -60,10 +63,12 @@
             animation-timing-function: linear;
             animation-iteration-count: 1;
         }
+
         .easter-egg-particle {
             font-size: 40px !important;
             filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
         }
+
         @keyframes fall {
             0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
             10% { opacity: 1; }
@@ -129,7 +134,7 @@
             gap: 15px;
             margin-bottom: 20px;
             flex-shrink: 0;
-            flex-wrap: wrap;
+            flex-wrap: wrap; 
         }
 
         .nav-btn {
@@ -142,13 +147,32 @@
             font-size: 1rem;
             font-weight: bold;
             transition: all 0.3s ease;
+            position: relative;
         }
-        .nav-btn:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
+
+        .nav-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            color: #fff;
+        }
+
         .nav-btn.active {
             background: rgba(105, 240, 174, 0.2);
             border-color: #69f0ae;
             color: #69f0ae;
             box-shadow: 0 0 10px rgba(105, 240, 174, 0.1);
+        }
+
+        /* 锁定状态的按钮 */
+        .nav-btn.locked {
+            opacity: 0.4;
+            cursor: not-allowed;
+            filter: grayscale(100%);
+        }
+        .nav-btn.locked::after {
+            content: "🔒";
+            font-size: 12px;
+            margin-left: 5px;
+            vertical-align: middle;
         }
 
         /* --- 页面内容容器 --- */
@@ -160,7 +184,10 @@
             animation: fadeInPage 0.4s ease-out;
             width: 100%;
         }
-        .page-content.active { display: flex !important; }
+
+        .page-content.active {
+            display: flex !important;
+        }
 
         @keyframes fadeInPage {
             from { opacity: 0; transform: translateY(10px); }
@@ -175,7 +202,7 @@
             flex-shrink: 0;
         }
         .filters-row { 
-            display: flex;
+            display: flex; 
             gap: 10px; 
             margin-bottom: 15px;
             flex-wrap: wrap; 
@@ -194,7 +221,7 @@
             color: #eee;
             font-family: inherit;
         }
-        input[type="text"] { flex-grow: 1; min-width: 0; }
+        input[type="text"] { flex-grow: 1; }
 
         .clear-btn {
             cursor: pointer;
@@ -204,7 +231,6 @@
             display: flex; align-items: center; justify-content: center;
             font-weight: bold;
             color: #ffcccb;
-            flex-shrink: 0;
         }
         .clear-btn:hover { background: rgba(255, 99, 71, 0.3); }
 
@@ -301,6 +327,41 @@
         }
         .tip-icon { font-size: 24px; }
 
+        /* --- 确认框样式 --- */
+        .agreement-box {
+            margin-top: 25px;
+            padding: 15px;
+            background: rgba(105, 240, 174, 0.05);
+            border: 1px solid rgba(105, 240, 174, 0.3);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            animation: pulse-border 2s infinite;
+        }
+        @keyframes pulse-border {
+            0% { box-shadow: 0 0 0 0 rgba(105, 240, 174, 0.4); }
+            70% { box-shadow: 0 0 0 6px rgba(105, 240, 174, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(105, 240, 174, 0); }
+        }
+        .checkbox-container {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1em;
+            font-weight: bold;
+            color: #69f0ae;
+            cursor: pointer;
+            user-select: none;
+        }
+        .custom-checkbox {
+            width: 20px;
+            height: 20px;
+            accent-color: #69f0ae;
+            cursor: pointer;
+        }
+
         /* --- 审核表单样式 --- */
         .audit-form {
             display: flex;
@@ -329,9 +390,18 @@
             font-size: 1.2em;
             line-height: 1;
         }
-        .form-input { width: 100%; }
-        textarea.form-input { resize: vertical; min-height: 80px; }
-        .checkbox-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .form-input {
+            width: 100%;
+        }
+        textarea.form-input {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .checkbox-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
         .checkbox-label {
             display: flex;
             align-items: center;
@@ -342,8 +412,12 @@
             border-radius: 8px;
             transition: background 0.2s;
         }
-        .checkbox-label:hover { background: rgba(255, 255, 255, 0.2); }
-        .checkbox-label input { accent-color: #69f0ae; }
+        .checkbox-label:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+        .checkbox-label input {
+            accent-color: #69f0ae;
+        }
         .submit-btn {
             background: linear-gradient(90deg, #69f0ae, #00c853);
             color: #0f172a;
@@ -361,7 +435,9 @@
             transform: translateY(-2px);
             box-shadow: 0 5px 15px rgba(105, 240, 174, 0.4);
         }
-        .submit-btn:active { transform: translateY(0); }
+        .submit-btn:active {
+            transform: translateY(0);
+        }
 
         /* Toast 提示框 */
         #toast {
@@ -383,125 +459,6 @@
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
         @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
-
-        /* =========================================
-           新增：传送门与许愿墙样式 
-           ========================================= */
-        
-        /* 1. 传送门样式 */
-        .link-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 15px;
-            margin-bottom: 30px;
-        }
-        .link-card {
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            border-radius: 16px;
-            padding: 20px;
-            text-align: center;
-            text-decoration: none;
-            color: #fff;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 10px;
-        }
-        .link-card:hover {
-            background: rgba(105, 240, 174, 0.2);
-            border-color: #69f0ae;
-            transform: translateY(-5px) scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-        .link-icon { font-size: 28px; margin-bottom: 5px; }
-        .link-title { font-weight: bold; font-size: 1.1em; }
-
-        /* 2. 许愿墙展示样式 */
-        .wish-wall {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            padding-bottom: 20px;
-            align-content: flex-start;
-        }
-        .wish-card {
-            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.05));
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px 12px 12px 0;
-            padding: 15px;
-            /* 电脑端一行两个，手机端一行一个 */
-            width: calc(50% - 8px); 
-            min-width: 150px;
-            position: relative;
-            transition: transform 0.2s;
-            margin-bottom: 15px;
-        }
-        .wish-card:hover {
-            transform: translateY(-2px);
-            background: rgba(255, 255, 255, 0.12);
-        }
-        /* 装饰用的引号 */
-        .wish-card::before {
-            content: '"';
-            position: absolute;
-            top: 5px; right: 10px;
-            font-size: 40px;
-            color: rgba(255,255,255,0.1);
-            font-family: serif;
-            pointer-events: none;
-        }
-        .wish-content {
-            font-size: 0.95em;
-            margin-bottom: 12px;
-            line-height: 1.6;
-            word-break: break-all;
-            color: #eee;
-        }
-        .wish-footer {
-            font-size: 0.8em;
-            color: #69f0ae; /* 名字用绿色高亮 */
-            text-align: right;
-            border-top: 1px dashed rgba(255,255,255,0.1);
-            padding-top: 8px;
-            font-weight: bold;
-        }
-
-        /* =========================================
-           移动端适配 
-           ========================================= */
-        @media screen and (max-width: 768px) {
-            body { padding: 10px; }
-            .container { padding: 15px; height: 95vh; max-height: none; border-radius: 16px; }
-            h2 { font-size: 1.5rem; margin-bottom: 10px; margin-top: 5px; }
-            .nav-tabs { gap: 8px; margin-bottom: 12px; }
-            .nav-btn { padding: 6px 14px; font-size: 0.9rem; }
-            .search-section { gap: 6px; }
-            input[type="text"] { font-size: 16px; padding: 10px; }
-            
-            .clear-btn {
-                padding: 0 12px;
-                font-size: 0; 
-            }
-            .clear-btn::after { content: "🗑️ 清空"; font-size: 13px; }
-
-            .filters-row { gap: 6px; }
-            .dynamic-select {
-                min-width: 30%;
-                padding: 8px 24px 8px 10px; 
-                background-position: right 8px center;
-                font-size: 13px;
-            }
-
-            .result-item { padding: 14px; margin-bottom: 10px; }
-            .result-header { margin-bottom: 6px; }
-            .result-key { font-size: 1.1em; }
-            
-            /* 许愿卡手机端一行一个 */
-            .wish-card { width: 100%; }
-        }
     </style>
 </head>
 <body>
@@ -511,24 +468,16 @@
         
         <div class="nav-tabs">
             <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 群公告/群规</button>
-            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 角色查阅</button>
-            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 入群审核</button>
-            <button class="nav-btn" onclick="switchPage('wishPage', this)">🌟 许愿 & 传送</button>
+            <button class="nav-btn locked" id="btnSearch" onclick="switchPage('searchPage', this)">🔍 角色查阅</button>
+            <button class="nav-btn locked" id="btnAudit" onclick="switchPage('auditPage', this)">📝 入群审核</button>
         </div>
 
         <div id="searchPage" class="page-content">
             <div class="search-section">
-                <input type="text" id="searchInput" placeholder="在此输入关键词搜索 (试试输入 'order')..." autocomplete="off">
+                <input type="text" id="searchInput" placeholder="在此输入关键词搜索 (试试输入 'peroro')..." autocomplete="off">
                 <button class="clear-btn" id="clearBtn">🗑️ 清空筛选</button>
             </div>
-            <div class="filters-row" id="filtersContainer">
-                <select id="statusFilter" class="dynamic-select" style="font-weight:bold; color:#69f0ae;">
-                    <option value="all">全部状态</option>
-                    <option value="occupied">⛔ 已占用</option>
-                    <option value="unoccupied">✅ 未占用 (无人认领)</option>
-                </select>
-            </div>
-          
+            <div class="filters-row" id="filtersContainer"></div>
             <div id="result">
                 <div class="empty-tip">请搜索或选择筛选条件...</div>
             </div>
@@ -538,7 +487,7 @@
             <div class="scroll-container">
                 <div class="rules-box">
                     <h3>📌 入群须知</h3>
-                    <p>欢迎来到佩洛洛妙妙屋！请仔细阅读以下规则，并确认自己能够遵守！</p>
+                    <p>欢迎来到佩洛洛妙妙屋！请仔细阅读以下规则，并确认自己能够遵守！。</p>
                 </div>
                 <div class="rules-box">
                     <h3>⚠️ 雷区与禁令</h3>
@@ -548,19 +497,27 @@
                         <li>注意事项 3：禁止在此处刷屏或进行人身攻击。</li>
                         <li>注意事项 4：禁止涉三骚扰他人。</li>
                         <li>注意事项 5：禁止绑定其他同学（群友）。</li>
-                        <li>注意事项 6：能够明确拒绝不想色的邀请。</li>
-                        <li>注意事项 7：保持活跃度，并且将头像更换为所皮角色（如不方便可以更换小号进群）。</li>
-                        <li>注意事项 8：在群内活跃时须保持角色与头像统一。</li>
+                        <li>注意事项 6：明确拒绝不想色的邀请。</li>
+                        <li>注意事项 7：保持活跃度，并且将头像更换为所皮角色（可以更换小号进群）。</li>
+                        <li>注意事项 8：群内活跃时须保持角色与头像统一。</li>
                     </ul>
                 </div>
-                <div class="rules-box">
+                
+                <div class="agreement-box">
+                    <label class="checkbox-container">
+                        <input type="checkbox" id="rulesConfirm" class="custom-checkbox" onchange="toggleTabs()">
+                        我已阅读并同意以上所有群规
+                    </label>
+                </div>
+
+                <div class="rules-box" style="margin-top: 20px;">
                     <h3>📝 审核流程</h3>
-                    <p> 确认阅读上面所有的规则并且确定能够遵守，则点击“角色查阅”选项卡进行搜索，关键词为“无人认领”。(亦可以用下面的选项框进行快速搜索自己心仪的角色）。选好心仪的角色之后便可以点击“入群审核”进行皮解的填写，填写完毕之后向管理员提交。在向管理员提交角色卡后，请耐心等待管理员审核，审核通常会在24小时内完成，完成之后便会有人拉您进群。</p>
+                    <p>提交角色卡后，请耐心等待管理员审核。通常会在24小时内完成。</p>
                 </div>
                 <div class="tip-card">
                     <span class="tip-icon">💡</span>
                     <div class="tip-text">
-                        <strong>小贴士：</strong> 如果想要修改自己的XP表，请私聊或者直接在群内寻找管理员进行更新!
+                        <strong>小贴士：</strong> 如果想要修改自己的XP表，请私聊或者直接在群内寻找管理员进行更新!。
                     </div>
                 </div>
             </div>
@@ -612,8 +569,8 @@
                         <textarea id="q6" class="form-input" rows="4"></textarea>
                     </div>
 
-                    <div class="form-group" id="group-q7">
-                        <label class="form-label">7. 自戏 (200字以上)<span class="required-mark">*</span></label>
+                    <div class="form-group">
+                        <label class="form-label">7. 自戏 (200字以上，也可以选择和管理对戏)</label>
                         <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容..."></textarea>
                     </div>
 
@@ -623,48 +580,20 @@
             </div>
         </div>
 
-        <div id="wishPage" class="page-content">
-            <div class="scroll-container">
-                
-                <h3 style="margin-bottom:15px; border-left:4px solid #69f0ae; padding-left:10px;">🚀 快速传送</h3>
-                <div class="link-grid">
-                    <a href="https://kivo.wiki/" target="_blank" class="link-card">
-                        <div class="link-icon">🕶</div>
-                        <div class="link-title">差分快速获取</div>
-                    </a>
-                    <a href="https://ba.gamekee.com/" target="_blank" class="link-card">
-                        <div class="link-icon">📘</div>
-                        <div class="link-title">BA Wiki</div>
-                    </a>
-                </div>
-
-                <hr style="border:0; border-top:1px solid rgba(255,255,255,0.1); margin: 30px 0;">
-
-                <h3 style="margin-bottom:15px; border-left:4px solid #ffd700; padding-left:10px;">✨ 佩洛洛许愿墙</h3>
-                <div style="font-size:0.9em; color:#aaa; margin-bottom:20px;">
-                    (想要上墙请私聊管理员，祝大家的愿望都能实现！)
-                </div>
-
-                <div id="wishWallContainer" class="wish-wall"></div>
-
-            </div>
-        </div>
-
     </div>
 
     <div id="toast"></div>
+
+    <script src="database.js"></script>
 
     <script>
         // --- 1. 配置区域 ---
         const filtersConfig = [
             { id: 'school', label: '学院' },
             { id: 'length', label: '对戏长度' },
-            { id: 'tendency', label: '倾向' }
+            { id: 'tendency', label: '倾向' },
+            { id: 'grain', label: '粮仓情况' } // 新增
         ];
-
-        // 全局变量定义（数据将通过 fetch 加载到这里）
-        let database = {};
-        let wishData = [];
 
         const searchInput = document.getElementById('searchInput');
         const filtersContainer = document.getElementById('filtersContainer');
@@ -672,38 +601,30 @@
         const clearBtn = document.getElementById('clearBtn');
         const selectElements = {};
         
-        // --- 2. 数据加载 ---
-        function loadData() {
-            fetch('data.json')
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error("HTTP error " + response.status);
-                    }
-                    return response.json();
-                })
-                .then(data => {
-                    // 将 JSON 数据赋值给全局变量
-                    database = data.database;
-                    wishData = data.wishData;
+        // 锁定逻辑变量
+        let isRulesConfirmed = false;
 
-                    // 数据加载完成后，再初始化界面
-                    initFilters();
-                    renderWishWall();
-                    // 也可以在这里手动触发一次搜索显示默认结果
-                    performSearch();
-                    showToast("✅ 数据加载成功！");
-                })
-                .catch(err => {
-                    console.error("加载数据失败:", err);
-                    showToast("❌ 数据加载失败，请检查 data.json");
-                    document.getElementById('result').innerHTML = "<div class='empty-tip'>无法加载数据，请联系管理员。</div>";
-                });
+        function toggleTabs() {
+            const checkbox = document.getElementById('rulesConfirm');
+            isRulesConfirmed = checkbox.checked;
+            
+            const btnSearch = document.getElementById('btnSearch');
+            const btnAudit = document.getElementById('btnAudit');
+            
+            if (isRulesConfirmed) {
+                // 解锁
+                btnSearch.classList.remove('locked');
+                btnAudit.classList.remove('locked');
+                showToast("✅ 已解锁所有功能！");
+            } else {
+                // 锁定
+                btnSearch.classList.add('locked');
+                btnAudit.classList.add('locked');
+            }
         }
 
         // --- 3. 初始化 ---
         function initFilters() {
-            // 给新的状态筛选器添加监听
-            document.getElementById('statusFilter').addEventListener('change', performSearch);
             filtersConfig.forEach(config => {
                 const select = document.createElement('select');
                 select.className = 'dynamic-select';
@@ -715,8 +636,16 @@
                 select.appendChild(defaultOption);
 
                 if (config.id === 'length') {
-                    const fixedOptions = ["句", "段", "长段", "屏"];
+                    const fixedOptions = ["句", "段", "长段", "屏", "待定"];
                     fixedOptions.forEach(val => {
+                        const opt = document.createElement('option');
+                        opt.value = val;
+                        opt.innerText = val;
+                        select.appendChild(opt);
+                    });
+                } else if (config.id === 'grain') {
+                    const grainOptions = ["有粮", "无粮", "未知"];
+                    grainOptions.forEach(val => {
                         const opt = document.createElement('option');
                         opt.value = val;
                         opt.innerText = val;
@@ -744,10 +673,6 @@
 
         function clearAllFilters() {
             searchInput.value = '';
-            // 重置状态筛选器
-            const statusFilter = document.getElementById('statusFilter');
-            if(statusFilter) statusFilter.value = 'all';
-
             for (let key in selectElements) selectElements[key].value = 'all';
             performSearch();
             showToast("筛选已清空");
@@ -758,29 +683,19 @@
             const rawSearch = searchInput.value.trim();
             const searchText = rawSearch.toLowerCase();
             
-            // 获取状态筛选值
-            const statusFilter = document.getElementById('statusFilter');
-            const statusVal = statusFilter ? statusFilter.value : 'all';
-
             // 彩蛋检测
             checkSearchEasterEggs(searchText);
+
             const activeFilters = {};
             filtersConfig.forEach(config => {
-                if (selectElements[config.id]) {
-                    const val = selectElements[config.id].value;
-                    if (val !== 'all') activeFilters[config.id] = val;
-                }
+                const val = selectElements[config.id].value;
+                if (val !== 'all') activeFilters[config.id] = val;
             });
+
             display.innerHTML = "";
             let foundCount = 0;
             
-            // 如果数据还没加载完，database 是空的
-            if (Object.keys(database).length === 0) {
-                 display.innerHTML = "<div class='empty-tip'>正在加载数据...</div>";
-                 return;
-            }
-
-            if (!searchText && Object.keys(activeFilters).length === 0 && statusVal === 'all') {
+            if (!searchText && Object.keys(activeFilters).length === 0) {
                  display.innerHTML = "<div class='empty-tip'>请搜索或选择筛选条件...</div>";
                  return;
             }
@@ -788,14 +703,8 @@
             for (let key in database) {
                 const item = database[key];
                 const isTextMatch = !searchText || key.toLowerCase().includes(searchText) || item.desc.toLowerCase().includes(searchText);
-                
-                // 状态筛选逻辑：检查描述中是否包含“状态: 未被占用”
-                const isUnoccupied = item.desc.includes("状态: 未被占用");
-                let isStatusMatch = true;
-                if (statusVal === 'occupied' && isUnoccupied) isStatusMatch = false;
-                if (statusVal === 'unoccupied' && !isUnoccupied) isStatusMatch = false;
-
                 let isFilterMatch = true;
+
                 for (let filterKey in activeFilters) {
                     const requiredValue = activeFilters[filterKey];
                     const itemValue = item.tags[filterKey] || "";
@@ -814,7 +723,7 @@
                     }
                 }
 
-                if (isTextMatch && isFilterMatch && isStatusMatch) {
+                if (isTextMatch && isFilterMatch) {
                     foundCount++;
                     renderItem(key, item, activeFilters);
                 }
@@ -844,6 +753,7 @@
                     tagsHtml += `<span class="tag-badge ${highlightClass}">${tagValue}</span>`;
                 }
             });
+
             itemDiv.innerHTML = `
                 <div class="result-header"><span class="result-key">${key}</span></div>
                 <div class="tags-display">${tagsHtml}</div>
@@ -922,6 +832,7 @@
                 titleClickCount = 0;
             }
         });
+
         const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
         let konamiIndex = 0;
         document.addEventListener('keydown', (e) => {
@@ -935,6 +846,7 @@
                 konamiIndex = 0;
             }
         });
+
         function toggleRainbowMode() {
             if (document.body.classList.contains('rainbow-mode')) {
                 document.body.classList.remove('rainbow-mode');
@@ -954,12 +866,24 @@
 
         // --- 7. 页面切换逻辑 ---
         function switchPage(pageId, btnElement) {
+            // 检查锁定状态
+            if (pageId !== 'rulesPage' && !isRulesConfirmed) {
+                showToast("⚠️ 请先阅读群规并勾选确认！");
+                // 震动提示
+                if (navigator.vibrate) navigator.vibrate(200);
+                // 滚动到确认框
+                const confirmBox = document.querySelector('.agreement-box');
+                if (confirmBox) confirmBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                return;
+            }
+
             // 1. 隐藏所有页面
             const pages = document.querySelectorAll('.page-content');
             pages.forEach(page => {
                 page.style.display = 'none'; 
                 page.classList.remove('active');
             });
+
             // 2. 显示目标页面
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
@@ -975,28 +899,27 @@
             }
         }
 
-        // --- 8. 自动保存与回填逻辑 (新增) ---
+        // --- 8. 自动保存与回填逻辑 ---
         const formFields = ['q1', 'q2', 'q3', 'q5', 'q6', 'q7'];
+
         // 监听输入并保存
         function initAutoSave() {
             // 1. 文本框与下拉框
             formFields.forEach(id => {
                 const el = document.getElementById(id);
                 if(el) {
-                    // 回填数据
                     const savedVal = localStorage.getItem('peroro_audit_' + id);
                     if(savedVal) el.value = savedVal;
 
-                    // 监听改变
                     el.addEventListener('input', () => {
                         localStorage.setItem('peroro_audit_' + id, el.value);
-                        // 移除错误样式
                         el.classList.remove('error');
                         document.getElementById('group-' + id)?.classList.remove('error');
                     });
                 }
             });
-            // 2. 多选框 (q4) 特殊处理
+
+            // 2. 多选框 (q4)
             const savedQ4 = localStorage.getItem('peroro_audit_q4');
             if (savedQ4) {
                 const checkedValues = JSON.parse(savedQ4);
@@ -1010,28 +933,24 @@
                     const checked = [];
                     document.querySelectorAll('input[name="q4"]:checked').forEach(c => checked.push(c.value));
                     localStorage.setItem('peroro_audit_q4', JSON.stringify(checked));
-                    // 移除错误样式
                     document.getElementById('group-q4').classList.remove('error');
                 });
             });
         }
 
-        // --- 9. 审核表单复制逻辑 (含必填校验) ---
+        // --- 9. 审核表单复制逻辑 ---
         function copyAuditForm() {
-            // 1. 必填项检查列表 (q7除外) -> 修改：q7现在是必填
             const requiredFields = [
                 { id: 'q1', name: '1. 偏主动还是被动' },
                 { id: 'q2', name: '2. XP' },
                 { id: 'q3', name: '3. 雷区' },
                 { id: 'q5', name: '5. 语c生涯' },
-                { id: 'q6', name: '6. 角色介绍' },
-                { id: 'q7', name: '7. 自戏' }
+                { id: 'q6', name: '6. 角色介绍' }
             ];
 
             let hasError = false;
             let firstErrorId = null;
 
-            // 检查普通字段
             requiredFields.forEach(field => {
                 const el = document.getElementById(field.id);
                 if (!el.value.trim()) {
@@ -1041,26 +960,22 @@
                     if(!firstErrorId) firstErrorId = field.id;
                 }
             });
-            // 检查多选框 (q4)
+
             const q4Checked = document.querySelectorAll('input[name="q4"]:checked');
             if (q4Checked.length === 0) {
                 hasError = true;
                 document.getElementById('group-q4').classList.add('error');
-                if(!firstErrorId) firstErrorId = 'group-q4'; // 滚动到div
+                if(!firstErrorId) firstErrorId = 'group-q4';
             }
 
             if (hasError) {
-                // 震动反馈 (如果设备支持)
                 if (navigator.vibrate) navigator.vibrate(200);
                 showToast("❌ 请填写所有带 * 的必填项！");
-                
-                // 滚动到第一个错误位置
                 const errorEl = document.getElementById(firstErrorId);
                 if(errorEl) errorEl.scrollIntoView({ behavior: 'smooth', block: 'center' });
                 return; 
             }
 
-            // 2. 验证通过，提取数据
             const q1 = document.getElementById('q1').value;
             const q2 = document.getElementById('q2').value;
             const q3 = document.getElementById('q3').value;
@@ -1071,9 +986,8 @@
 
             const q5 = document.getElementById('q5').value;
             const q6 = document.getElementById('q6').value;
-            const q7 = document.getElementById('q7').value; // 必填，不用默认值了
+            const q7 = document.getElementById('q7').value || "（未填写）";
 
-            // 组装文本
             const finalText = 
 `【入群审核卡】
 --------------------------------
@@ -1095,10 +1009,10 @@
 6. 角色介绍（原因/个性/互动）
 答：${q6}
 
-7. 自戏
+7. 自戏（或对戏）
 答：${q7}
 --------------------------------`;
-            // 复制到剪贴板
+
             navigator.clipboard.writeText(finalText).then(() => {
                 showToast("✅ 审核单已复制！请发送给管理员");
             }).catch(err => {
@@ -1107,28 +1021,8 @@
             });
         }
 
-        // 渲染许愿墙函数
-        function renderWishWall() {
-            const container = document.getElementById('wishWallContainer');
-            if (!container) return;
-            
-            let html = '';
-            // wishData 现在是从 json 加载的
-            wishData.forEach(item => {
-                html += `
-                    <div class="wish-card">
-                        <div class="wish-content">${item.text}</div>
-                        <div class="wish-footer">—— ${item.author}</div>
-                    </div>
-                `;
-            });
-            container.innerHTML = html;
-        }
-
         // --- 启动 ---
-        // 页面加载时自动获取数据
-        loadData();
-
+        initFilters();
         initSeasonalEffects();
         initAutoSave(); // 启动自动保存
         
