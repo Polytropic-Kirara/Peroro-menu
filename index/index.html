@@ -472,10 +472,12 @@
                         <label class="form-label">6. 角色介绍<span class="required-mark">*</span></label>
                         <textarea id="q6" class="form-input" rows="4" placeholder="原因/个性/互动方式..."></textarea>
                     </div>
-                    <div class="form-group">
-                        <label class="form-label">7. 自戏 (200字以上，或与管理对戏)</label>
-                        <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容..."></textarea>
+                    
+                    <div class="form-group" id="group-q7">
+                        <label class="form-label">7. 自戏 (200字以上)<span class="required-mark">*</span></label>
+                        <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容 (禁止与管理对戏选项)..."></textarea>
                     </div>
+                    
                     <button class="submit-btn" onclick="copyAuditForm()">📋 生成并复制审核单</button>
                 </div>
             </div>
@@ -490,7 +492,7 @@
             { id: 'school', label: '学院' },
             { id: 'length', label: '长度' },
             { id: 'tendency', label: '倾向' },
-            { id: 'content', label: '粮草' } // 新增：粮草筛选
+            { id: 'content', label: '粮草' } 
         ];
         let database = {}; 
         let wishData = [];
@@ -506,11 +508,9 @@
                 const response = await fetch('data.json');
                 const data = await response.json();
                 
-                // 解析数据
                 database = data.database || {};
                 wishData = data.wishData || [];
                 
-                // 初始化各部分
                 initFilters();
                 performSearch();
                 renderWishWall();
@@ -530,10 +530,8 @@
                 select.className = 'dynamic-select';
                 select.dataset.key = config.id;
                 
-                // 默认选项
                 select.innerHTML = `<option value="all">全部${config.label}</option>`;
 
-                // 收集可选项
                 if (config.id === 'length') {
                     ["句", "段", "长段", "屏"].forEach(val => addOption(select, val));
                 } else if (config.id === 'content') {
@@ -542,7 +540,6 @@
                     const uniqueValues = new Set();
                     for (let key in database) {
                         const val = database[key].tags?.[config.id];
-                        // 排除 "分割线" 这种特殊Tag
                         if (val && val !== "分割线" && val !== "隐藏") uniqueValues.add(val);
                     }
                     Array.from(uniqueValues).sort().forEach(val => addOption(select, val));
@@ -566,7 +563,6 @@
             const statusVal = document.getElementById('statusFilter').value;
             checkSearchEasterEggs(searchText);
 
-            // 获取当前筛选条件
             const activeFilters = {};
             filtersConfig.forEach(config => {
                 const val = selectElements[config.id].value;
@@ -576,7 +572,6 @@
             display.innerHTML = "";
             let foundCount = 0;
             
-            // 初始空状态
             if (!searchText && Object.keys(activeFilters).length === 0 && statusVal === 'all') {
                  display.innerHTML = "<div class='empty-tip'>请搜索或选择筛选条件...</div>";
                  return;
@@ -585,28 +580,23 @@
             for (let key in database) {
                 const item = database[key];
                 
-                // 过滤掉分割线（标签 content 为 "隐藏" 的项）
                 if (item.tags && item.tags.content === "隐藏") continue;
 
-                // 文本匹配
                 const isTextMatch = !searchText || 
                                     key.toLowerCase().includes(searchText) || 
                                     (item.desc && item.desc.toLowerCase().includes(searchText));
                 
-                // 状态匹配
                 const isUnoccupied = item.desc && item.desc.includes("状态: 未被占用");
                 let isStatusMatch = true;
                 if (statusVal === 'occupied' && isUnoccupied) isStatusMatch = false;
                 if (statusVal === 'unoccupied' && !isUnoccupied) isStatusMatch = false;
 
-                // 标签匹配
                 let isFilterMatch = true;
                 for (let fKey in activeFilters) {
                     const reqVal = activeFilters[fKey];
                     const itemVal = item.tags ? (item.tags[fKey] || "") : "";
                     
                     if (fKey === 'length') {
-                        // 长度可能是 "句/段"，只要包含即可
                         if (!itemVal.split('/').includes(reqVal)) { isFilterMatch = false; break; }
                     } else {
                         if (itemVal !== reqVal) { isFilterMatch = false; break; }
@@ -631,14 +621,11 @@
                 filtersConfig.forEach(config => {
                     const val = data.tags[config.id];
                     if (val && val !== '待定') {
-                        // 判断高亮：选中了该筛选条件，或者是“有粮”
                         let badgeClass = 'tag-badge';
                         
-                        // 筛选命中高亮
                         if (activeFilters[config.id] && (val === activeFilters[config.id] || val.includes(activeFilters[config.id]))) {
                             badgeClass += ' matched';
                         }
-                        // 粮草特殊高亮
                         if (config.id === 'content') {
                             badgeClass += ' content-tag';
                             if (val === '有粮') badgeClass += ' gold';
@@ -671,7 +658,7 @@
             `).join('');
         }
 
-        // --- 6. 审核逻辑 ---
+        // --- 6. 审核逻辑 (修改：q7必填校验) ---
         function initAutoSave() {
             const fields = ['q1', 'q2', 'q3', 'q5', 'q6', 'q7'];
             fields.forEach(id => {
@@ -700,27 +687,52 @@
         }
 
         function copyAuditForm() {
-            const req = [ {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, {id:'q6'} ];
+            // 将 q7 加入必填列表
+            const req = [ {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, {id:'q6'}, {id:'q7'} ];
             let err = false, first = null;
+            
             req.forEach(f => {
                 const el = document.getElementById(f.id);
-                if (!el.value.trim()) {
-                    err = true; el.classList.add('error');
+                const val = el.value.trim();
+                
+                // 1. 检查是否为空
+                if (!val) {
+                    err = true; 
+                    el.classList.add('error');
                     document.getElementById('group-'+f.id).classList.add('error');
                     if(!first) first = f.id;
+                } 
+                // 2. 检查自戏字数 (仅针对q7)
+                else if (f.id === 'q7' && val.length < 200) {
+                    err = true;
+                    el.classList.add('error');
+                    document.getElementById('group-'+f.id).classList.add('error');
+                    if(!first) first = f.id;
+                    showToast("⚠️ 自戏内容不足200字！");
                 }
             });
+
             const q4Checked = document.querySelectorAll('input[name="q4"]:checked');
             if (!q4Checked.length) { 
                 err = true; document.getElementById('group-q4').classList.add('error'); 
                 if(!first) first = 'group-q4';
             }
+
             if (err) {
-                showToast("❌ 请填写所有必填项！");
-                document.getElementById(first).scrollIntoView({behavior:'smooth', block:'center'});
+                // 如果还没提示过具体的错误（如字数不足），则提示通用错误
+                if (!document.getElementById('toast').classList.contains('show')) {
+                    showToast("❌ 请填写所有必填项！");
+                }
+                if (first === 'group-q4') {
+                     document.getElementById(first).scrollIntoView({behavior:'smooth', block:'center'});
+                } else {
+                     document.getElementById(first).parentNode.scrollIntoView({behavior:'smooth', block:'center'});
+                }
                 return;
             }
-            const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 介绍：${document.getElementById('q6').value}\n7. 自戏：${document.getElementById('q7').value || "（未填写）"}\n--------------------------------`;
+
+            const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 介绍：${document.getElementById('q6').value}\n7. 自戏：${document.getElementById('q7').value}\n--------------------------------`;
+            
             navigator.clipboard.writeText(text).then(() => showToast("✅ 审核单已复制！")).catch(() => showToast("❌ 复制失败"));
         }
 
@@ -771,7 +783,6 @@
             }
         }
 
-        // 标题与Konami彩蛋
         document.getElementById('mainTitle').addEventListener('click', function() {
             this.classList.add('shake'); setTimeout(() => this.classList.remove('shake'), 500);
         });
@@ -788,9 +799,7 @@
             } else konamiIndex = 0;
         });
 
-        // 绑定清除按钮事件
         document.getElementById('clearBtn').addEventListener('click', clearAllFilters);
-        // 绑定搜索输入事件
         document.getElementById('searchInput').addEventListener('input', performSearch);
 
         // 启动
