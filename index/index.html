@@ -5,466 +5,651 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>佩洛洛菜单 | PERORO MENU</title>
     <style>
-        /* --- 核心视觉与立体感配置 --- */
-        :root {
-            --primary: #69f0ae;
-            --primary-glow: rgba(105, 240, 174, 0.4);
-            --bg-dark: #0f172a;
-            --glass-surface: rgba(30, 41, 59, 0.7); /* 加深表面色以提升对比度 */
-            --glass-border: rgba(255, 255, 255, 0.12);
-            --text-main: #e2e8f0;
-            --accent-gold: #ffd700;
-            /* 立体感阴影：外发光 + 底部深影 + 顶部微高光 */
-            --card-shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.7), 
-                           0 4px 6px -2px rgba(0, 0, 0, 0.5),
-                           inset 0 1px 1px rgba(255, 255, 255, 0.05);
-        }
-
+        /* --- 全局重置 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
         body {
-            font-family: 'PingFang SC', 'Microsoft YaHei', -apple-system, sans-serif;
-            color: var(--text-main);
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            color: #ffffff;
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 10px;
-            background: radial-gradient(circle at top right, #1e293b, #0f172a);
-            background-attachment: fixed;
-            overflow: hidden;
+            padding: 20px;
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            position: relative;
+            overflow: hidden; 
             transition: filter 0.5s;
         }
 
-        /* 背景装饰网格 */
-        body::after {
-            content: "";
-            position: fixed;
-            inset: 0;
-            background-image: linear-gradient(var(--glass-border) 1px, transparent 1px), 
-                              linear-gradient(90deg, var(--glass-border) 1px, transparent 1px);
-            background-size: 50px 50px;
-            pointer-events: none;
-            z-index: -1;
-            opacity: 0.2;
-        }
-
-        /* 彩虹模式彩蛋 */
+        /* 彩蛋：彩光模式 */
         body.rainbow-mode { animation: rainbowBG 2s linear infinite !important; }
         @keyframes rainbowBG {
-            0% { filter: hue-rotate(0deg); }
-            100% { filter: hue-rotate(360deg); }
+            0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
+            100% { background-position: 100% 50%; filter: hue-rotate(360deg); }
+        }
+
+        /* 背景网格 */
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: 
+                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 40px 40px;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50% }
+            50% { background-position: 100% 50% }
+            100% { background-position: 0% 50% }
         }
 
         /* --- 粒子特效 --- */
         .seasonal-particle, .easter-egg-particle {
-            position: fixed; top: -50px; z-index: 9999; pointer-events: none;
+            position: fixed;
+            top: -50px;
+            z-index: 9999;
+            pointer-events: none;
+            animation-timing-function: linear;
+            animation-iteration-count: 1;
+        }
+        .easter-egg-particle {
+            font-size: 40px !important;
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
         }
         @keyframes fall {
-            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
             10% { opacity: 1; }
-            100% { transform: translateY(110vh) rotate(360deg); opacity: 0; }
+            100% { transform: translateY(110vh) rotate(360deg) translateX(20px); opacity: 0; }
         }
 
         /* --- 主容器 --- */
         .container {
+            position: relative;
             z-index: 10;
-            background: rgba(15, 23, 42, 0.75);
-            backdrop-filter: blur(25px);
-            -webkit-backdrop-filter: blur(25px);
-            padding: 30px;
-            border-radius: 28px;
-            border: 1px solid var(--glass-border);
-            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.6);
+            background: rgba(20, 20, 35, 0.75);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            padding: 35px;
+            border-radius: 24px;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
             width: 100%;
-            max-width: 800px;
+            max-width: 850px;
             display: flex;
             flex-direction: column;
-            height: 90vh;
+            height: 85vh;
+            max-height: 900px;
         }
 
-        header { text-align: center; margin-bottom: 25px; flex-shrink: 0; }
-        header h2 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            text-shadow: 0 0 15px var(--primary-glow);
-            letter-spacing: 6px;
-            cursor: pointer;
-        }
-        header p { font-size: 0.7rem; opacity: 0.5; letter-spacing: 2px; margin-top: 5px; }
-
-        /* --- 导航栏 --- */
-        .nav-tabs {
-            display: flex;
-            gap: 10px;
+        h2 {
             margin-bottom: 20px;
-            justify-content: center;
-            overflow-x: auto;
-            padding-bottom: 5px;
+            text-align: center;
+            letter-spacing: 2px;
+            font-weight: 700;
+            color: #fff;
+            text-shadow: 0 0 10px rgba(105, 240, 174, 0.5);
+            user-select: none;
+            cursor: pointer;
+            transition: transform 0.1s;
             flex-shrink: 0;
         }
-        .nav-tabs::-webkit-scrollbar { height: 0; }
+        
+        h2.shake {
+            animation: shake 0.5s;
+            color: #ffd700;
+            text-shadow: 0 0 20px #ffd700;
+        }
+
+        @keyframes shake {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); }
+            10%, 30%, 50%, 70%, 90% { transform: translate(-2px, -1px) rotate(-1deg); }
+            20%, 40%, 60%, 80% { transform: translate(2px, 1px) rotate(1deg); }
+        }
+
+        /* --- 选项卡导航 --- */
+        .nav-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-shrink: 0;
+            flex-wrap: wrap;
+        }
 
         .nav-btn {
-            background: var(--glass-surface);
-            border: 1px solid var(--glass-border);
-            color: #94a3b8;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ccc;
             padding: 10px 20px;
-            border-radius: 14px;
+            border-radius: 20px;
             cursor: pointer;
-            white-space: nowrap;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            font-weight: 600;
+            font-size: 1rem;
+            font-weight: bold;
+            transition: all 0.3s ease;
         }
+        .nav-btn:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
         .nav-btn.active {
-            background: rgba(105, 240, 174, 0.15);
-            border-color: var(--primary);
-            color: var(--primary);
-            box-shadow: 0 0 15px rgba(105, 240, 174, 0.2);
+            background: rgba(105, 240, 174, 0.2);
+            border-color: #69f0ae;
+            color: #69f0ae;
+            box-shadow: 0 0 10px rgba(105, 240, 174, 0.1);
         }
 
-        /* --- 页面控制 --- */
-        .page-content { display: none; flex-direction: column; flex-grow: 1; overflow: hidden; }
-        .page-content.active { display: flex; animation: pageIn 0.4s ease; }
-        @keyframes pageIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        /* --- 页面内容 --- */
+        .page-content {
+            display: none;
+            flex-direction: column;
+            flex-grow: 1;
+            overflow: hidden;
+            animation: fadeInPage 0.4s ease-out;
+            width: 100%;
+        }
+        .page-content.active { display: flex !important; }
 
-        .scroll-container {
+        @keyframes fadeInPage {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* --- 控制区布局 --- */
+        .search-section { display: flex; gap: 10px; margin-bottom: 15px; flex-shrink: 0; }
+        .filters-row { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; flex-shrink: 0; }
+
+        /* --- 输入框与按钮 --- */
+        input[type="text"], .dynamic-select, .clear-btn, textarea, .form-input {
+            padding: 12px 16px;
+            border-radius: 12px;
+            font-size: 14px;
+            outline: none;
+            transition: all 0.3s ease;
+            background: rgba(255, 255, 255, 0.07);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            color: #eee;
+            font-family: inherit;
+        }
+        input[type="text"] { flex-grow: 1; min-width: 0; }
+
+        .clear-btn {
+            cursor: pointer;
+            background: rgba(255, 99, 71, 0.15);
+            border-color: rgba(255, 99, 71, 0.3);
+            white-space: nowrap;
+            display: flex; align-items: center; justify-content: center;
+            font-weight: bold;
+            color: #ffcccb;
+            flex-shrink: 0;
+        }
+        .clear-btn:hover { background: rgba(255, 99, 71, 0.3); }
+
+        .dynamic-select {
+            flex: 1;
+            min-width: 120px; cursor: pointer; appearance: none;
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-repeat: no-repeat; background-position: right 15px center; background-size: 16px;
+        }
+        .dynamic-select option { background-color: #1a1a2e; color: #fff; }
+
+        input[type="text"]:focus, .dynamic-select:focus, textarea:focus, .form-input:focus {
+            background: rgba(255, 255, 255, 0.15);
+            border-color: #69f0ae;
+            box-shadow: 0 0 15px rgba(105, 240, 174, 0.25);
+        }
+
+        .form-input.error, .form-group.error {
+            border-color: #ff4081;
+            box-shadow: 0 0 10px rgba(255, 64, 129, 0.3);
+            animation: shake 0.5s;
+        }
+
+        /* --- 结果区域 --- */
+        #result {
             overflow-y: auto;
             flex-grow: 1;
             padding-right: 8px;
+            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+            min-height: 0;
         }
-        .scroll-container::-webkit-scrollbar { width: 5px; }
-        .scroll-container::-webkit-scrollbar-thumb { 
-            background: linear-gradient(to bottom, var(--glass-border), var(--primary-glow));
-            border-radius: 10px; 
-        }
+        #result::-webkit-scrollbar { width: 6px; }
+        #result::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.3); border-radius: 10px; }
 
-        /* --- 立体卡片通用样式 --- */
-        .rules-card, .character-card, .form-group {
-            background: var(--glass-surface);
-            border: 1px solid var(--glass-border);
-            border-radius: 18px;
-            padding: 20px;
-            margin-bottom: 18px;
-            box-shadow: var(--card-shadow);
-            transition: transform 0.2s ease, box-shadow 0.2s ease;
-            line-height: 1.8;
+        .result-item {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 18px; border-radius: 16px; margin-bottom: 15px;
+            border-left: 4px solid #69f0ae;
+            animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
-        .character-card:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.8), 0 0 10px var(--primary-glow);
-            border-color: var(--primary);
-        }
+        .result-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
+        .result-key { font-size: 1.25em; font-weight: bold; color: #fff; }
 
-        .rules-card h3 { color: var(--primary); font-size: 1.1rem; margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
-        .rules-card ul { list-style: none; padding-left: 5px; color: #cbd5e1; font-size: 0.95rem; }
-        .rules-card li::before { content: "•"; color: var(--primary); margin-right: 8px; }
+        .tags-display { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
+        .tag-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); color: #ccc; }
+        .tag-badge.matched { background: rgba(105, 240, 174, 0.15); border-color: #69f0ae; color: #69f0ae; font-weight: 600; box-shadow: 0 0 8px rgba(105, 240, 174, 0.1); }
 
-        /* --- 交互元素立体化 --- */
-        .search-bar { display: flex; gap: 10px; margin-bottom: 15px; flex-shrink: 0; }
-        .filter-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); gap: 10px; margin-bottom: 20px; flex-shrink: 0; }
-
-        input, select, textarea {
-            background: rgba(0, 0, 0, 0.3) !important;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #fff !important;
-            padding: 12px 16px;
-            border-radius: 12px;
-            outline: none;
-            transition: 0.3s;
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5); /* 营造凹陷立体感 */
-        }
+        .result-desc { font-size: 0.95em; color: #d1d5db; line-height: 1.6; white-space: pre-wrap; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; }
+        .empty-tip { text-align: center; color: rgba(255,255,255,0.5); margin-top: 40px; font-style: italic; }
         
-        /* 下拉选框暗色修正与自定义箭头 */
-        select {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2369f0ae' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 1rem center;
-            background-size: 1em;
-            cursor: pointer;
-        }
-        select option { background-color: #0f172a; color: #fff; }
+        @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
-        input:focus, select:focus, textarea:focus { 
-            border-color: var(--primary); 
-            box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.5), 0 0 8px var(--primary-glow);
+        /* --- 滚动容器 --- */
+        .scroll-container {
+            padding: 10px; color: #e0e0e0; overflow-y: auto; flex-grow: 1; padding-right: 8px;
+            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
         }
 
-        .char-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .char-name { font-size: 1.3rem; font-weight: 800; color: #fff; }
-        
-        .badge-group { display: flex; flex-wrap: wrap; gap: 6px; }
-        .badge {
-            font-size: 0.7rem; padding: 4px 10px; border-radius: 8px;
-            background: rgba(255,255,255,0.05); color: #94a3b8; border: 1px solid var(--glass-border);
-        }
-        .badge.highlight { color: var(--accent-gold); border-color: rgba(255,215,0,0.3); background: rgba(255,215,0,0.05); }
+        /* 群规样式 */
+        .rules-box { background: rgba(0, 0, 0, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #7c4dff; }
+        .rules-box h3 { margin-bottom: 15px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .rules-list { padding-left: 20px; line-height: 1.8; }
+        .rules-list li { margin-bottom: 8px; }
+        .tip-card { background: rgba(105, 240, 174, 0.1); border: 1px dashed #69f0ae; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px; margin-top: 30px; }
+        .tip-icon { font-size: 24px; }
 
-        .char-desc {
-            font-size: 0.9rem; color: #cbd5e1; line-height: 1.6; white-space: pre-wrap;
-            background: rgba(0, 0, 0, 0.4); padding: 12px; border-radius: 10px;
-            box-shadow: inset 0 1px 3px rgba(0,0,0,0.6); border: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* --- 底部确认栏 --- */
-        .sticky-footer {
-            margin-top: 15px; background: rgba(105, 240, 174, 0.05); padding: 15px;
-            border-radius: 16px; border: 1px dashed var(--primary);
-            display: flex; align-items: center; gap: 12px; cursor: pointer;
-        }
-        .sticky-footer input { width: 18px; height: 18px; accent-color: var(--primary); }
-
+        /* --- 表单样式 --- */
+        .audit-form { display: flex; flex-direction: column; gap: 20px; padding-bottom: 20px; }
+        .form-group { background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s; }
+        .form-label { display: block; margin-bottom: 10px; font-weight: bold; color: #69f0ae; display: flex; align-items: center; }
+        .required-mark { color: #ff4081; margin-left: 5px; font-size: 1.2em; line-height: 1; }
+        .form-input { width: 100%; }
+        textarea.form-input { resize: vertical; min-height: 80px; }
+        .checkbox-group { display: flex; gap: 15px; flex-wrap: wrap; }
+        .checkbox-label { display: flex; align-items: center; gap: 5px; cursor: pointer; background: rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 8px; transition: background 0.2s; }
+        .checkbox-label:hover { background: rgba(255, 255, 255, 0.2); }
+        .checkbox-label input { accent-color: #69f0ae; }
         .submit-btn {
-            background: var(--primary); color: #0f172a; border: none; padding: 16px;
-            border-radius: 14px; font-weight: 800; cursor: pointer; transition: 0.3s; margin-top: 10px;
+            background: linear-gradient(90deg, #69f0ae, #00c853); color: #0f172a; border: none; padding: 15px; font-size: 16px; font-weight: bold;
+            border-radius: 12px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px; margin-bottom: 20px;
         }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px var(--primary-glow); }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(105, 240, 174, 0.4); }
 
         #toast {
-            visibility: hidden; position: fixed; bottom: 30px; left: 50%; transform: translateX(-50%);
-            background: #1e293b; color: var(--primary); padding: 12px 25px; border-radius: 50px;
-            border: 1px solid var(--primary); z-index: 10000; font-weight: 600;
+            visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 50px; padding: 16px;
+            position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid #69f0ae;
         }
-        #toast.show { visibility: visible; animation: fadeInUp 0.3s forwards; }
+        #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+        @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
+        @keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
-        @keyframes fadeInUp { from { opacity: 0; transform: translate(-50%, 20px); } to { opacity: 1; transform: translate(-50%, 0); } }
-
-        @media (max-width: 600px) {
-            .container { height: 95vh; padding: 20px; }
-            .filter-grid { grid-template-columns: 1fr 1fr; }
+        @media screen and (max-width: 768px) {
+            body { padding: 10px; }
+            .container { padding: 15px; height: 95vh; max-height: none; border-radius: 16px; }
+            h2 { font-size: 1.5rem; margin-bottom: 10px; margin-top: 5px; }
+            .nav-tabs { gap: 8px; margin-bottom: 12px; }
+            .nav-btn { padding: 6px 14px; font-size: 0.9rem; }
+            .search-section { gap: 6px; }
+            input[type="text"] { font-size: 16px; padding: 10px; }
+            .clear-btn { padding: 0 12px; font-size: 0; }
+            .clear-btn::after { content: "🗑️ 清空"; font-size: 13px; }
+            .filters-row { gap: 6px; }
+            .dynamic-select { min-width: 30%; padding: 8px 24px 8px 10px; background-position: right 8px center; font-size: 13px; }
+            .result-item { padding: 14px; margin-bottom: 10px; }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <header>
-            <h2 id="mainTitle">PERORO MENU</h2>
-            <p>— 佩洛洛妙妙屋 · 角色查阅系统 —</p>
-        </header>
+        <h2 id="mainTitle">⚡ 佩洛洛菜单</h2>
         
-        <nav class="nav-tabs">
-            <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 入群准则</button>
-            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 档案检索</button>
-            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 审核申请</button>
-            <button class="nav-btn" onclick="switchPage('wishPage', this)">✨ 许愿传送</button>
-        </nav>
-
-        <div id="rulesPage" class="page-content active">
-            <div class="scroll-container">
-                <div class="rules-card">
-                    <h3>📌 欢迎致辞</h3>
-                    <p>欢迎来到佩洛洛妙妙屋。这里是一个为了共同爱好而聚集的宁静港湾。在您深入查阅档案前，请务必阅读并认可规则。</p>
-                </div>
-                <div class="rules-card">
-                    <h3>🚫 禁忌红线</h3>
-                    <ul>
-                        <li>严禁讨论政治、宗教、歧视及任何违法违规话题。</li>
-                        <li>禁止无礼骚扰，维持基本的社交礼仪与尊重。</li>
-                        <li>保持“皮卡合一”，个人形象需与认领角色保持统一。</li>
-                        <li>严禁发布任何涉及三次元未成年或违规的内容。</li>
-                    </ul>
-                </div>
-                
-                <label class="sticky-footer" id="confirmWrapper">
-                    <input type="checkbox" id="rulesCheckbox">
-                    <span style="color: var(--primary); font-weight: bold;">我已阅毕，并承诺在馆内遵守以上一切秩序。</span>
-                </label>
-            </div>
+        <div class="nav-tabs">
+            <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 群公告/群规</button>
+            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 角色查阅</button>
+            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 入群审核</button>
         </div>
 
         <div id="searchPage" class="page-content">
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="搜索角色名、XP关键词...">
-                <button onclick="resetFilters()" style="cursor:pointer; background:none; border:none; color:var(--primary); font-size:14px;">[重置]</button>
+            <div class="search-section">
+                <input type="text" id="searchInput" placeholder="在此输入关键词搜索 (试试输入 'order')..." autocomplete="off">
+                <button class="clear-btn" id="clearBtn">🗑️ 清空筛选</button>
             </div>
-            <div class="filter-grid" id="filtersContainer">
-                <select id="statusFilter" style="color:var(--primary); font-weight:bold;">
-                    <option value="all">所有状态</option>
+            <div class="filters-row" id="filtersContainer">
+                <select id="statusFilter" class="dynamic-select" style="font-weight:bold; color:#69f0ae;">
+                    <option value="all">全部状态</option>
                     <option value="occupied">⛔ 已占用</option>
-                    <option value="unoccupied">✅ 未占用</option>
+                    <option value="unoccupied">✅ 未占用 (无人认领)</option>
                 </select>
             </div>
-            <div id="result" class="scroll-container"></div>
+            <div id="result">
+                <div class="empty-tip">数据加载中...</div>
+            </div>
+        </div>
+
+        <div id="rulesPage" class="page-content active">
+            <div class="scroll-container">
+                <div class="rules-box">
+                    <h3>📌 入群须知</h3>
+                    <p>欢迎来到佩洛洛妙妙屋！请仔细阅读以下规则，并确认自己能够遵守！</p>
+                </div>
+                <div class="rules-box">
+                    <h3>⚠️ 雷区与禁令</h3>
+                    <ul class="rules-list">
+                        <li>注意事项 1：请勿发送任何真实的三次元R18图片！</li>
+                        <li>注意事项 2：严厉禁止讨论政治、宗教等敏感话题。</li>
+                        <li>注意事项 3：禁止在此处刷屏或进行人身攻击。</li>
+                        <li>注意事项 4：禁止涉三骚扰他人。</li>
+                        <li>注意事项 5：禁止绑定其他同学（群友）。</li>
+                        <li>注意事项 6：明确拒绝不想色的邀请。</li>
+                        <li>注意事项 7：保持活跃度，并且将头像更换为所皮角色。</li>
+                        <li>注意事项 8：群内活跃时须保持角色与头像统一。</li>
+                    </ul>
+                </div>
+                <div class="rules-box">
+                    <h3>📝 审核流程</h3>
+                    <p> 确认阅读规则后，点击“角色查阅”搜索“无人认领”角色，随后点击“入群审核”填写并复制审核单发送给管理员。审核通常在24小时内完成。</p>
+                </div>
+                <div class="tip-card">
+                    <span class="tip-icon">💡</span>
+                    <div class="tip-text"><strong>小贴士：</strong> 修改XP表请私聊管理员进行更新！</div>
+                </div>
+            </div>
         </div>
 
         <div id="auditPage" class="page-content">
             <div class="scroll-container">
-                <div class="form-group">
-                    <label style="color:var(--primary); font-weight:bold; display:block; margin-bottom:10px;">倾向选择</label>
-                    <select id="q1" style="width:100%"><option value="主动">主动</option><option value="被动">被动</option><option value="皆可">皆可</option></select>
+                <div class="audit-form">
+                    <div class="form-group" id="group-q1">
+                        <label class="form-label">1. 偏主动还是被动？<span class="required-mark">*</span></label>
+                        <select id="q1" class="dynamic-select form-input">
+                            <option value="">请选择...</option>
+                            <option value="主动">主动</option>
+                            <option value="被动">被动</option>
+                            <option value="皆可 (偏主动)">皆可 (偏主动)</option>
+                            <option value="皆可 (偏被动)">皆可 (偏被动)</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="group-q2">
+                        <label class="form-label">2. XP是？<span class="required-mark">*</span></label>
+                        <textarea id="q2" class="form-input" placeholder="请列举你的XP..."></textarea>
+                    </div>
+                    <div class="form-group" id="group-q3">
+                        <label class="form-label">3. 雷区是？<span class="required-mark">*</span></label>
+                        <textarea id="q3" class="form-input" placeholder="请列举你的雷区..."></textarea>
+                    </div>
+                    <div class="form-group" id="group-q4">
+                        <label class="form-label">4. 对戏长度？（可多选）<span class="required-mark">*</span></label>
+                        <div class="checkbox-group">
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="句"> 句</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="段"> 段</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="长段"> 长段</label>
+                            <label class="checkbox-label"><input type="checkbox" name="q4" value="屏"> 屏</label>
+                        </div>
+                    </div>
+                    <div class="form-group" id="group-q5">
+                        <label class="form-label">5. 语c文爱生涯/经验？<span class="required-mark">*</span></label>
+                        <input type="text" id="q5" class="form-input" placeholder="例如：2年，经验丰富...">
+                    </div>
+                    <div class="form-group" id="group-q6">
+                        <label class="form-label">6. 角色介绍<span class="required-mark">*</span></label>
+                        <textarea id="q6" class="form-input" rows="4" placeholder="原因/个性/互动方式..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">7. 自戏 (200字以上，或与管理对戏)</label>
+                        <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容..."></textarea>
+                    </div>
+                    <button class="submit-btn" onclick="copyAuditForm()">📋 生成并复制审核单</button>
                 </div>
-                <div class="form-group">
-                    <label style="color:var(--primary); font-weight:bold; display:block; margin-bottom:10px;">XP / 性癖描述</label>
-                    <textarea id="q2" style="width:100%; height:80px;" placeholder="描述您的喜好..."></textarea>
-                </div>
-                <div class="form-group">
-                    <label style="color:var(--primary); font-weight:bold; display:block; margin-bottom:10px;">审核自戏 (200字+)</label>
-                    <textarea id="q7" style="width:100%; height:180px;" placeholder="展示文笔..."></textarea>
-                    <small id="wordCount" style="display:block; text-align:right; opacity:0.6; margin-top:5px;">当前字数: 0</small>
-                </div>
-                <button class="submit-btn" style="width:100%" onclick="copyAuditForm()">生成并复制审核单</button>
             </div>
-        </div>
-
-        <div id="wishPage" class="page-content">
-            <div class="scroll-container" id="wishWallContainer"></div>
         </div>
     </div>
 
     <div id="toast"></div>
 
     <script>
-        // --- 初始化配置 ---
+        // --- 1. 全局变量 ---
         const filtersConfig = [
             { id: 'school', label: '学院' },
-            { id: 'length', label: '规格' },
-            { id: 'tendency', label: '倾向' },
-            { id: 'content', label: '粮草' }
+            { id: 'length', label: '对戏长度' },
+            { id: 'tendency', label: '倾向' }
         ];
-
-        let database = {};
-        let wishData = [];
+        let database = {}; 
         const selectElements = {};
+        const searchInput = document.getElementById('searchInput');
+        const filtersContainer = document.getElementById('filtersContainer');
+        const display = document.getElementById('result');
+        const clearBtn = document.getElementById('clearBtn');
 
-        // --- 核心逻辑 ---
-        function switchPage(pageId, btn) {
-            const isConfirmed = document.getElementById('rulesCheckbox').checked;
-            if (pageId !== 'rulesPage' && !isConfirmed) {
-                document.getElementById('confirmWrapper').animate([
-                    { transform: 'translateX(0)' }, { transform: 'translateX(-5px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(0)' }
-                ], { duration: 300 });
-                showToast("⚠️ 请先在准则页确认！");
-                return;
-            }
-            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-            document.getElementById(pageId).classList.add('active');
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            btn.classList.add('active');
-        }
-
+        // --- 2. 异步数据加载 (核心修改项) ---
         async function loadData() {
             try {
-                const res = await fetch('data.json');
-                const data = await res.json();
-                database = data.database;
-                wishData = data.wishData;
-                initDynamicFilters();
-                renderWishWall();
+                const response = await fetch('data.json');
+                const data = await response.json();
+                database = data.database || data; // 兼容不同结构的 JSON
+                initFilters();
                 performSearch();
-            } catch (e) { showToast("❌ 档案库连接失败"); }
-        }
-
-        function initDynamicFilters() {
-            const container = document.getElementById('filtersContainer');
-            filtersConfig.forEach(conf => {
-                const sel = document.createElement('select');
-                sel.innerHTML = `<option value="all">全部${conf.label}</option>`;
-                const vals = new Set();
-                for (let k in database) {
-                    const tag = database[k].tags?.[conf.id];
-                    if (tag) tag.split('/').forEach(t => vals.add(t));
-                }
-                Array.from(vals).sort().forEach(v => {
-                    const opt = document.createElement('option');
-                    opt.value = v; opt.innerText = v;
-                    sel.appendChild(opt);
-                });
-                sel.addEventListener('change', performSearch);
-                container.appendChild(sel);
-                selectElements[conf.id] = sel;
-            });
-        }
-
-        function performSearch() {
-            const txt = document.getElementById('searchInput').value.toLowerCase();
-            const status = document.getElementById('statusFilter').value;
-            const resBox = document.getElementById('result');
-            resBox.innerHTML = "";
-
-            for (let name in database) {
-                const item = database[name];
-                const isMatchTxt = name.toLowerCase().includes(txt) || item.desc.toLowerCase().includes(txt);
-                const isUn = item.desc.includes("状态: 未被占用");
-                const isMatchStatus = (status === 'all') || (status === 'occupied' && !isUn) || (status === 'unoccupied' && isUn);
-                
-                let isMatchF = true;
-                for (let fid in selectElements) {
-                    const val = selectElements[fid].value;
-                    if (val !== 'all' && !(item.tags?.[fid] || "").split('/').includes(val)) isMatchF = false;
-                }
-
-                if (isMatchTxt && isMatchStatus && isMatchF) {
-                    const card = document.createElement('div');
-                    card.className = 'character-card';
-                    let bg = '';
-                    for (let f in item.tags) bg += `<span class="badge ${f === 'content' ? 'highlight' : ''}">${item.tags[f]}</span>`;
-                    card.innerHTML = `<div class="char-header"><span class="char-name">${name}</span><div class="badge-group">${bg}</div></div><div class="char-desc">${item.desc}</div>`;
-                    resBox.appendChild(card);
-                }
+            } catch (err) {
+                console.error("加载数据失败:", err);
+                display.innerHTML = "<div class='empty-tip' style='color:#ff4081'>❌ 无法加载角色数据库，请检查 data.json 是否存在</div>";
+                showToast("数据加载异常");
             }
         }
 
-        // --- 特效与彩蛋 ---
-        function initSeasonal() {
-            const m = new Date().getMonth() + 1;
-            let icon = (m >= 3 && m <= 5) ? '🌸' : (m >= 6 && m <= 8) ? '🍃' : (m >= 9 && m <= 11) ? '🍁' : '❄️';
-            setInterval(() => spawnParticle(icon), 700);
-        }
+        // --- 3. 动态初始化筛选器 ---
+        function initFilters() {
+            document.getElementById('statusFilter').addEventListener('change', performSearch);
+            filtersConfig.forEach(config => {
+                const select = document.createElement('select');
+                select.className = 'dynamic-select';
+                select.dataset.key = config.id;
+                
+                const defaultOption = document.createElement('option');
+                defaultOption.value = 'all';
+                defaultOption.innerText = '全部' + config.label;
+                select.appendChild(defaultOption);
 
-        function spawnParticle(char) {
-            const p = document.createElement('div');
-            p.className = 'seasonal-particle'; p.innerText = char;
-            p.style.left = Math.random() * 100 + 'vw';
-            p.style.fontSize = (Math.random() * 15 + 10) + 'px';
-            p.style.animation = `fall ${Math.random() * 4 + 4}s linear forwards`;
-            document.body.appendChild(p);
-            setTimeout(() => p.remove(), 8000);
-        }
+                if (config.id === 'length') {
+                    ["句", "段", "长段", "屏"].forEach(val => {
+                        const opt = document.createElement('option');
+                        opt.value = opt.innerText = val;
+                        select.appendChild(opt);
+                    });
+                } else {
+                    const uniqueValues = new Set();
+                    for (let key in database) {
+                        const val = database[key].tags?.[config.id];
+                        if (val) uniqueValues.add(val);
+                    }
+                    uniqueValues.forEach(val => {
+                        const opt = document.createElement('option');
+                        opt.value = opt.innerText = val;
+                        select.appendChild(opt);
+                    });
+                }
 
-        const secret = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
-        let sIdx = 0;
-        document.addEventListener('keydown', e => {
-            if (e.key === secret[sIdx]) {
-                if (++sIdx === secret.length) { document.body.classList.toggle('rainbow-mode'); sIdx = 0; showToast("🌈 彩虹模式已激活"); }
-            } else sIdx = 0;
-        });
-
-        // --- 辅助功能 ---
-        function resetFilters() {
-            document.getElementById('searchInput').value = "";
-            document.getElementById('statusFilter').value = "all";
-            for(let k in selectElements) selectElements[k].value = "all";
-            performSearch();
-        }
-
-        function renderWishWall() {
-            const wall = document.getElementById('wishWallContainer');
-            wishData.forEach(w => {
-                wall.innerHTML += `<div class="rules-card" style="border-left-color:var(--accent-gold);"><p>${w.text}</p><p style="text-align:right; font-weight:bold; color:var(--primary);">—— ${w.author}</p></div>`;
+                select.addEventListener('change', performSearch);
+                filtersContainer.appendChild(select);
+                selectElements[config.id] = select;
             });
         }
 
-        document.getElementById('q7').oninput = function() {
-            document.getElementById('wordCount').innerText = `当前字数: ${this.value.length}`;
-        };
+        // --- 4. 搜索与渲染 ---
+        function performSearch() {
+            const searchText = searchInput.value.trim().toLowerCase();
+            const statusVal = document.getElementById('statusFilter').value;
+            checkSearchEasterEggs(searchText);
 
-        function copyAuditForm() {
-            const q7 = document.getElementById('q7').value;
-            if(q7.length < 200) { showToast("⚠️ 自戏不足200字！"); return; }
-            const text = `【入群审核】\n倾向：${document.getElementById('q1').value}\nXP：${document.getElementById('q2').value}\n自戏：\n${q7}`;
-            navigator.clipboard.writeText(text).then(() => showToast("✅ 已复制到剪贴板"));
+            const activeFilters = {};
+            filtersConfig.forEach(config => {
+                const val = selectElements[config.id].value;
+                if (val !== 'all') activeFilters[config.id] = val;
+            });
+
+            display.innerHTML = "";
+            let foundCount = 0;
+            
+            if (!searchText && Object.keys(activeFilters).length === 0 && statusVal === 'all') {
+                 display.innerHTML = "<div class='empty-tip'>请搜索或选择筛选条件...</div>";
+                 return;
+            }
+
+            for (let key in database) {
+                const item = database[key];
+                if (!item.tags) continue;
+
+                const isTextMatch = !searchText || key.toLowerCase().includes(searchText) || item.desc.toLowerCase().includes(searchText);
+                const isUnoccupied = item.desc.includes("状态: 未被占用");
+                
+                let isStatusMatch = true;
+                if (statusVal === 'occupied' && isUnoccupied) isStatusMatch = false;
+                if (statusVal === 'unoccupied' && !isUnoccupied) isStatusMatch = false;
+
+                let isFilterMatch = true;
+                for (let fKey in activeFilters) {
+                    const reqVal = activeFilters[fKey];
+                    const itemVal = item.tags[fKey] || "";
+                    if (fKey === 'length') {
+                        if (!itemVal.split('/').includes(reqVal)) { isFilterMatch = false; break; }
+                    } else {
+                        if (itemVal !== reqVal) { isFilterMatch = false; break; }
+                    }
+                }
+
+                if (isTextMatch && isFilterMatch && isStatusMatch) {
+                    foundCount++;
+                    renderItem(key, item, activeFilters);
+                }
+            }
+
+            if (foundCount === 0) display.innerHTML = "<div class='empty-tip' style='color:#ff8a80'>❌ 未找到匹配项</div>";
         }
 
-        function showToast(m) {
-            const t = document.getElementById('toast');
-            t.innerText = m; t.className = "show";
+        function renderItem(key, data, activeFilters) {
+            const itemDiv = document.createElement("div");
+            itemDiv.className = "result-item";
+            let tagsHtml = '';
+            
+            filtersConfig.forEach(config => {
+                const val = data.tags[config.id];
+                if (val) {
+                    const isMatched = config.id === 'length' 
+                        ? val.split('/').includes(activeFilters[config.id])
+                        : activeFilters[config.id] === val;
+                    tagsHtml += `<span class="tag-badge ${isMatched ? 'matched' : ''}">${val}</span>`;
+                }
+            });
+            itemDiv.innerHTML = `
+                <div class="result-header"><span class="result-key">${key}</span></div>
+                <div class="tags-display">${tagsHtml}</div>
+                <div class="result-desc">${data.desc}</div>
+            `;
+            display.appendChild(itemDiv);
+        }
+
+        // --- 5. 交互与特效 ---
+        function clearAllFilters() {
+            searchInput.value = '';
+            document.getElementById('statusFilter').value = 'all';
+            for (let k in selectElements) selectElements[k].value = 'all';
+            performSearch();
+            showToast("筛选已清空");
+        }
+
+        function switchPage(pageId, btnElement) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(pageId);
+            if (target) target.classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById("toast");
+            t.innerText = msg; t.className = "show";
             setTimeout(() => t.className = "", 3000);
         }
 
-        loadData(); initSeasonal();
-        document.getElementById('searchInput').addEventListener('input', performSearch);
+        // --- 6. 审核逻辑 (保留 index1 细节) ---
+        function initAutoSave() {
+            const fields = ['q1', 'q2', 'q3', 'q5', 'q6', 'q7'];
+            fields.forEach(id => {
+                const el = document.getElementById(id);
+                if (el) {
+                    el.value = localStorage.getItem('peroro_audit_' + id) || "";
+                    el.addEventListener('input', () => {
+                        localStorage.setItem('peroro_audit_' + id, el.value);
+                        el.classList.remove('error');
+                        document.getElementById('group-' + id)?.classList.remove('error');
+                    });
+                }
+            });
+            const savedQ4 = localStorage.getItem('peroro_audit_q4');
+            if (savedQ4) {
+                const vals = JSON.parse(savedQ4);
+                document.querySelectorAll('input[name="q4"]').forEach(cb => cb.checked = vals.includes(cb.value));
+            }
+            document.querySelectorAll('input[name="q4"]').forEach(cb => {
+                cb.addEventListener('change', () => {
+                    const checked = Array.from(document.querySelectorAll('input[name="q4"]:checked')).map(c => c.value);
+                    localStorage.setItem('peroro_audit_q4', JSON.stringify(checked));
+                    document.getElementById('group-q4').classList.remove('error');
+                });
+            });
+        }
+
+        function copyAuditForm() {
+            const req = [ {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, {id:'q6'} ];
+            let err = false, first = null;
+            req.forEach(f => {
+                const el = document.getElementById(f.id);
+                if (!el.value.trim()) {
+                    err = true; el.classList.add('error');
+                    document.getElementById('group-'+f.id).classList.add('error');
+                    if(!first) first = f.id;
+                }
+            });
+            const q4Checked = document.querySelectorAll('input[name="q4"]:checked');
+            if (!q4Checked.length) { 
+                err = true; document.getElementById('group-q4').classList.add('error'); 
+                if(!first) first = 'group-q4';
+            }
+            if (err) {
+                showToast("❌ 请填写所有必填项！");
+                document.getElementById(first).scrollIntoView({behavior:'smooth', block:'center'});
+                return;
+            }
+            const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 介绍：${document.getElementById('q6').value}\n7. 自戏：${document.getElementById('q7').value || "（未填写）"}\n--------------------------------`;
+            navigator.clipboard.writeText(text).then(() => showToast("✅ 审核单已复制！")).catch(() => showToast("❌ 复制失败"));
+        }
+
+        // --- 7. 彩蛋与特效 ---
+        function initSeasonalEffects() {
+            const m = new Date().getMonth() + 1;
+            let char = (m>=3 && m<=5)?'🌸':(m>=6 && m<=8)?'🍃':(m>=9 && m<=11)?'🍁':'❄️';
+            setInterval(() => createParticle(char, 'seasonal'), 400);
+        }
+        function createParticle(char, type, isEgg = false) {
+            const p = document.createElement('div');
+            p.className = isEgg ? 'easter-egg-particle' : 'seasonal-particle';
+            p.innerText = char;
+            p.style.left = Math.random() * 100 + 'vw';
+            p.style.fontSize = (Math.random() * 10 + 10) + 'px';
+            p.style.animation = `fall ${isEgg?3:(Math.random()*7+5)}s linear`;
+            document.body.appendChild(p);
+            setTimeout(() => p.remove(), 5000);
+        }
+        function checkSearchEasterEggs(t) {
+            if (['peroro', '佩洛洛', 'hifumi'].includes(t)) {
+                showToast("检测到佩洛洛大人！");
+                let c = 0; const r = setInterval(() => { createParticle('🐥', '', true); if(c++>40) clearInterval(r); }, 100);
+            }
+        }
+
+        // 初始化启动
+        loadData();
+        initAutoSave();
+        initSeasonalEffects();
+        searchInput.addEventListener('input', performSearch);
+        clearBtn.addEventListener('click', clearAllFilters);
+        document.getElementById('mainTitle').addEventListener('click', function() {
+            this.classList.add('shake'); setTimeout(() => this.classList.remove('shake'), 500);
+        });
+
     </script>
 </body>
 </html>
