@@ -117,7 +117,7 @@
         .nav-tabs {
             display: flex;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
             margin-bottom: 20px;
             flex-shrink: 0;
             flex-wrap: wrap;
@@ -127,10 +127,10 @@
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid rgba(255, 255, 255, 0.1);
             color: #ccc;
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: bold;
             transition: all 0.3s ease;
         }
@@ -158,11 +158,10 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* --- 控制区布局 --- */
+        /* --- 搜索与筛选 --- */
         .search-section { display: flex; gap: 10px; margin-bottom: 15px; flex-shrink: 0; }
         .filters-row { display: flex; gap: 10px; margin-bottom: 15px; flex-wrap: wrap; flex-shrink: 0; }
 
-        /* --- 输入框与按钮 --- */
         input[type="text"], .dynamic-select, .clear-btn, textarea, .form-input {
             padding: 12px 16px;
             border-radius: 12px;
@@ -190,7 +189,7 @@
 
         .dynamic-select {
             flex: 1;
-            min-width: 120px; cursor: pointer; appearance: none;
+            min-width: 100px; cursor: pointer; appearance: none;
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat; background-position: right 15px center; background-size: 16px;
         }
@@ -232,6 +231,15 @@
         .tags-display { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
         .tag-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); color: #ccc; }
         .tag-badge.matched { background: rgba(105, 240, 174, 0.15); border-color: #69f0ae; color: #69f0ae; font-weight: 600; box-shadow: 0 0 8px rgba(105, 240, 174, 0.1); }
+        
+        /* 粮草专用金色标签 */
+        .tag-badge.content-tag.gold {
+            background: rgba(255, 215, 0, 0.15);
+            border: 1px solid rgba(255, 215, 0, 0.5);
+            color: #ffd700;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+            font-weight: bold;
+        }
 
         .result-desc { font-size: 0.95em; color: #d1d5db; line-height: 1.6; white-space: pre-wrap; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; }
         .empty-tip { text-align: center; color: rgba(255,255,255,0.5); margin-top: 40px; font-style: italic; }
@@ -244,7 +252,51 @@
             scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
         }
 
-        /* 群规样式 */
+        /* --- 许愿墙样式 --- */
+        .wish-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 15px;
+            padding-bottom: 20px;
+        }
+        .wish-card {
+            background: rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            padding: 15px;
+            border-left: 3px solid #ff4081;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            min-height: 100px;
+            transition: transform 0.2s;
+        }
+        .wish-card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.12); }
+        .wish-text { font-size: 0.95em; margin-bottom: 10px; line-height: 1.5; font-style: italic; }
+        .wish-author { font-size: 0.85em; text-align: right; color: #69f0ae; font-weight: bold; }
+
+        /* --- 外部链接样式 --- */
+        .links-grid { display: flex; flex-direction: column; gap: 15px; }
+        .link-card {
+            background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
+            border: 1px solid rgba(255,255,255,0.1);
+            border-radius: 16px;
+            padding: 20px;
+            text-decoration: none;
+            color: #fff;
+            display: flex;
+            align-items: center;
+            transition: all 0.3s;
+        }
+        .link-card:hover { 
+            border-color: #69f0ae; 
+            background: linear-gradient(90deg, rgba(105, 240, 174, 0.1), rgba(105, 240, 174, 0.02));
+            transform: translateX(5px);
+        }
+        .link-icon { font-size: 24px; margin-right: 15px; }
+        .link-info h3 { font-size: 1.1em; color: #69f0ae; margin-bottom: 5px; }
+        .link-info p { font-size: 0.85em; color: #ccc; }
+
+        /* --- 规则与通用框 --- */
         .rules-box { background: rgba(0, 0, 0, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #7c4dff; }
         .rules-box h3 { margin-bottom: 15px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
         .rules-list { padding-left: 20px; line-height: 1.8; }
@@ -282,13 +334,13 @@
             .container { padding: 15px; height: 95vh; max-height: none; border-radius: 16px; }
             h2 { font-size: 1.5rem; margin-bottom: 10px; margin-top: 5px; }
             .nav-tabs { gap: 8px; margin-bottom: 12px; }
-            .nav-btn { padding: 6px 14px; font-size: 0.9rem; }
+            .nav-btn { padding: 6px 14px; font-size: 0.85rem; }
             .search-section { gap: 6px; }
             input[type="text"] { font-size: 16px; padding: 10px; }
             .clear-btn { padding: 0 12px; font-size: 0; }
-            .clear-btn::after { content: "🗑️ 清空"; font-size: 13px; }
+            .clear-btn::after { content: "🗑️"; font-size: 16px; }
             .filters-row { gap: 6px; }
-            .dynamic-select { min-width: 30%; padding: 8px 24px 8px 10px; background-position: right 8px center; font-size: 13px; }
+            .dynamic-select { min-width: 28%; padding: 8px 24px 8px 10px; background-position: right 8px center; font-size: 13px; }
             .result-item { padding: 14px; margin-bottom: 10px; }
         }
     </style>
@@ -299,21 +351,23 @@
         <h2 id="mainTitle">⚡ 佩洛洛菜单</h2>
         
         <div class="nav-tabs">
-            <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 群公告/群规</button>
-            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 角色查阅</button>
-            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 入群审核</button>
+            <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 公告</button>
+            <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 查阅</button>
+            <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 审核</button>
+            <button class="nav-btn" onclick="switchPage('wishPage', this)">🌟 许愿墙</button>
+            <button class="nav-btn" onclick="switchPage('linkPage', this)">🚀 传送门</button>
         </div>
 
         <div id="searchPage" class="page-content">
             <div class="search-section">
-                <input type="text" id="searchInput" placeholder="在此输入关键词搜索 (试试输入 'order')..." autocomplete="off">
-                <button class="clear-btn" id="clearBtn">🗑️ 清空筛选</button>
+                <input type="text" id="searchInput" placeholder="搜索角色 / 描述..." autocomplete="off">
+                <button class="clear-btn" id="clearBtn">🗑️ 清空</button>
             </div>
             <div class="filters-row" id="filtersContainer">
                 <select id="statusFilter" class="dynamic-select" style="font-weight:bold; color:#69f0ae;">
                     <option value="all">全部状态</option>
                     <option value="occupied">⛔ 已占用</option>
-                    <option value="unoccupied">✅ 未占用 (无人认领)</option>
+                    <option value="unoccupied">✅ 未占用</option>
                 </select>
             </div>
             <div id="result">
@@ -347,6 +401,35 @@
                 <div class="tip-card">
                     <span class="tip-icon">💡</span>
                     <div class="tip-text"><strong>小贴士：</strong> 修改XP表请私聊管理员进行更新！</div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wishPage" class="page-content">
+            <div class="scroll-container">
+                <h3 style="margin-bottom:20px; text-align:center; color:#ffd700;">✨ 大家的愿望 ✨</h3>
+                <div id="wishContainer" class="wish-grid">
+                    </div>
+            </div>
+        </div>
+
+        <div id="linkPage" class="page-content">
+            <div class="scroll-container">
+                <div class="links-grid">
+                    <a href="https://ba.gamekee.com/" target="_blank" class="link-card">
+                        <div class="link-icon">🎮</div>
+                        <div class="link-info">
+                            <h3>GameKee 碧蓝档案Wiki</h3>
+                            <p>查阅角色立绘、剧情、技能数值等详细资料</p>
+                        </div>
+                    </a>
+                    <a href="https://bawiki.lgis.me/" target="_blank" class="link-card">
+                        <div class="link-icon">📘</div>
+                        <div class="link-info">
+                            <h3>Kivo Wiki</h3>
+                            <p>专业的碧蓝档案百科，包含丰富的设定与语音</p>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
@@ -402,64 +485,67 @@
     <div id="toast"></div>
 
     <script>
-        // --- 1. 全局变量 ---
+        // --- 1. 配置区域 ---
         const filtersConfig = [
             { id: 'school', label: '学院' },
-            { id: 'length', label: '对戏长度' },
-            { id: 'tendency', label: '倾向' }
+            { id: 'length', label: '长度' },
+            { id: 'tendency', label: '倾向' },
+            { id: 'content', label: '粮草' } // 新增：粮草筛选
         ];
         let database = {}; 
+        let wishData = [];
         const selectElements = {};
         const searchInput = document.getElementById('searchInput');
         const filtersContainer = document.getElementById('filtersContainer');
         const display = document.getElementById('result');
-        const clearBtn = document.getElementById('clearBtn');
+        const wishContainer = document.getElementById('wishContainer');
 
-        // --- 2. 异步数据加载 (核心修改项) ---
+        // --- 2. 异步数据加载 ---
         async function loadData() {
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
-                database = data.database || data; // 兼容不同结构的 JSON
+                
+                // 解析数据
+                database = data.database || {};
+                wishData = data.wishData || [];
+                
+                // 初始化各部分
                 initFilters();
                 performSearch();
+                renderWishWall();
+                
             } catch (err) {
                 console.error("加载数据失败:", err);
-                display.innerHTML = "<div class='empty-tip' style='color:#ff4081'>❌ 无法加载角色数据库，请检查 data.json 是否存在</div>";
-                showToast("数据加载异常");
+                display.innerHTML = "<div class='empty-tip' style='color:#ff4081'>❌ 无法加载 data.json，请检查文件</div>";
             }
         }
 
-        // --- 3. 动态初始化筛选器 ---
+        // --- 3. 初始化筛选器 ---
         function initFilters() {
             document.getElementById('statusFilter').addEventListener('change', performSearch);
+            
             filtersConfig.forEach(config => {
                 const select = document.createElement('select');
                 select.className = 'dynamic-select';
                 select.dataset.key = config.id;
                 
-                const defaultOption = document.createElement('option');
-                defaultOption.value = 'all';
-                defaultOption.innerText = '全部' + config.label;
-                select.appendChild(defaultOption);
+                // 默认选项
+                select.innerHTML = `<option value="all">全部${config.label}</option>`;
 
+                // 收集可选项
                 if (config.id === 'length') {
-                    ["句", "段", "长段", "屏"].forEach(val => {
-                        const opt = document.createElement('option');
-                        opt.value = opt.innerText = val;
-                        select.appendChild(opt);
-                    });
+                    ["句", "段", "长段", "屏"].forEach(val => addOption(select, val));
+                } else if (config.id === 'content') {
+                    ["有粮", "无粮"].forEach(val => addOption(select, val));
                 } else {
                     const uniqueValues = new Set();
                     for (let key in database) {
                         const val = database[key].tags?.[config.id];
-                        if (val) uniqueValues.add(val);
+                        // 排除 "分割线" 这种特殊Tag
+                        if (val && val !== "分割线" && val !== "隐藏") uniqueValues.add(val);
                     }
-                    uniqueValues.forEach(val => {
-                        const opt = document.createElement('option');
-                        opt.value = opt.innerText = val;
-                        select.appendChild(opt);
-                    });
+                    Array.from(uniqueValues).sort().forEach(val => addOption(select, val));
                 }
 
                 select.addEventListener('change', performSearch);
@@ -468,12 +554,19 @@
             });
         }
 
+        function addOption(select, val) {
+            const opt = document.createElement('option');
+            opt.value = opt.innerText = val;
+            select.appendChild(opt);
+        }
+
         // --- 4. 搜索与渲染 ---
         function performSearch() {
             const searchText = searchInput.value.trim().toLowerCase();
             const statusVal = document.getElementById('statusFilter').value;
             checkSearchEasterEggs(searchText);
 
+            // 获取当前筛选条件
             const activeFilters = {};
             filtersConfig.forEach(config => {
                 const val = selectElements[config.id].value;
@@ -483,6 +576,7 @@
             display.innerHTML = "";
             let foundCount = 0;
             
+            // 初始空状态
             if (!searchText && Object.keys(activeFilters).length === 0 && statusVal === 'all') {
                  display.innerHTML = "<div class='empty-tip'>请搜索或选择筛选条件...</div>";
                  return;
@@ -490,20 +584,29 @@
 
             for (let key in database) {
                 const item = database[key];
-                if (!item.tags) continue;
-
-                const isTextMatch = !searchText || key.toLowerCase().includes(searchText) || item.desc.toLowerCase().includes(searchText);
-                const isUnoccupied = item.desc.includes("状态: 未被占用");
                 
+                // 过滤掉分割线（标签 content 为 "隐藏" 的项）
+                if (item.tags && item.tags.content === "隐藏") continue;
+
+                // 文本匹配
+                const isTextMatch = !searchText || 
+                                    key.toLowerCase().includes(searchText) || 
+                                    (item.desc && item.desc.toLowerCase().includes(searchText));
+                
+                // 状态匹配
+                const isUnoccupied = item.desc && item.desc.includes("状态: 未被占用");
                 let isStatusMatch = true;
                 if (statusVal === 'occupied' && isUnoccupied) isStatusMatch = false;
                 if (statusVal === 'unoccupied' && !isUnoccupied) isStatusMatch = false;
 
+                // 标签匹配
                 let isFilterMatch = true;
                 for (let fKey in activeFilters) {
                     const reqVal = activeFilters[fKey];
-                    const itemVal = item.tags[fKey] || "";
+                    const itemVal = item.tags ? (item.tags[fKey] || "") : "";
+                    
                     if (fKey === 'length') {
+                        // 长度可能是 "句/段"，只要包含即可
                         if (!itemVal.split('/').includes(reqVal)) { isFilterMatch = false; break; }
                     } else {
                         if (itemVal !== reqVal) { isFilterMatch = false; break; }
@@ -522,49 +625,53 @@
         function renderItem(key, data, activeFilters) {
             const itemDiv = document.createElement("div");
             itemDiv.className = "result-item";
-            let tagsHtml = '';
             
-            filtersConfig.forEach(config => {
-                const val = data.tags[config.id];
-                if (val) {
-                    const isMatched = config.id === 'length' 
-                        ? val.split('/').includes(activeFilters[config.id])
-                        : activeFilters[config.id] === val;
-                    tagsHtml += `<span class="tag-badge ${isMatched ? 'matched' : ''}">${val}</span>`;
-                }
-            });
+            let tagsHtml = '';
+            if (data.tags) {
+                filtersConfig.forEach(config => {
+                    const val = data.tags[config.id];
+                    if (val && val !== '待定') {
+                        // 判断高亮：选中了该筛选条件，或者是“有粮”
+                        let badgeClass = 'tag-badge';
+                        
+                        // 筛选命中高亮
+                        if (activeFilters[config.id] && (val === activeFilters[config.id] || val.includes(activeFilters[config.id]))) {
+                            badgeClass += ' matched';
+                        }
+                        // 粮草特殊高亮
+                        if (config.id === 'content') {
+                            badgeClass += ' content-tag';
+                            if (val === '有粮') badgeClass += ' gold';
+                        }
+
+                        tagsHtml += `<span class="${badgeClass}">${val}</span>`;
+                    }
+                });
+            }
+
             itemDiv.innerHTML = `
                 <div class="result-header"><span class="result-key">${key}</span></div>
                 <div class="tags-display">${tagsHtml}</div>
-                <div class="result-desc">${data.desc}</div>
+                <div class="result-desc">${data.desc || "暂无描述"}</div>
             `;
             display.appendChild(itemDiv);
         }
 
-        // --- 5. 交互与特效 ---
-        function clearAllFilters() {
-            searchInput.value = '';
-            document.getElementById('statusFilter').value = 'all';
-            for (let k in selectElements) selectElements[k].value = 'all';
-            performSearch();
-            showToast("筛选已清空");
+        // --- 5. 渲染许愿墙 ---
+        function renderWishWall() {
+            if (!wishData || wishData.length === 0) {
+                wishContainer.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#aaa;'>暂无愿望，快去联系管理员添加吧~</div>";
+                return;
+            }
+            wishContainer.innerHTML = wishData.map(wish => `
+                <div class="wish-card">
+                    <div class="wish-text">“${wish.text}”</div>
+                    <div class="wish-author">—— ${wish.author}</div>
+                </div>
+            `).join('');
         }
 
-        function switchPage(pageId, btnElement) {
-            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
-            const target = document.getElementById(pageId);
-            if (target) target.classList.add('active');
-            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
-            if (btnElement) btnElement.classList.add('active');
-        }
-
-        function showToast(msg) {
-            const t = document.getElementById("toast");
-            t.innerText = msg; t.className = "show";
-            setTimeout(() => t.className = "", 3000);
-        }
-
-        // --- 6. 审核逻辑 (保留 index1 细节) ---
+        // --- 6. 审核逻辑 ---
         function initAutoSave() {
             const fields = ['q1', 'q2', 'q3', 'q5', 'q6', 'q7'];
             fields.forEach(id => {
@@ -617,12 +724,35 @@
             navigator.clipboard.writeText(text).then(() => showToast("✅ 审核单已复制！")).catch(() => showToast("❌ 复制失败"));
         }
 
-        // --- 7. 彩蛋与特效 ---
+        // --- 7. 通用交互与特效 ---
+        function clearAllFilters() {
+            document.getElementById('searchInput').value = '';
+            document.getElementById('statusFilter').value = 'all';
+            for (let k in selectElements) selectElements[k].value = 'all';
+            performSearch();
+            showToast("筛选已清空");
+        }
+
+        function switchPage(pageId, btnElement) {
+            document.querySelectorAll('.page-content').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById(pageId);
+            if (target) target.classList.add('active');
+            document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+            if (btnElement) btnElement.classList.add('active');
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById("toast");
+            t.innerText = msg; t.className = "show";
+            setTimeout(() => t.className = "", 3000);
+        }
+
         function initSeasonalEffects() {
             const m = new Date().getMonth() + 1;
             let char = (m>=3 && m<=5)?'🌸':(m>=6 && m<=8)?'🍃':(m>=9 && m<=11)?'🍁':'❄️';
             setInterval(() => createParticle(char, 'seasonal'), 400);
         }
+
         function createParticle(char, type, isEgg = false) {
             const p = document.createElement('div');
             p.className = isEgg ? 'easter-egg-particle' : 'seasonal-particle';
@@ -633,6 +763,7 @@
             document.body.appendChild(p);
             setTimeout(() => p.remove(), 5000);
         }
+
         function checkSearchEasterEggs(t) {
             if (['peroro', '佩洛洛', 'hifumi'].includes(t)) {
                 showToast("检测到佩洛洛大人！");
@@ -640,15 +771,32 @@
             }
         }
 
-        // 初始化启动
-        loadData();
-        initAutoSave();
-        initSeasonalEffects();
-        searchInput.addEventListener('input', performSearch);
-        clearBtn.addEventListener('click', clearAllFilters);
+        // 标题与Konami彩蛋
         document.getElementById('mainTitle').addEventListener('click', function() {
             this.classList.add('shake'); setTimeout(() => this.classList.remove('shake'), 500);
         });
+        const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
+        let konamiIndex = 0;
+        document.addEventListener('keydown', (e) => {
+            if (e.key === konamiCode[konamiIndex]) {
+                konamiIndex++;
+                if (konamiIndex === konamiCode.length) {
+                    document.body.classList.toggle('rainbow-mode');
+                    showToast(document.body.classList.contains('rainbow-mode') ? "🌈 彩光模式启动！" : "已退出彩光模式");
+                    konamiIndex = 0;
+                }
+            } else konamiIndex = 0;
+        });
+
+        // 绑定清除按钮事件
+        document.getElementById('clearBtn').addEventListener('click', clearAllFilters);
+        // 绑定搜索输入事件
+        document.getElementById('searchInput').addEventListener('input', performSearch);
+
+        // 启动
+        loadData();
+        initAutoSave();
+        initSeasonalEffects();
 
     </script>
 </body>
