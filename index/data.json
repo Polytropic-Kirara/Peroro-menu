@@ -1,196 +1,1575 @@
 {
   "wishData": [
-    { "text": "许愿小夏", "author": "薄荷味巧克力冰淇淋" },
-    { "text": "修行部的大家", "author": "手前修罗" },
-    { "text": "许愿征服世界🌏", "author": "圣三一甜点猫猫" },
-    { "text": "许愿临战艾米", "author": "清冷高岭之花" },
-    { "text": "希望大家都能在群里玩得开心——", "author": "电波哈密瓜" }
+    {
+      "text": "许愿小夏",
+      "author": "薄荷味巧克力冰淇淋"
+    },
+    {
+      "text": "修行部的大家",
+      "author": "手前修罗"
+    },
+    {
+      "text": "许愿征服世界🌏",
+      "author": "圣三一甜点猫猫"
+    },
+    {
+      "text": "许愿临战艾米",
+      "author": "清冷高岭之花"
+    },
+    {
+      "text": "希望大家都能在群里玩得开心——",
+      "author": "电波哈密瓜"
+    }
   ],
   "database": {
-  "艾因": { "desc": "XP:睡健,强健,催眠,意识改写,壁尻。\n雷区:重口,R18G,媚黑", "tags": { "school": "十字神明", "length": "句/段", "tendency": "被动" } },
-  "索芙": { "desc": "XP:教培。\n雷区：无", "tags": { "school": "十字神明", "length": "句/段", "tendency": "主动" } },
-  "马路库特": { "desc": "纯爱,强暴\n雷区:无", "tags": { "school": "十字神明", "length": "段", "tendency": "被动" } },
-  "橘 望": { "desc": "XP银语,前戏,吻齿痕,调教,媚药,子宫健,宫脱,银纹\n雷区:重口,R18G,对戏时的颜表情", "tags": { "school": "海兰德铁道学院", "length": "段/长段/屏", "tendency": "主动" } },
-  "龙华 妃咲": { "desc": "XP:拘束,项圈,露出,道具,真空\n雷区:肮脏,气味癖", "tags": { "school": "山海经(玄龙门)", "length": "句/段", "tendency": "皆可" } },
-  "春原 瞬": { "desc": "XP:百合,调校,束缚\n雷区:重口R18G。", "tags": { "school": "山海经(梅花园)", "length": "句/段", "tendency": "皆可" } },
-  "春原 心奈": { "desc": "XP:十分广泛\n雷区:DEAD END和残疾。", "tags": { "school": "山海经(梅花园)", "length": "段/长段/屏", "tendency": "皆可" } },
-  "七神凛": { "desc": "XP:除雷区外皆可\n雷区:R18G,黄金,排泄。", "tags": { "school": "联邦学生会", "length": "句/段/长段", "tendency": "皆可" } },
-  "合欢垣 吹雪": { "desc": "XP:半强制,睡眠\n雷区:脏臭,气味系,双FUTA。", "tags": { "school": "瓦尔基里", "length": "段/长段/屏", "tendency": "皆可" } },
-  "桐藤 渚": { "desc": "XP:捆绑拘束,SM调校,掏耳朵,按摩\n雷区:肮脏,气味癖,血腥。", "tags": { "school": "圣三一", "length": "句/段", "tendency": "主动" } },
-  "圣园 未花": { "desc": "XP:万物皆可接纳\n雷区:无。", "tags": { "school": "圣三一", "length": "句/长段", "tendency": "皆可" } },
-  "下江 小春": { "desc": "XP:涩涩的应该都行,感觉自己能接受的应该很多,主要集中在对玩法的讨论,还喜欢榨乳的\n雷区:不知道。", "tags": { "school": "圣三一", "length": "句/段/长段/屏", "tendency": "皆可" } },
-  "伊落 玛丽": { "desc": "XP:广泛且偏向恶劣\n雷区:暂无。", "tags": { "school": "圣三一", "length": "句", "tendency": "主动" } },
-  "栗村 爱莉": { "desc": "XP:孕肚,亲吻,非过度伤害的SM\n雷区:过度伤害。", "tags": { "school": "圣三一", "length": "句/长段", "tendency": "皆可" } },
-  "伊原木 好美": { "desc": "XP:拘束(最喜欢乳胶类,过激一点也可以),DID,调教,TK,或者单纯的贴贴\n雷区:血腥,肮脏,太过度的气味系,大部分BE向。", "tags": { "school": "圣三一", "length": "段/长段/屏", "tendency": "被动" } },
-  "杏山 和纱": { "desc": "XP:足控\n雷区:无。", "tags": { "school": "圣三一", "length": "句/段/长段", "tendency": "皆可" } },
-  "柚鸟 夏": { "desc": "XP:软软糯糯的小萝莉\n雷区:R18G。", "tags": { "school": "圣三一", "length": "句/段", "tendency": "被动" } },
-  "鹫见 芹娜": { "desc": "XP:温柔对待,调戏,抚摸身体,玩弄腿足,束缚,袜袜\n雷区:重口,R18G,暴力行为。", "tags": { "school": "圣三一（急救医学部）", "length": "句/段", "tendency": "被动" } },
-  "天童 爱丽丝": { "desc": "XP:皆可\n雷区:(先商量)。", "tags": { "school": "千年(游戏部)", "length": "句/段", "tendency": "皆可" } },
-  "KEI": { "desc": "XP:四肢切断,异种,纯爱\n雷区:排泄物。", "tags": { "school": "千年(游戏部)", "length": "句/段/长段/屏", "tendency": "被动" } },
-  "才羽 桃井": { "desc": "XP:粗暴,纯爱\n雷区:NTR,下三(脏污)。", "tags": { "school": "千年(游戏部)", "length": "句/段", "tendency": "被动" } },
-  "小钩 晴": { "desc": "XP:胁迫,露出\n雷区:暂无。", "tags": { "school": "千年(真理部)", "length": "长段/屏", "tendency": "被动" } },
-  "调月 莉音": { "desc": "XP:捆绑拘束,露出,项圈,人体彩绘\n雷区:脏污,臭味,排泄。", "tags": { "school": "千年(研讨会)", "length": "?", "tendency": "被动" } },
-  "早濑 优香": { "desc": "XP:视觉遮蔽,寸止\n雷区:排泄物,疼痛。", "tags": { "school": "千年(研讨会)", "length": "句/段/长段/屏", "tendency": "皆可" } },
-  "一之濑 明日奈": { "desc": "XP:拘束,百合,除雷区外皆可\n雷区:气味癖,污秽。", "tags": { "school": "千年(C&C)", "length": "句/段", "tendency": "皆可" } },
-  "角楯 花凛": { "desc": "XP:皆可\n雷区:暂无", "tags": { "school": "千年(C&C)", "length": "段/长段/屏", "tendency": "皆可" } },
-  "飞鸟马 时": { "desc": "XP:目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
-  "鳄渊 明里": { "desc": "XP:拘束\n雷区:纯抽抽插抽插肉戏。", "tags": { "school": "格黑娜(美食研)", "length": "段/屏", "tendency": "主动" } },
-  "爱清 枫香": { "desc": "XP:视觉遮蔽,寸止\n雷区:重口R18G。", "tags": { "school": "格黑娜(供给部)", "length": "句/段/长段/屏", "tendency": "被动" } },
-  "浅黄 睦月": { "desc": "XP:上至触手机械,下至催眠洗脑\n雷区:断肢,长时间高烈度虐待,血腥,死亡,排泄物(可以接受战损)。", "tags": { "school": "格黑娜(便利屋)", "length": "句/段/长段", "tendency": "被动" } },
-  "鬼方 佳代子": { "desc": "XP:微色情内容(R15)\n雷区:R18G", "tags": { "school": "格黑娜(便利屋)", "length": "句/段/长段", "tendency": "皆可" } },
-  "银镜 伊织": { "desc": "XP:都喜欢\n雷区:无。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段", "tendency": "被动" } },
-  "天雨 亚子": { "desc": "XP:FUTA,纯百,催眠调教\n雷区:无。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段/长段/屏", "tendency": "被动" } },
-  "火宫 千夏": { "desc": "XP:百合,FUTA均可\n雷区:R18G,过于暴力,不愿对戏请拒绝,对戏认真对待,看似开玩笑的言语攻击。", "tags": { "school": "格黑娜(风纪委)", "length": "句/段/长段", "tendency": "被动" } },
-  "羽沼 真琴": { "desc": "XP:除雷区外皆可\n雷区:重口,R18G。", "tags": { "school": "格黑娜(万魔殿)", "length": "句/段/长段/屏", "tendency": "皆可" } },
-  "丹花 伊吹": { "desc": "XP:皆可\n雷区:R18G。", "tags": { "school": "格黑娜(万魔殿)", "length": "句/段", "tendency": "皆可" } },
-  "枣 伊吕波": { "desc": "XP:非雷区均可\n雷区:黄金圣水,血腥,猎奇,气味,身体改造,羞辱强暴。", "tags": { "school": "格黑娜(万魔殿)", "length": "句/段", "tendency": "皆可" } },
-  "夜樱 绮良良": { "desc": "XP:亲吻，妊娠，微色互动,微粗暴,被占有,\n雷区:黄金，气味，R18G，重口。", "tags": { "school": "格黑娜(亮闪闪部)", "length": "段/长段/屏", "tendency": "被动" } },
-  "安守 实梨": { "desc": "XP:后入,胸部\n雷区:R18G,黄金。", "tags": { "school": "赤冬(劳务部)", "length": "句", "tendency": "主动" } },
-  "姬木 梅露": { "desc": "XP:抖M,足控,项圈,窒息强暴,凌辱,缩小,丸吞(在意对方是否愿意DOI)\n雷区:。重口,R18G,苗床,宫脱,寸止,虫兽教,巨根", "tags": { "school": "赤冬(图书委)", "length": "句/段", "tendency": "被动" } },
-  "三善 贵音": { "desc": "XP:常识改变,百合破坏\n雷区:暂无。", "tags": { "school": "赤冬", "length": "句/段/长段", "tendency": "被动" } },
-  "狐坂 若藻": { "desc": "XP:亲吻,颜面骑乘\n雷区:药物,黄金。", "tags": { "school": "七囚人", "length": "段/长段/屏", "tendency": "皆可" } },
-  "笑面教授": { "desc": "XP:除了雷区以外基本都可以接受\n雷区:肮脏,过于血腥的G。", "tags": { "school": "未知", "length": "句/段/长段", "tendency": "皆可" } },
-  "千鸟 满": { "desc": "XP:催眠,睡健,气味,足控\n雷区:涉三,过分纠缠骚扰。", "tags": { "school": "百鬼夜行(忍术部)", "length": "句/段/长段", "tendency": "被动" } },
-  "桑上 果穗": { "desc": "XP:爱\n雷区:无。", "tags": { "school": "百鬼夜行(阴阳部)", "length": "句/段/长段", "tendency": "被动" } },
-  "雏芥子(虞姬)": { "desc": "XP:几乎百无禁忌,自适应\n雷区:过于残酷的事项。", "tags": { "school": "百鬼夜行(花鸟风月)", "length": "句/段/长段", "tendency": "主动" } },
-  "箭吹 棕榈": { "desc": "XP:均可(被监禁)\n雷区:排泄,物化。", "tags": { "school": "百鬼夜行(花鸟风月)", "length": "句/段", "tendency": "皆可" } },
-  "里滨 海夏": { "desc": "XP:纯爱,催眠,洗脑,败北,露出\n雷区:虫子,蜘蛛。", "tags": { "school": "百鬼夜行(节庆部)", "length": "句/段", "tendency": "被动" } },
-  "河和 静子": { "desc": "XP:日常贴贴,玩具PLAY,调教,口\n雷区:R18G(能商量也并非不可)。", "tags": { "school": "百鬼夜行(节庆部)", "length": "句/段/长段", "tendency": "皆可" } },
-  "葛叶": { "desc": "XP:催眠,爱抚,调教\n雷区:R18G,血。", "tags": { "school": "百鬼夜行", "length": "句/段", "tendency": "皆可" } },
-  "秤 亚津子": { "desc": "XP:败北雷普,百合调教,拘束,项圈\n雷区:脏啦臭啦,排泄物这些恶心的东西。", "tags": { "school": "阿里乌斯", "length": "句/段", "tendency": "被动" } },
-  "小鸟游 星野": { "desc": "XP:温柔对待,调戏,抚摸身体,玩弄腿足,束缚,袜袜\n雷区:重口,R18G,暴力行为。", "tags": { "school": "阿拜多斯", "length": "句/段", "tendency": "被动" } },
-  "十六夜 野宫": { "desc": "XP:成女,温柔\n雷区:R18G。", "tags": { "school": "阿拜多斯", "length": "句/段/长段/屏", "tendency": "主动" } },
-  "黑见 芹香": { "desc": "XP:DID,拘束,足,百合,纯爱\n雷区:重口,R18G。", "tags": { "school": "阿拜多斯", "length": "句/段/长段", "tendency": "被动" } },
-  "奥空 绫音": { "desc": "XP:猫猫\n雷区:NTR。", "tags": { "school": "阿拜多斯", "length": "句/段", "tendency": "主动" } },
-  "砂狼 白子(色彩)": { "desc": "XP:尿道责,阴蒂脚责罚,乳首责,指奸,自慰,羞辱,百合足交,内陷乳首,泌乳,连续高潮,尾奸,异物插入,寄生,体型差,战败,要挟,体外按摩子宫或膀胱，\n雷区:R18G,后穴,futa", "tags": { "school": "阿拜多斯", "length": "句/段/长段/屏", "tendency": "被动" } },
-  "胡桃": { "desc": "XP:腹击和粗暴\n雷区:面部毁坏。", "tags": { "school": "SRT(FOX)", "length": "段/长段", "tendency": "被动" } },
-  "音葵": { "desc": "XP:屁股和后庭相关的玩弄癖好,打屁股\n雷区:使用前穴,暴力行为(除打屁股之外),R18G。", "tags": { "school": "SRT(FOX)", "length": "句/段/长段/屏", "tendency": "皆可" } },
-  "川流 诗乃": { "desc": "XP:SM,受虐\n雷区:暂无。", "tags": { "school": "克罗诺斯(报道部)", "length": "句/段", "tendency": "被动" } },
-  "御稜 名草": { "desc": "?\n状态: 被占用", "tags": { "school": "百鬼夜行(百花缭乱)", "length": "?", "tendency": "?" } },
-  "不知火 花耶": { "desc": "XP:能够让其他人露出丑态的几乎所有方式\n雷区:脏污", "tags": { "school": "联邦学生会", "length": "段/长段", "tendency": "主动" } },
-  "衣斐 莱娜": { "desc": "XP:抱抱，亲吻前戏,耳语,捆绑,强制高潮,打屁股\n雷区:粪尿癖,臭味系,过度血腥,无理由辱骂角色,过度涉三。", "tags": { "school": "狂猎(神秘学研究会)", "length": "句/段/长段", "tendency": "皆可" } },
-  "砂狼 白子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿拜多斯", "length": "待定", "tendency": "待定" } },
-  "栀子 梦": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿拜多斯", "length": "待定", "tendency": "待定" } },
-  "空崎 日奈": { "desc": "XP:强暴,指奸,百合调教,中出,种付,异种,子宫按摩,强制高潮,排卵受孕\n雷区:黄金,R18G", "tags": { "school": "格黑娜(风纪委)", "length": "段/屏", "tendency": "被动" } },
-  "陆八魔 阿露": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(便利屋)", "length": "待定", "tendency": "待定" } },
-  "伊草 遥香": { "desc": "XP:后入式，一字马，背后揉乳，子宫姦，轻度粗口，吻痕，巨乳，身高差，反差，种付， 露出，产奶，影姦，失智，道具\n雷区:血腥,R18G,重口,排泄物,NTR,足控,", "tags": { "school": "格黑娜(便利屋)", "length": "句/段/长段/", "tendency": "主动" } },
-  "赤司 淳子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(美食研)", "length": "待定", "tendency": "待定" } },
-  "狮子堂 泉": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(美食研)", "length": "待定", "tendency": "待定" } },
-  "冰室 濑名": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(急救部)", "length": "待定", "tendency": "待定" } },
-  "元宫 千秋": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(万魔殿)", "length": "待定", "tendency": "待定" } },
-  "下仓 惠": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(温泉开发部)", "length": "待定", "tendency": "待定" } },
-  "牛牧 朱莉": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(供给部)", "length": "待定", "tendency": "待定" } },
-  "京极 皋月": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(万魔殿)", "length": "待定", "tendency": "待定" } },
-  "黑馆 晴奈": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(美食研)", "length": "待定", "tendency": "待定" } },
-  "旗见 绘里香": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "格黑娜(亮闪闪部)", "length": "待定", "tendency": "待定" } },
-  "阿慈谷 日富美": { "desc": "XP:贴贴,亲吻,抚摸或者按摩身体,袜子相关,腿足,调戏,体型差\n雷区: 血腥,恶心的事物.", "tags": { "school": "圣三一（补课部）", "length": "句/段", "tendency": "被动" } },
-  "百合园 圣娅": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一(茶会）", "length": "待定", "tendency": "待定" } },
-  "白洲 梓": { "desc": "XP:微度调教,被强制,百合,触手,恶堕,催眠,异种(不包括机械),尾奸,丝袜,时停\n雷区:男同,过于夸张的性器与身型比例,排泄物,部位臭味,R18G ", "tags": { "school": "圣三一（补课部）", "length": "待定", "tendency": "待定" } },
-  "浦和 花子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（补课部）", "length": "待定", "tendency": "待定" } },
-  "古关 忧": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（图书委员会）", "length": "待定", "tendency": "待定" } },
-  "圆堂 志美子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（图书委员会）", "length": "待定", "tendency": "待定" } },
-  "歌住 樱子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（修女会）", "length": "待定", "tendency": "待定" } },
-  "若叶 日向": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（修女会）", "length": "待定", "tendency": "待定" } },
-  "苍森 美弥": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（急救医学部）", "length": "待定", "tendency": "待定" } },
-  "朝日 花江": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（急救医学部）", "length": "待定", "tendency": "待定" } },
-  "宇泽 铃纱": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（自警团）", "length": "待定", "tendency": "待定" } },
-  "守月 铃美": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（自警团）", "length": "待定", "tendency": "待定" } },
-  "剑先 鹤城": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（正义委）", "length": "待定", "tendency": "待定" } },
-  "羽川 莲见": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（正义委）", "length": "待定", "tendency": "待定" } },
-  "静山 真白": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（正义委）", "length": "待定", "tendency": "待定" } },
-  "仲正 一花": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一（正义委）", "length": "待定", "tendency": "待定" } },
-  "河驹风 兰舞": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "圣三一", "length": "待定", "tendency": "待定" } },
-  "生盐 诺亚": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(研讨会)", "length": "待定", "tendency": "待定" } },
-  "黑崎 小雪": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(研讨会)", "length": "待定", "tendency": "待定" } },
-  "美甘 宁瑠": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
-  "室笠 茜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(C&C)", "length": "待定", "tendency": "待定" } },
-  "花冈 柚子": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(游戏部)", "length": "待定", "tendency": "待定" } },
-  "小涂 真纪": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
-  "音濑 小玉": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
-  "各务 千寻": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(真理部)", "length": "待定", "tendency": "待定" } },
-  "明星 日鞠": { "desc": "XP:除雷区皆可\n雷区: R18G,人外,黄金等小众,", "tags": { "school": "千年(特异现象调查部)", "length": "句/段", "tendency": "皆可" } },
-  "和泉元 艾米": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(特异现象调查部)", "length": "待定", "tendency": "待定" } },
-  "乙花 堇": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(体育训练部）", "length": "待定", "tendency": "待定" } },
-  "野正 莱依": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(体育训练部）", "length": "待定", "tendency": "待定" } },
-  "白石 歌原": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "千年(工程部）", "length": "待定", "tendency": "待定" } },
-  "久田 泉奈": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(忍术部)", "length": "待定", "tendency": "待定" } },
-  "大野 月咏": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(忍术部)", "length": "待定", "tendency": "待定" } },
-  "和乐 千世": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(阴阳部)", "length": "待定", "tendency": "待定" } },
-  "天地 妮娅": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(阴阳部)", "length": "待定", "tendency": "待定" } },
-  "桐生 桔梗": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(百花缭乱)", "length": "待定", "tendency": "待定" } },
-  "不破 莲华": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(百花缭乱)", "length": "待定", "tendency": "待定" } },
-  "勘解由小路 紫": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(百花缭乱)", "length": "待定", "tendency": "待定" } },
-  "春日 椿": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(修行部)", "length": "待定", "tendency": "待定" } },
-  "勇美 枫": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(修行部)", "length": "待定", "tendency": "待定" } },
-  "水羽 三森": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(修行部)", "length": "待定", "tendency": "待定" } },
-  "土生 蓟": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(花鸟风月)", "length": "待定", "tendency": "待定" } },
-  "朝比奈 菲娜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "百鬼夜行(节庆部)", "length": "待定", "tendency": "待定" } },
-  "药子 沙耶": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "山海经(炼丹部)", "length": "待定", "tendency": "待定" } },
-  "近卫 南": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "山海经(玄龙门)", "length": "待定", "tendency": "待定" } },
-  "朱城 瑠美": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "山海经(玄武商会)", "length": "待定", "tendency": "待定" } },
-  "鹿山 丽情": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "山海经(玄武商会)", "length": "待定", "tendency": "待定" } },
-  "漆原 辉夜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "山海经(京剧部)", "length": "待定", "tendency": "待定" } },
-  "连河 切里诺": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
-  "佐城 巴": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
-  "池仓 玛丽娜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
-  "荒槇 八云": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬", "length": "待定", "tendency": "待定" } },
-  "间宵 时雨": { "desc": "XP:全xp皆可,纯爱,衣裳,抱憾终生,重力\n雷区: R18G", "tags": { "school": "赤冬(227特别班)", "length": "句/段/长段", "tendency": "皆可" } },
-  "天见 和香": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "赤冬(227特别班)", "length": "待定", "tendency": "待定" } },
-  "秋泉 红叶": { "desc": "XP:个人方面的侍奉欲,百无禁忌\n雷区: 被连续放鸽子", "tags": { "school": "赤冬", "length": "段/长段/屏", "tendency": "被动" } },
-  "尾刃 康娜": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "瓦尔基里", "length": "待定", "tendency": "待定" } },
-  "心华": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "瓦尔基里", "length": "待定", "tendency": "待定" } },
-  "中务 桐乃": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "瓦尔基里", "length": "待定", "tendency": "待定" } },
-  "锭前 纱织": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
-  "戒野 美咲": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
-  "槌永 日和": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
-  "梯 昴": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
-  "立木 迈亚": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "阿里乌斯", "length": "待定", "tendency": "待定" } },
-  "月雪 宫子": { "desc": "XP:皆可\n雷区:无", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "皆可" } },
-  "空井 咲": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
-  "霞泽 美游": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
-  "风仓 萌绘": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(RABBIT)", "length": "待定", "tendency": "待定" } },
-  "七度 雪乃": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(FOX)", "length": "待定", "tendency": "待定" } },
-  "妮可": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "SRT(FOX)", "length": "待定", "tendency": "待定" } },
-  "橘 光": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "海兰德铁道学院", "length": "待定", "tendency": "待定" } },
-  "朝雾 周防": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "海兰德铁道学院", "length": "待定", "tendency": "待定" } },
-  "若狭 冬": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "狂猎(特殊交易部)", "length": "待定", "tendency": "待定" } },
-  "薄叶 律": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "狂猎(特殊交易部)", "length": "待定", "tendency": "待定" } },
-  "樱井 美代": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "狂猎(特殊交易部)", "length": "待定", "tendency": "待定" } },
-  "椎名 纺": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "狂猎(神秘学研究会)", "length": "待定", "tendency": "待定" } },
-  "白尾 绘里": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "狂猎(神秘学研究会)", "length": "待定", "tendency": "待定" } },
-  "裕美": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "狂猎(舍监队)", "length": "待定", "tendency": "待定" } },
-  "清澄 晶": { "desc": "XP:除了雷区以外基本都可以接受\n雷区: 断肢,羞辱,黄金等R18G向及婊化", "tags": { "school": "七囚人", "length": "句/段", "tendency": "主动" } },
-  "申谷 海": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "七囚人", "length": "待定", "tendency": "待定" } },
-  "空": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "其他", "length": "待定", "tendency": "待定" } },
-  "李": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "联邦学生会", "length": "待定", "tendency": "待定" } },
-  "由良木 桃香": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "联邦学生会", "length": "待定", "tendency": "待定" } },
-  "岩仓 步美": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "联邦学生会", "length": "待定", "tendency": "待定" } },
-  "灰音": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "联邦学生会", "length": "待定", "tendency": "待定" } },
-  "扇喜 葵": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "联邦学生会", "length": "待定", "tendency": "待定" } },
-  "风卷 舞": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "克罗诺斯(报道部)", "length": "待定", "tendency": "待定" } },
-  "奥茹": { "desc": "目前无人认领\n状态: 未被占用", "tags": { "school": "十字神明", "length": "待定", "tendency": "待定" } },
-  "阿罗娜": { "desc": "目前无人认领\n状态: 未被占用。", "tags": { "school": "什亭之匣", "length": "待定", "tendency": "待定" } },
-  "普拉娜": { "desc": "XP:纯爱,淫语\n雷区: futa。", "tags": { "school": "什亭之匣", "length": "长段", "tendency": "被动" } },
-  "": { "desc": "XP:雷区:。", "tags": { "school": "", "length": "", "tendency": "" } }
+    "=== SRT ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "七度 雪乃": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "SRT(FOX)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "妮可": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "SRT(FOX)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "胡桃": {
+      "desc": "XP:腹击和粗暴\n雷区:面部毁坏。",
+      "tags": {
+        "school": "SRT(FOX)",
+        "length": "段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "音葵": {
+      "desc": "XP:屁股和后庭相关的玩弄癖好,打屁股\n雷区:使用前穴,暴力行为(除打屁股之外),R18G。",
+      "tags": {
+        "school": "SRT(FOX)",
+        "length": "句/段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "月雪 宫子": {
+      "desc": "XP:皆可\n雷区:无",
+      "tags": {
+        "school": "SRT(RABBIT)",
+        "length": "待定",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "空井 咲": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "SRT(RABBIT)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "霞泽 美游": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "SRT(RABBIT)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "风仓 萌绘": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "SRT(RABBIT)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "=== 七囚人 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "清澄 晶": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "七囚人",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "狐坂 若藻": {
+      "desc": "XP:亲吻,颜面骑乘\n雷区:药物,黄金。",
+      "tags": {
+        "school": "七囚人",
+        "length": "段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "申谷 海": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "七囚人",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "=== 其他 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "普拉娜": {
+      "desc": "XP:纯爱,淫语\n雷区: futa。",
+      "tags": {
+        "school": "什亭之匣",
+        "length": "长段",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "阿罗娜": {
+      "desc": "目前无人认领\n状态: 未被占用。",
+      "tags": {
+        "school": "什亭之匣",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "川流 诗乃": {
+      "desc": "XP:SM,受虐\n雷区:暂无。",
+      "tags": {
+        "school": "克罗诺斯(报道部)",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "风卷 舞": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "克罗诺斯(报道部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "空": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "其他",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "笑面教授": {
+      "desc": "XP:除了雷区以外基本都可以接受\n雷区:肮脏,过于血腥的G。",
+      "tags": {
+        "school": "未知",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "=== 十字神名 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "奥茹": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "十字神明",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "索芙": {
+      "desc": "XP:教培。\n雷区：无",
+      "tags": {
+        "school": "十字神明",
+        "length": "句/段",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "艾因": {
+      "desc": "XP:睡健,强健,催眠,意识改写,壁尻。\n雷区:重口,R18G,媚黑",
+      "tags": {
+        "school": "十字神明",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "马路库特": {
+      "desc": "纯爱,强暴\n雷区:无",
+      "tags": {
+        "school": "十字神明",
+        "length": "段",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "=== 千年科技学院 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "一之濑 明日奈": {
+      "desc": "XP:拘束,百合,除雷区外皆可\n雷区:气味癖,污秽。",
+      "tags": {
+        "school": "千年(C&C)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "室笠 茜": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(C&C)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "美甘 宁瑠": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(C&C)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "角楯 花凛": {
+      "desc": "XP:皆可\n雷区:暂无",
+      "tags": {
+        "school": "千年(C&C)",
+        "length": "段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "飞鸟马 时": {
+      "desc": "XP:目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(C&C)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "乙花 堇": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(体育训练部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "野正 莱依": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(体育训练部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "白石 歌原": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(工程部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "KEI": {
+      "desc": "XP:四肢切断,异种,纯爱\n雷区:排泄物。",
+      "tags": {
+        "school": "千年(游戏部)",
+        "length": "句/段/长段/屏",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "天童 爱丽丝": {
+      "desc": "XP:皆可\n雷区:(先商量)。",
+      "tags": {
+        "school": "千年(游戏部)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "有粮"
+      }
+    },
+    "才羽 桃井": {
+      "desc": "XP:粗暴,纯爱\n雷区:NTR,下三(脏污)。",
+      "tags": {
+        "school": "千年(游戏部)",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "花冈 柚子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(游戏部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "和泉元 艾米": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(特异现象调查部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "明星 日鞠": {
+      "desc": "XP:除雷区皆可\n雷区: R18G,人外,黄金等小众,",
+      "tags": {
+        "school": "千年(特异现象调查部)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "各务 千寻": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(真理部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "小涂 真纪": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(真理部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "小钩 晴": {
+      "desc": "XP:胁迫,露出\n雷区:暂无。",
+      "tags": {
+        "school": "千年(真理部)",
+        "length": "长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "音濑 小玉": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(真理部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "早濑 优香": {
+      "desc": "XP:视觉遮蔽,寸止\n雷区:排泄物,疼痛。",
+      "tags": {
+        "school": "千年(研讨会)",
+        "length": "句/段/长段/屏",
+        "tendency": "皆可",
+        "content": "有粮"
+      }
+    },
+    "生盐 诺亚": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(研讨会)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "调月 莉音": {
+      "desc": "XP:捆绑拘束,露出,项圈,人体彩绘\n雷区:脏污,臭味,排泄。",
+      "tags": {
+        "school": "千年(研讨会)",
+        "length": "?",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "黑崎 小雪": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(研讨会)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "=== 圣三一 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "下江 小春": {
+      "desc": "XP:涩涩的应该都行,感觉自己能接受的应该很多,主要集中在对玩法的讨论,还喜欢榨乳的\n雷区:不知道。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句/段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "伊落 玛丽": {
+      "desc": "XP:广泛且偏向恶劣\n雷区:暂无。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "圣园 未花": {
+      "desc": "XP:万物皆可接纳\n雷区:无。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "杏山 和纱": {
+      "desc": "XP:足控\n雷区:无。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "柚鸟 夏": {
+      "desc": "XP:软软糯糯的小萝莉\n雷区:R18G。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "栗村 爱莉": {
+      "desc": "XP:孕肚,亲吻,非过度伤害的SM\n雷区:过度伤害。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句/长段",
+        "tendency": "皆可",
+        "content": "有粮"
+      }
+    },
+    "伊原木 好美": {
+      "desc": "XP:拘束(最喜欢乳胶类,过激一点也可以),DID,调教,TK,或者单纯的贴贴\n雷区:血腥,肮脏,太过度的气味系,大部分BE向。",
+      "tags": {
+        "school": "圣三一(甜点部)",
+        "length": "段/长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "桐藤 渚": {
+      "desc": "XP:捆绑拘束,SM调校,掏耳朵,按摩\n雷区:肮脏,气味癖,血腥。",
+      "tags": {
+        "school": "圣三一",
+        "length": "句/段",
+        "tendency": "主动",
+        "content": "有粮"
+      }
+    },
+    "河驹风 兰舞": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "百合园 圣娅": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一(茶会）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "歌住 樱子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（修女会）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "若叶 日向": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（修女会）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "古关 忧": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（图书委员会）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "圆堂 志美子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（图书委员会）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "朝日 花江": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（急救医学部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "苍森 美弥": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（急救医学部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "鹫见 芹娜": {
+      "desc": "XP:温柔对待,调戏,抚摸身体,玩弄腿足,束缚,袜袜\n雷区:重口,R18G,暴力行为。",
+      "tags": {
+        "school": "圣三一（急救医学部）",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "仲正 一花": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（正义委）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "剑先 鹤城": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（正义委）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "羽川 莲见": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（正义委）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "静山 真白": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（正义委）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "宇泽 铃纱": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（自警团）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "守月 铃美": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（自警团）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "浦和 花子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "圣三一（补课部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "白洲 梓": {
+      "desc": "XP:微度调教,被强制,百合,触手,恶堕,催眠,异种(不包括机械),尾奸,丝袜,时停\n雷区:男同,过于夸张的性器与身型比例,排泄物,部位臭味,R18G ",
+      "tags": {
+        "school": "圣三一（补课部）",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "阿慈谷 日富美": {
+      "desc": "XP:贴贴,亲吻,抚摸或者按摩身体,袜子相关,腿足,调戏,体型差\n雷区: 血腥,恶心的事物.",
+      "tags": {
+        "school": "圣三一（补课部）",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "=== 山海经 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "漆原 辉夜": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(京剧部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "春原 心奈": {
+      "desc": "XP:十分广泛\n雷区:DEAD END和残疾。",
+      "tags": {
+        "school": "山海经(梅花园)",
+        "length": "段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "春原 瞬": {
+      "desc": "XP:百合,调校,束缚\n雷区:重口R18G。",
+      "tags": {
+        "school": "山海经(梅花园)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "药子 沙耶": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(炼丹部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "朱城 瑠美": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(玄武商会)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "鹿山 丽情": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(玄武商会)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "近卫 南": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(玄龙门)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "龙华 妃咲": {
+      "desc": "XP:拘束,项圈,露出,道具,真空\n雷区:肮脏,气味癖",
+      "tags": {
+        "school": "山海经(玄龙门)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "=== 格黑娜 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "丹花 伊吹": {
+      "desc": "XP:皆可\n雷区:R18G。",
+      "tags": {
+        "school": "格黑娜(万魔殿)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "京极 皋月": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(万魔殿)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "元宫 千秋": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(万魔殿)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "枣 伊吕波": {
+      "desc": "XP:非雷区均可\n雷区:黄金圣水,血腥,猎奇,气味,身体改造,羞辱强暴。",
+      "tags": {
+        "school": "格黑娜(万魔殿)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "羽沼 真琴": {
+      "desc": "XP:除雷区外皆可\n雷区:重口,R18G。",
+      "tags": {
+        "school": "格黑娜(万魔殿)",
+        "length": "句/段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "夜樱 绮良良": {
+      "desc": "XP:亲吻，妊娠，微色互动,微粗暴,被占有,\n雷区:黄金，气味，R18G，重口。",
+      "tags": {
+        "school": "格黑娜(亮闪闪部)",
+        "length": "段/长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "旗见 绘里香": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(亮闪闪部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "爱清 枫香": {
+      "desc": "XP:视觉遮蔽,寸止\n雷区:重口R18G。",
+      "tags": {
+        "school": "格黑娜(供给部)",
+        "length": "句/段/长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "牛牧 朱莉": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(供给部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "伊草 遥香": {
+      "desc": "XP:后入式，一字马，背后揉乳，子宫姦，轻度粗口，吻痕，巨乳，身高差，反差，种付， 露出，产奶，影姦，失智，道具\n雷区:血腥,R18G,重口,排泄物,NTR,足控,",
+      "tags": {
+        "school": "格黑娜(便利屋)",
+        "length": "句/段/长段/",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "浅黄 睦月": {
+      "desc": "XP:上至触手机械,下至催眠洗脑\n雷区:断肢,长时间高烈度虐待,血腥,死亡,排泄物(可以接受战损)。",
+      "tags": {
+        "school": "格黑娜(便利屋)",
+        "length": "句/段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "陆八魔 阿露": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(便利屋)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "鬼方 佳代子": {
+      "desc": "XP:微色情内容(R15)\n雷区:R18G",
+      "tags": {
+        "school": "格黑娜(便利屋)",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "冰室 濑名": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(急救部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "下仓 惠": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(温泉开发部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "狮子堂 泉": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(美食研)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "赤司 淳子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(美食研)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "鳄渊 明里": {
+      "desc": "XP:拘束\n雷区:纯抽抽插抽插肉戏。",
+      "tags": {
+        "school": "格黑娜(美食研)",
+        "length": "段/屏",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "黑馆 晴奈": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "格黑娜(美食研)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "天雨 亚子": {
+      "desc": "XP:FUTA,纯百,催眠调教\n雷区:无。",
+      "tags": {
+        "school": "格黑娜(风纪委)",
+        "length": "句/段/长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "火宫 千夏": {
+      "desc": "XP:百合,FUTA均可\n雷区:R18G,过于暴力,不愿对戏请拒绝,对戏认真对待,看似开玩笑的言语攻击。",
+      "tags": {
+        "school": "格黑娜(风纪委)",
+        "length": "句/段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "空崎 日奈": {
+      "desc": "XP:强暴,指奸,百合调教,中出,种付,异种,子宫按摩,强制高潮,排卵受孕\n雷区:黄金,R18G",
+      "tags": {
+        "school": "格黑娜(风纪委)",
+        "length": "段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "银镜 伊织": {
+      "desc": "XP:都喜欢\n雷区:无。",
+      "tags": {
+        "school": "格黑娜(风纪委)",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "=== 海兰德铁道学院 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "朝雾 周防": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "海兰德铁道学院",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "橘 光": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "海兰德铁道学院",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "橘 望": {
+      "desc": "XP银语,前戏,吻齿痕,调教,媚药,子宫健,宫脱,银纹\n雷区:重口,R18G,对戏时的颜表情",
+      "tags": {
+        "school": "海兰德铁道学院",
+        "length": "段/长段/屏",
+        "tendency": "主动",
+        "content": "有粮"
+      }
+    },
+    "=== 狂猎艺术学院 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "樱井 美代": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "狂猎(特殊交易部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "若狭 冬": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "狂猎(特殊交易部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "薄叶 律": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "狂猎(特殊交易部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "椎名 纺": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "狂猎(神秘学研究会)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "白尾 绘里": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "狂猎(神秘学研究会)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "衣斐 莱娜": {
+      "desc": "XP:抱抱，亲吻前戏,耳语,捆绑,强制高潮,打屁股\n雷区:粪尿癖,臭味系,过度血腥,无理由辱骂角色,过度涉三。",
+      "tags": {
+        "school": "狂猎(神秘学研究会)",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "裕美": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "狂猎(舍监队)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "=== 瓦尔基里 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "中务 桐乃": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "瓦尔基里",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "合欢垣 吹雪": {
+      "desc": "XP:半强制,睡眠\n雷区:脏臭,气味系,双FUTA。",
+      "tags": {
+        "school": "瓦尔基里",
+        "length": "段/长段/屏",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "尾刃 康娜": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "瓦尔基里",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "心华": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "瓦尔基里",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "=== 百鬼夜行 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "葛叶": {
+      "desc": "XP:催眠,爱抚,调教\n雷区:R18G,血。",
+      "tags": {
+        "school": "百鬼夜行",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "勇美 枫": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(修行部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "春日 椿": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(修行部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "水羽 三森": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(修行部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "久田 泉奈": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(忍术部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "千鸟 满": {
+      "desc": "XP:催眠,睡健,气味,足控\n雷区:涉三,过分纠缠骚扰。",
+      "tags": {
+        "school": "百鬼夜行(忍术部)",
+        "length": "句/段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "大野 月咏": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(忍术部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "不破 莲华": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(百花缭乱)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "勘解由小路 紫": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(百花缭乱)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "御稜 名草": {
+      "desc": "?\n状态: 被占用",
+      "tags": {
+        "school": "百鬼夜行(百花缭乱)",
+        "length": "?",
+        "tendency": "?",
+        "content": "无粮"
+      }
+    },
+    "桐生 桔梗": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(百花缭乱)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "朝比奈 菲娜": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(节庆部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "河和 静子": {
+      "desc": "XP:日常贴贴,玩具PLAY,调教,口\n雷区:R18G(能商量也并非不可)。",
+      "tags": {
+        "school": "百鬼夜行(节庆部)",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "里滨 海夏": {
+      "desc": "XP:纯爱,催眠,洗脑,败北,露出\n雷区:虫子,蜘蛛。",
+      "tags": {
+        "school": "百鬼夜行(节庆部)",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "土生 蓟": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(花鸟风月)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "箭吹 棕榈": {
+      "desc": "XP:均可(被监禁)\n雷区:排泄,物化。",
+      "tags": {
+        "school": "百鬼夜行(花鸟风月)",
+        "length": "句/段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "雏芥子(虞姬)": {
+      "desc": "XP:几乎百无禁忌,自适应\n雷区:过于残酷的事项。",
+      "tags": {
+        "school": "百鬼夜行(花鸟风月)",
+        "length": "句/段/长段",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "和乐 千世": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(阴阳部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "天地 妮娅": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "百鬼夜行(阴阳部)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "桑上 果穗": {
+      "desc": "XP:爱\n雷区:无。",
+      "tags": {
+        "school": "百鬼夜行(阴阳部)",
+        "length": "句/段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "=== 联邦学生会 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "七神凛": {
+      "desc": "XP:除雷区外皆可\n雷区:R18G,黄金,排泄。",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "有粮"
+      }
+    },
+    "不知火 花耶": {
+      "desc": "XP:能够让其他人露出丑态的几乎所有方式\n雷区:脏污",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "段/长段",
+        "tendency": "主动",
+        "content": "有粮"
+      }
+    },
+    "岩仓 步美": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "扇喜 葵": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "李": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "灰音": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "由良木 桃香": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "联邦学生会",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "=== 赤冬 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "三善 贵音": {
+      "desc": "XP:常识改变,百合破坏\n雷区:暂无。",
+      "tags": {
+        "school": "赤冬",
+        "length": "句/段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "佐城 巴": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "赤冬",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "池仓 玛丽娜": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "赤冬",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "秋泉 红叶": {
+      "desc": "XP:个人方面的侍奉欲,百无禁忌\n雷区: 被连续放鸽子",
+      "tags": {
+        "school": "赤冬",
+        "length": "段/长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "荒槇 八云": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "赤冬",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "连河 切里诺": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "赤冬",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "天见 和香": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "赤冬(227特别班)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "间宵 时雨": {
+      "desc": "XP:全xp皆可,纯爱,衣裳,抱憾终生,重力\n雷区: R18G",
+      "tags": {
+        "school": "赤冬(227特别班)",
+        "length": "句/段/长段",
+        "tendency": "皆可",
+        "content": "无粮"
+      }
+    },
+    "安守 实梨": {
+      "desc": "XP:后入,胸部\n雷区:R18G,黄金。",
+      "tags": {
+        "school": "赤冬(劳务部)",
+        "length": "句",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "姬木 梅露": {
+      "desc": "XP:抖M,足控,项圈,窒息强暴,凌辱,缩小,丸吞(在意对方是否愿意DOI)\n雷区:。重口,R18G,苗床,宫脱,寸止,虫兽教,巨根",
+      "tags": {
+        "school": "赤冬(图书委)",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "=== 阿拜多斯 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "十六夜 野宫": {
+      "desc": "XP:成女,温柔\n雷区:R18G。",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "句/段/长段/屏",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "奥空 绫音": {
+      "desc": "XP:猫猫\n雷区:NTR。",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "句/段",
+        "tendency": "主动",
+        "content": "无粮"
+      }
+    },
+    "小鸟游 星野": {
+      "desc": "XP:温柔对待,调戏,抚摸身体,玩弄腿足,束缚,袜袜\n雷区:重口,R18G,暴力行为。",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "栀子 梦": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "砂狼 白子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "砂狼 白子(色彩)": {
+      "desc": "XP:尿道责,阴蒂脚责罚,乳首责,指奸,自慰,羞辱,百合足交,内陷乳首,泌乳,连续高潮,尾奸,异物插入,寄生,体型差,战败,要挟,体外按摩子宫或膀胱，\n雷区:R18G,后穴,futa",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "句/段/长段/屏",
+        "tendency": "被动",
+        "content": "有粮"
+      }
+    },
+    "黑见 芹香": {
+      "desc": "XP:DID,拘束,足,百合,纯爱\n雷区:重口,R18G。",
+      "tags": {
+        "school": "阿拜多斯",
+        "length": "句/段/长段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "=== 阿里乌斯 ===": {
+      "desc": "--------------------------------",
+      "tags": { "school": "分割线", "content": "隐藏" }
+    },
+    "戒野 美咲": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿里乌斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "梯 昴": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿里乌斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "槌永 日和": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿里乌斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "秤 亚津子": {
+      "desc": "XP:败北雷普,百合调教,拘束,项圈\n雷区:脏啦臭啦,排泄物这些恶心的东西。",
+      "tags": {
+        "school": "阿里乌斯",
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "立木 迈亚": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿里乌斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "锭前 纱织": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "阿里乌斯",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "": {
+      "desc": "XP:雷区:。",
+      "tags": {
+        "school": "",
+        "length": "",
+        "tendency": "",
+        "content": ""
+      }
+    }
   }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
