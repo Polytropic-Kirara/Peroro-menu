@@ -306,7 +306,7 @@
     "KEI": {
       "desc": "XP:四肢切断,异种,纯爱\n雷区:排泄物。",
       "tags": {
-        "school": "千年(游戏部)",
+        "school": "千年(特异现象调查部)",
         "length": "句/段/长段/屏",
         "tendency": "被动",
         "content": "有粮"
@@ -327,6 +327,15 @@
         "school": "千年(游戏部)",
         "length": "句/段",
         "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "才羽 绿": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "千年(游戏部)",
+        "length": "待定",
+        "tendency": "待定",
         "content": "无粮"
       }
     },
