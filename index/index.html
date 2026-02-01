@@ -468,13 +468,23 @@
                         <label class="form-label">5. 语c文爱生涯/经验？<span class="required-mark">*</span></label>
                         <input type="text" id="q5" class="form-input" placeholder="例如：2年，经验丰富...">
                     </div>
-                    <div class="form-group" id="group-q6">
-                        <label class="form-label">6. 角色介绍<span class="required-mark">*</span></label>
-                        <textarea id="q6" class="form-input" rows="4" placeholder="原因/个性/互动方式..."></textarea>
-                    </div>
                     
+                    <div class="form-group" id="group-q6-reason">
+                        <label class="form-label">6. 选角原因<span class="required-mark">*</span></label>
+                        <textarea id="q6_reason" class="form-input" rows="3" placeholder="你想要扮演这个角色的原因是什么？"></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q6-char">
+                        <label class="form-label">7. 角色性格<span class="required-mark">*</span></label>
+                        <textarea id="q6_char" class="form-input" rows="3" placeholder="这个角色的性格如何？"></textarea>
+                    </div>
+
+                    <div class="form-group" id="group-q6-interact">
+                        <label class="form-label">8. 互动方式<span class="required-mark">*</span></label>
+                        <textarea id="q6_interact" class="form-input" rows="3" placeholder="怎么样与其他人互动？"></textarea>
+                    </div>
                     <div class="form-group" id="group-q7">
-                        <label class="form-label">7. 自戏 (200字以上)<span class="required-mark">*</span></label>
+                        <label class="form-label">9. 自戏 (200字以上)<span class="required-mark">*</span></label>
                         <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容 (禁止与管理对戏选项)..."></textarea>
                     </div>
                     
@@ -658,9 +668,10 @@
             `).join('');
         }
 
-        // --- 6. 审核逻辑 (修改：q7必填校验) ---
+        // --- 6. 审核逻辑 (已修改：支持拆分后的问题) ---
         function initAutoSave() {
-            const fields = ['q1', 'q2', 'q3', 'q5', 'q6', 'q7'];
+            // 更新了字段列表，移除了q6，新增了q6_reason等
+            const fields = ['q1', 'q2', 'q3', 'q5', 'q6_reason', 'q6_char', 'q6_interact', 'q7'];
             fields.forEach(id => {
                 const el = document.getElementById(id);
                 if (el) {
@@ -668,7 +679,11 @@
                     el.addEventListener('input', () => {
                         localStorage.setItem('peroro_audit_' + id, el.value);
                         el.classList.remove('error');
-                        document.getElementById('group-' + id)?.classList.remove('error');
+                        // 处理新ID的父元素组名
+                        let groupId = 'group-' + id;
+                        if(document.getElementById(groupId)) {
+                            document.getElementById(groupId).classList.remove('error');
+                        }
                     });
                 }
             });
@@ -687,26 +702,31 @@
         }
 
         function copyAuditForm() {
-            // 将 q7 加入必填列表
-            const req = [ {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, {id:'q6'}, {id:'q7'} ];
+            // 更新必填项列表
+            const req = [ 
+                {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, 
+                {id:'q6_reason'}, {id:'q6_char'}, {id:'q6_interact'}, 
+                {id:'q7'} // 自戏
+            ];
             let err = false, first = null;
             
             req.forEach(f => {
                 const el = document.getElementById(f.id);
                 const val = el.value.trim();
+                let groupId = 'group-' + f.id;
                 
                 // 1. 检查是否为空
                 if (!val) {
                     err = true; 
                     el.classList.add('error');
-                    document.getElementById('group-'+f.id).classList.add('error');
+                    if(document.getElementById(groupId)) document.getElementById(groupId).classList.add('error');
                     if(!first) first = f.id;
                 } 
-                // 2. 检查自戏字数 (仅针对q7)
+                // 2. 检查自戏字数 (q7)
                 else if (f.id === 'q7' && val.length < 200) {
                     err = true;
                     el.classList.add('error');
-                    document.getElementById('group-'+f.id).classList.add('error');
+                    if(document.getElementById(groupId)) document.getElementById(groupId).classList.add('error');
                     if(!first) first = f.id;
                     showToast("⚠️ 自戏内容不足200字！");
                 }
@@ -719,19 +739,21 @@
             }
 
             if (err) {
-                // 如果还没提示过具体的错误（如字数不足），则提示通用错误
                 if (!document.getElementById('toast').classList.contains('show')) {
                     showToast("❌ 请填写所有必填项！");
                 }
-                if (first === 'group-q4') {
-                     document.getElementById(first).scrollIntoView({behavior:'smooth', block:'center'});
-                } else {
-                     document.getElementById(first).parentNode.scrollIntoView({behavior:'smooth', block:'center'});
+                // 滚动定位逻辑优化
+                const firstEl = document.getElementById(first);
+                if(firstEl) {
+                     // 如果是group（针对radio/checkbox），直接滚动group，否则滚动父级
+                    const target = first.startsWith('group') ? firstEl : firstEl.parentNode;
+                    target.scrollIntoView({behavior:'smooth', block:'center'});
                 }
                 return;
             }
 
-            const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 介绍：${document.getElementById('q6').value}\n7. 自戏：${document.getElementById('q7').value}\n--------------------------------`;
+            // 生成新的复制文本，自动编号为 6, 7, 8, 9
+            const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 选角原因：${document.getElementById('q6_reason').value}\n7. 角色性格：${document.getElementById('q6_char').value}\n8. 互动方式：${document.getElementById('q6_interact').value}\n9. 自戏：${document.getElementById('q7').value}\n--------------------------------`;
             
             navigator.clipboard.writeText(text).then(() => showToast("✅ 审核单已复制！")).catch(() => showToast("❌ 复制失败"));
         }
@@ -810,4 +832,3 @@
     </script>
 </body>
 </html>
-
