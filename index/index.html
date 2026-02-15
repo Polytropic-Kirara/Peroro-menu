@@ -24,6 +24,19 @@
             transition: filter 0.5s;
         }
 
+        /* 极简/省电模式覆盖样式 */
+        body.power-save {
+            animation: none !important; /* 关闭背景流动动画 */
+            background: linear-gradient(-45deg, #0f172a, #1e1b4b) !important; /* 静态背景 */
+        }
+        body.power-save::before {
+            display: none; /* 关闭背景网格渲染 */
+        }
+        body.power-save .result-item, 
+        body.power-save .page-content {
+            animation: none !important; /* 关闭元素的飞入动画以节省GPU */
+        }
+
         /* 彩蛋：彩光模式 */
         body.rainbow-mode { animation: rainbowBG 2s linear infinite !important; }
         @keyframes rainbowBG {
@@ -87,6 +100,28 @@
             height: 85vh;
             max-height: 900px;
         }
+
+        /* 极简模式切换按钮 */
+        .power-save-btn {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 20px;
+            cursor: pointer;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: all 0.3s;
+            z-index: 100;
+        }
+        .power-save-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
+        .power-save-btn.active { background: rgba(105, 240, 174, 0.2); border-color: #69f0ae; }
 
         h2 {
             margin-bottom: 20px;
@@ -332,6 +367,10 @@
         @media screen and (max-width: 768px) {
             body { padding: 10px; }
             .container { padding: 15px; height: 95vh; max-height: none; border-radius: 16px; }
+            
+            /* 适配手机端按钮大小 */
+            .power-save-btn { top: 12px; right: 12px; width: 32px; height: 32px; font-size: 16px; }
+
             h2 { font-size: 1.5rem; margin-bottom: 10px; margin-top: 5px; }
             .nav-tabs { gap: 8px; margin-bottom: 12px; }
             .nav-btn { padding: 6px 14px; font-size: 0.85rem; }
@@ -348,6 +387,8 @@
 <body>
 
     <div class="container">
+        <button id="powerSaveBtn" class="power-save-btn" title="切换极简模式 (降低发热)">🔋</button>
+
         <h2 id="mainTitle">⚡ 佩洛洛菜单</h2>
         
         <div class="nav-tabs">
@@ -512,6 +553,51 @@
         const display = document.getElementById('result');
         const wishContainer = document.getElementById('wishContainer');
 
+        // --- 新增：极简/省电模式逻辑 ---
+        let isPowerSave = false;
+        let seasonalInterval = null;
+        const powerSaveBtn = document.getElementById('powerSaveBtn');
+        
+        function initPowerSave() {
+            // 从本地存储读取状态，实现记忆功能
+            isPowerSave = localStorage.getItem('peroro_power_save') === 'true';
+            applyPowerSaveState();
+            
+            // 绑定按钮点击事件
+            powerSaveBtn.addEventListener('click', () => {
+                isPowerSave = !isPowerSave;
+                localStorage.setItem('peroro_power_save', isPowerSave);
+                applyPowerSaveState();
+                showToast(isPowerSave ? "🍃 已开启极简模式 (省电)" : "✨ 已恢复华丽特效");
+            });
+        }
+
+        function applyPowerSaveState() {
+            if (isPowerSave) {
+                document.body.classList.add('power-save');
+                powerSaveBtn.classList.add('active');
+                powerSaveBtn.innerText = '🍃';
+                powerSaveBtn.title = "关闭极简模式";
+                
+                // 开启极简模式时，清空屏幕现存粒子，并彻底关闭定时器
+                document.querySelectorAll('.seasonal-particle').forEach(p => p.remove());
+                if (seasonalInterval) {
+                    clearInterval(seasonalInterval);
+                    seasonalInterval = null;
+                }
+            } else {
+                document.body.classList.remove('power-save');
+                powerSaveBtn.classList.remove('active');
+                powerSaveBtn.innerText = '🔋';
+                powerSaveBtn.title = "开启极简模式 (降低发热)";
+                
+                // 关闭极简模式时，重新启动季节特效定时器
+                if (!seasonalInterval) {
+                    startSeasonalEffects();
+                }
+            }
+        }
+
         // --- 2. 异步数据加载 ---
         async function loadData() {
             try {
@@ -668,9 +754,8 @@
             `).join('');
         }
 
-        // --- 6. 审核逻辑 (已修改：支持拆分后的问题) ---
+        // --- 6. 审核逻辑 ---
         function initAutoSave() {
-            // 更新了字段列表，移除了q6，新增了q6_reason等
             const fields = ['q1', 'q2', 'q3', 'q5', 'q6_reason', 'q6_char', 'q6_interact', 'q7'];
             fields.forEach(id => {
                 const el = document.getElementById(id);
@@ -679,7 +764,6 @@
                     el.addEventListener('input', () => {
                         localStorage.setItem('peroro_audit_' + id, el.value);
                         el.classList.remove('error');
-                        // 处理新ID的父元素组名
                         let groupId = 'group-' + id;
                         if(document.getElementById(groupId)) {
                             document.getElementById(groupId).classList.remove('error');
@@ -702,11 +786,10 @@
         }
 
         function copyAuditForm() {
-            // 更新必填项列表
             const req = [ 
                 {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, 
                 {id:'q6_reason'}, {id:'q6_char'}, {id:'q6_interact'}, 
-                {id:'q7'} // 自戏
+                {id:'q7'}
             ];
             let err = false, first = null;
             
@@ -715,15 +798,12 @@
                 const val = el.value.trim();
                 let groupId = 'group-' + f.id;
                 
-                // 1. 检查是否为空
                 if (!val) {
                     err = true; 
                     el.classList.add('error');
                     if(document.getElementById(groupId)) document.getElementById(groupId).classList.add('error');
                     if(!first) first = f.id;
-                } 
-                // 2. 检查自戏字数 (q7)
-                else if (f.id === 'q7' && val.length < 200) {
+                } else if (f.id === 'q7' && val.length < 200) {
                     err = true;
                     el.classList.add('error');
                     if(document.getElementById(groupId)) document.getElementById(groupId).classList.add('error');
@@ -742,17 +822,14 @@
                 if (!document.getElementById('toast').classList.contains('show')) {
                     showToast("❌ 请填写所有必填项！");
                 }
-                // 滚动定位逻辑优化
                 const firstEl = document.getElementById(first);
                 if(firstEl) {
-                     // 如果是group（针对radio/checkbox），直接滚动group，否则滚动父级
                     const target = first.startsWith('group') ? firstEl : firstEl.parentNode;
                     target.scrollIntoView({behavior:'smooth', block:'center'});
                 }
                 return;
             }
 
-            // 生成新的复制文本，自动编号为 6, 7, 8, 9
             const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 选角原因：${document.getElementById('q6_reason').value}\n7. 角色性格：${document.getElementById('q6_char').value}\n8. 互动方式：${document.getElementById('q6_interact').value}\n9. 自戏：${document.getElementById('q7').value}\n--------------------------------`;
             
             navigator.clipboard.writeText(text).then(() => showToast("✅ 审核单已复制！")).catch(() => showToast("❌ 复制失败"));
@@ -781,10 +858,14 @@
             setTimeout(() => t.className = "", 3000);
         }
 
-        function initSeasonalEffects() {
+        // 提取粒子开始生成的逻辑到单独函数中，方便控制
+        function startSeasonalEffects() {
             const m = new Date().getMonth() + 1;
             let char = (m>=3 && m<=5)?'🌸':(m>=6 && m<=8)?'🍃':(m>=9 && m<=11)?'🍁':'❄️';
-            setInterval(() => createParticle(char, 'seasonal'), 400);
+            
+            // 清理旧的定时器，防止叠加
+            if (seasonalInterval) clearInterval(seasonalInterval);
+            seasonalInterval = setInterval(() => createParticle(char, 'seasonal'), 400);
         }
 
         function createParticle(char, type, isEgg = false) {
@@ -808,6 +889,7 @@
         document.getElementById('mainTitle').addEventListener('click', function() {
             this.classList.add('shake'); setTimeout(() => this.classList.remove('shake'), 500);
         });
+        
         const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
         let konamiIndex = 0;
         document.addEventListener('keydown', (e) => {
@@ -824,10 +906,10 @@
         document.getElementById('clearBtn').addEventListener('click', clearAllFilters);
         document.getElementById('searchInput').addEventListener('input', performSearch);
 
-        // 启动
+        // --- 启动顺序 ---
+        initPowerSave(); // 优先读取用户偏好并应用
         loadData();
         initAutoSave();
-        initSeasonalEffects();
 
     </script>
 </body>
