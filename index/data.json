@@ -58,7 +58,7 @@
         "school": "SRT(FOX)",
         "length": "段/长段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "音葵": {
@@ -67,7 +67,7 @@
         "school": "SRT(FOX)",
         "length": "句/段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "月雪 宫子": {
@@ -103,7 +103,7 @@
         "school": "SRT(RABBIT)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 七囚人 ===": {
@@ -134,7 +134,7 @@
         "school": "七囚人",
         "length": "段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 其他 ===": {
@@ -223,7 +223,7 @@
         "school": "十字神明",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "马路库特": {
@@ -326,7 +326,7 @@
         "school": "千年(工程部)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "KEI": {
@@ -335,7 +335,7 @@
         "school": "千年(特异现象调查部)",
         "length": "句/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "天童 爱丽丝": {
@@ -344,7 +344,7 @@
         "school": "千年(游戏部)",
         "length": "句/段/长段/屏",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "才羽 桃井": {
@@ -362,7 +362,7 @@
         "school": "千年(游戏部)",
         "length": "句/段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "花冈 柚子": {
@@ -492,7 +492,7 @@
         "school": "圣三一(茶会)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "杏山 和纱": {
@@ -627,7 +627,7 @@
         "school": "圣三一(正义委)",
         "length": "句/段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "剑先 鹤城": {
@@ -636,7 +636,7 @@
         "school": "圣三一(正义委)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "羽川 莲见": {
@@ -681,7 +681,7 @@
         "school": "圣三一(补课部)",
         "length": "段/长段/屏",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "白洲 梓": {
@@ -878,7 +878,7 @@
         "school": "格黑娜(便利屋)",
         "length": "句/段/长段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "陆八魔 阿露": {
@@ -887,15 +887,15 @@
         "school": "格黑娜(便利屋)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "鬼方 佳代子": {
-      "desc": "XP:微色情内容(R15)\n雷区:R18G",
+      "desc": "目前无人认领\n状态: 未被占用",
       "tags": {
         "school": "格黑娜(便利屋)",
-        "length": "句/段/长段",
-        "tendency": "皆可",
+        "length": "待定",
+        "tendency": "待定",
         "content": "无粮"
       }
     },
@@ -959,7 +959,7 @@
         "school": "格黑娜(风纪委)",
         "length": "句/段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "火宫 千夏": {
@@ -977,7 +977,7 @@
         "school": "格黑娜(风纪委)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "银镜 伊织": {
@@ -1008,7 +1008,7 @@
         "school": "海兰德铁道学院",
         "length": "段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "橘 望": {
@@ -1026,7 +1026,7 @@
         "school": "海兰德铁道学院",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 狂猎艺术学院 ===": {
@@ -1084,7 +1084,7 @@
         "school": "狂猎(神秘学研究会)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "裕美": {
@@ -1146,7 +1146,7 @@
         "school": "百鬼夜行",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "勇美 枫": {
@@ -1254,7 +1254,7 @@
         "school": "百鬼夜行(节庆部)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "里滨 海夏": {
@@ -1281,7 +1281,7 @@
         "school": "百鬼夜行(花鸟风月)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "雏芥子(虞姬)": {
@@ -1460,7 +1460,7 @@
         "school": "赤冬(227特别班)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "安守 实梨": {
@@ -1473,11 +1473,11 @@
       }
     },
     "姬木 梅露": {
-      "desc": "XP:抖M,足控,项圈,窒息强暴,凌辱,缩小,丸吞(在意对方是否愿意DOI)\n雷区:。重口,R18G,苗床,宫脱,寸止,虫兽教,巨根",
+      "desc": "目前无人认领\n状态: 未被占用",
       "tags": {
         "school": "赤冬(知识解放战线)",
-        "length": "句/段",
-        "tendency": "被动",
+        "length": "待定",
+        "tendency": "待定",
         "content": "无粮"
       }
     },
@@ -1558,7 +1558,7 @@
         "school": "阿里乌斯",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "梯 昴": {
@@ -1567,7 +1567,7 @@
         "school": "阿里乌斯(尼科米底亚分队)",
         "length": "句/段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "槌永 日和": {
@@ -1580,11 +1580,11 @@
       }
     },
     "秤 亚津子": {
-      "desc": "目前无人认领\n状态: 未被占用",
+      "desc": "XP:纯爱，交合，轻度色情，各种性交\n雷区: r-18g，强迫，侮辱",
       "tags": {
         "school": "阿里乌斯",
-        "length": "待定",
-        "tendency": "待定",
+        "length": "句/段/长段",
+        "tendency": "皆可",
         "content": "无粮"
       }
     },
@@ -1594,7 +1594,7 @@
         "school": "阿里乌斯(尼科米底亚分队)",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "锭前 纱织": {
