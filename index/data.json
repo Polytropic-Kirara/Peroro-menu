@@ -72,7 +72,7 @@
         "school": "SRT(RABBIT)",
         "length": "句",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "空井 咲": {
@@ -241,7 +241,7 @@
         "school": "千年(C&C)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "室笠 茜": {
@@ -439,7 +439,7 @@
         "school": "千年(研讨会)",
         "length": "段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "调月 莉音": {
@@ -466,7 +466,7 @@
         "school": "千年",
         "length": "句/段/长段",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 圣三一 ===": {
@@ -488,7 +488,7 @@
         "school": "圣三一(修女会)",
         "length": "句/段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "圣园 未花": {
@@ -497,7 +497,7 @@
         "school": "圣三一(茶会)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "杏山 和纱": {
@@ -686,7 +686,7 @@
         "school": "圣三一(补课部)",
         "length": "段/长段/屏",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "白洲 梓": {
@@ -869,12 +869,12 @@
       }
     },
     "伊草 遥香": {
-      "desc": "目前无人认领\n状态: 未被占用",
+      "desc": "XP:都喜欢\n雷区:无",
       "tags": {
         "school": "格黑娜(便利屋)",
-        "length": "待定",
-        "tendency": "待定",
-        "content": "无粮"
+        "length": "句/段",
+        "tendency": "被动",
+        "content": "有粮"
       }
     },
     "浅黄 睦月": {
@@ -887,12 +887,12 @@
       }
     },
     "陆八魔 阿露": {
-      "desc": "XP:都喜欢\n雷区:无。",
+      "desc": "目前无人认领\n状态: 未被占用",
       "tags": {
         "school": "格黑娜(便利屋)",
-        "length": "句/段",
-        "tendency": "被动",
-        "content": "有粮"
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
       }
     },
     "鬼方 佳代子": {
@@ -901,7 +901,7 @@
         "school": "格黑娜(便利屋)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "冰室 濑名": {
@@ -1013,7 +1013,7 @@
         "school": "海兰德铁道学院",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "橘 望": {
@@ -1031,7 +1031,7 @@
         "school": "海兰德铁道学院",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 狂猎艺术学院 ===": {
@@ -1044,7 +1044,7 @@
         "school": "狂猎(特殊交易部)",
         "length": "段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "若狭 冬": {
@@ -1147,7 +1147,7 @@
         "school": "瓦尔基里",
         "length": "长段",
         "tendency": "皆可(偏被动)",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "美玲": {
@@ -1254,12 +1254,12 @@
       }
     },
     "桐生 桔梗": {
-      "desc": "XP:视觉遮蔽,寸止\n雷区:重口R18G。",
+      "desc": "XP:强烈的欲望\n雷区:无",
       "tags": {
         "school": "百鬼夜行(百花缭乱)",
-        "length": "句/段/长段/屏",
-        "tendency": "被动",
-        "content": "无粮"
+        "length": "段/长段/屏",
+        "tendency": "皆可",
+        "content": "有粮"
       }
     },
     "朝比奈 菲娜": {
@@ -1286,7 +1286,7 @@
         "school": "百鬼夜行(节庆部)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "土生 蓟": {
@@ -1295,7 +1295,7 @@
         "school": "百鬼夜行(花鸟风月)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "箭吹 棕榈": {
@@ -1304,7 +1304,7 @@
         "school": "百鬼夜行(花鸟风月)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "雏芥子(虞姬)": {
@@ -1581,7 +1581,7 @@
         "school": "阿里乌斯",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "梯 昴": {
@@ -1590,7 +1590,7 @@
         "school": "阿里乌斯(尼科米底亚分队)",
         "length": "句/段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "槌永 日和": {
@@ -1626,7 +1626,7 @@
         "school": "阿里乌斯",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "": {
