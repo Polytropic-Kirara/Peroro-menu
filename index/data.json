@@ -259,7 +259,7 @@
         "school": "千年(C&C)",
         "length": "长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "美甘 宁瑠": {
@@ -367,7 +367,7 @@
         "school": "千年(游戏部)",
         "length": "句/段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "花冈 柚子": {
@@ -448,7 +448,7 @@
         "school": "千年(研讨会)",
         "length": "段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "调月 莉音": {
@@ -510,11 +510,11 @@
       }
     },
     "杏山 和纱": {
-      "desc": "目前无人认领\n状态: 未被占用",
+      "desc": "XP:指奸,轻微寸止,轻微羞辱,被挑逗敏感点\n雷区: NTR,不礼貌的行为和语言,被强迫R18G,被不熟悉的人进行亲密举动,入体苦手,被过分骚扰,伤痕",
       "tags": {
         "school": "圣三一(甜点部)",
-        "length": "待定",
-        "tendency": "待定",
+        "length": "句/段",
+        "tendency": "被动",
         "content": "无粮"
       }
     },
@@ -569,7 +569,7 @@
         "school": "圣三一(茶会)",
         "length": "段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "歌住 樱子": {
@@ -704,7 +704,7 @@
         "school": "圣三一(补课部)",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "阿慈谷 日富美": {
@@ -789,7 +789,7 @@
         "school": "山海经(玄龙门)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 格黑娜 ===": {
@@ -820,7 +820,7 @@
         "school": "格黑娜(万魔殿)",
         "length": "句/长段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "枣 伊吕波": {
@@ -865,7 +865,7 @@
         "school": "格黑娜(供给部)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "牛牧 朱莉": {
@@ -919,7 +919,7 @@
         "school": "格黑娜(急救部)",
         "length": "段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "下仓 惠": {
@@ -991,7 +991,7 @@
         "school": "格黑娜(风纪委)",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "银镜 伊织": {
@@ -1000,7 +1000,7 @@
         "school": "格黑娜(风纪委)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 海兰德铁道学院 ===": {
@@ -1031,7 +1031,7 @@
         "school": "海兰德铁道学院",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "内海 青叶": {
@@ -1053,7 +1053,7 @@
         "school": "狂猎(特殊交易部)",
         "length": "段/长段/屏",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "若狭 冬": {
@@ -1250,7 +1250,7 @@
         "school": "百鬼夜行(百花缭乱)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "御稜 名草": {
@@ -1568,7 +1568,7 @@
         "school": "阿拜多斯",
         "length": "句/段/长段/屏",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "砂狼 白子(色彩)": {
@@ -1577,7 +1577,7 @@
         "school": "阿拜多斯",
         "length": "长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "黑见 芹香": {
