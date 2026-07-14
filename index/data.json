@@ -80,7 +80,7 @@
         "school": "SRT(RABBIT)",
         "length": "段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "空井 咲": {
@@ -139,7 +139,7 @@
         "school": "七囚人",
         "length": "段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "=== 其他 ===": {
@@ -515,7 +515,7 @@
         "school": "圣三一(甜点部)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "柚鸟 夏": {
@@ -641,7 +641,7 @@
         "school": "圣三一(正义委)",
         "length": "句/段/长段/屏",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "剑先 鹤城": {
@@ -680,13 +680,13 @@
         "content": "无粮"
       }
     },
-    "守月 铃美": {
+    "守月 玲美": {
       "desc": "XP: 束缚,女性主导,气味,挠痒,调教\n雷区:无。",
       "tags": {
         "school": "圣三一(自警团)",
         "length": "句/段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "浦和 花子": {
@@ -695,7 +695,7 @@
         "school": "圣三一(补课部)",
         "length": "段/长段/屏",
         "tendency": "主动",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "白洲 梓": {
@@ -790,6 +790,42 @@
         "length": "句/段",
         "tendency": "皆可",
         "content": "有粮"
+      }
+    },
+    "宫内 叶": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(玄龙门)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "乌头尾 阳子": {
+      "desc": "XP:催眠,调教,奴化,拘禁\n雷区: 重度R18G,涉三,黄金",
+      "tags": {
+        "school": "山海经(雏鸟组)",
+        "length": "段/长段/屏",
+        "tendency": "被动",
+        "content": "无粮"
+      }
+    },
+    "五百雀 和美": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(雏鸟组)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
+      }
+    },
+    "鹰野主 翠子": {
+      "desc": "目前无人认领\n状态: 未被占用",
+      "tags": {
+        "school": "山海经(雏鸟组)",
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
       }
     },
     "=== 格黑娜 ===": {
@@ -901,7 +937,7 @@
         "school": "格黑娜(便利屋)",
         "length": "长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "鬼方 佳代子": {
@@ -1089,7 +1125,7 @@
         "school": "狂猎(神秘学研究会)",
         "length": "段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "衣斐 莱娜": {
@@ -1138,7 +1174,7 @@
         "school": "瓦尔基里",
         "length": "段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "尾刃 康娜": {
@@ -1178,7 +1214,7 @@
         "school": "百鬼夜行",
         "length": "句/段/",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "勇美 枫": {
@@ -1187,7 +1223,7 @@
         "school": "百鬼夜行(修行部)",
         "length": "段/长段/屏",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "春日 椿": {
@@ -1254,12 +1290,12 @@
       }
     },
     "御稜 名草": {
-      "desc": "XP:皆可\n雷区:无",
+      "desc": "XP:胁迫,精神控制,调教\n雷区:R18G,黄金,巨大化器官",
       "tags": {
         "school": "百鬼夜行(百花缭乱)",
-        "length": "?",
+        "length": "段/长段",
         "tendency": "皆可",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "桐生 桔梗": {
@@ -1331,7 +1367,7 @@
         "school": "百鬼夜行(花鸟风月)",
         "length": "待定",
         "tendency": "待定",
-        "content": "无粮"
+        "content": "有粮"
       }
     },
     "和乐 千世": {
