@@ -4,35 +4,48 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>佩洛洛菜单 | PERORO MENU</title>
+    <link rel="icon" type="image/png" href="assets/favicon.png">
     <style>
         /* --- 全局重置 --- */
         * { box-sizing: border-box; margin: 0; padding: 0; }
 
+        :root {
+            /* Blue Archive 风格配色 */
+            --ba-blue: #128afa;
+            --ba-cyan: #00c2f7;
+            --ba-navy: #1c3350;
+            --ba-text: #22344d;
+            --ba-text-sub: #51667f;
+            --ba-pink: #ff7bbf;
+            --schale-st0: #65eef8b9;
+            --schale-st1: #ffffff;
+        }
+
         body {
             font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            color: #ffffff;
+            color: var(--ba-text);
             min-height: 100vh;
             display: flex;
             justify-content: center;
             align-items: center;
             padding: 20px;
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b, #312e81, #0f172a);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
+            background: linear-gradient(
+                to bottom,
+                #9edfff 0%,
+                #8acaeb 15%,
+                #a0c8ff 50%,
+                #ff9ed8 100%
+            );
             position: relative;
-            overflow: hidden; 
+            overflow: hidden;
             transition: filter 0.5s;
         }
 
         /* 极简/省电模式覆盖样式 */
-        body.power-save {
-            animation: none !important; /* 关闭背景流动动画 */
-            background: linear-gradient(-45deg, #0f172a, #1e1b4b) !important; /* 静态背景 */
+        body.power-save #bgCanvas {
+            display: none; /* 关闭背景网格与三角动画渲染 */
         }
-        body.power-save::before {
-            display: none; /* 关闭背景网格渲染 */
-        }
-        body.power-save .result-item, 
+        body.power-save .result-item,
         body.power-save .page-content {
             animation: none !important; /* 关闭元素的飞入动画以节省GPU */
         }
@@ -40,28 +53,38 @@
         /* 彩蛋：彩光模式 */
         body.rainbow-mode { animation: rainbowBG 2s linear infinite !important; }
         @keyframes rainbowBG {
-            0% { background-position: 0% 50%; filter: hue-rotate(0deg); }
-            100% { background-position: 100% 50%; filter: hue-rotate(360deg); }
+            0% { filter: hue-rotate(0deg); }
+            100% { filter: hue-rotate(360deg); }
         }
 
-        /* 背景网格 */
-        body::before {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background-image: 
-                linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
-            background-size: 40px 40px;
-            pointer-events: none;
+        /* --- 背景画布（网格 + 三角动画） --- */
+        #bgCanvas {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
             z-index: 0;
+            pointer-events: none;
         }
 
-        @keyframes gradientBG {
-            0% { background-position: 0% 50% }
-            50% { background-position: 100% 50% }
-            100% { background-position: 0% 50% }
+        /* --- SCHALE 徽标水印 --- */
+        #schale-container {
+            position: fixed;
+            top: 0; left: 0;
+            width: 100vw; height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+            z-index: 1;
         }
+        #schale-container svg {
+            width: min(46vw, 480px);
+            height: auto;
+            display: block;
+            filter: drop-shadow(0 6px 24px rgba(18, 138, 250, 0.25));
+        }
+        #schale-container .st0 { fill: var(--schale-st0); }
+        #schale-container .st1 { fill: var(--schale-st1); }
 
         /* --- 粒子特效 --- */
         .seasonal-particle, .easter-egg-particle {
@@ -74,7 +97,7 @@
         }
         .easter-egg-particle {
             font-size: 40px !important;
-            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.5));
+            filter: drop-shadow(0 5px 10px rgba(0,0,0,0.35));
         }
         @keyframes fall {
             0% { transform: translateY(0) rotate(0deg) translateX(0); opacity: 0; }
@@ -82,17 +105,17 @@
             100% { transform: translateY(110vh) rotate(360deg) translateX(20px); opacity: 0; }
         }
 
-        /* --- 主容器 --- */
+        /* --- 主容器：白色玻璃卡片 --- */
         .container {
             position: relative;
             z-index: 10;
-            background: rgba(20, 20, 35, 0.75);
+            background: rgba(255, 255, 255, 0.72);
             backdrop-filter: blur(16px);
             -webkit-backdrop-filter: blur(16px);
             padding: 35px;
             border-radius: 24px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 20px 50px rgba(30, 80, 160, 0.25);
             width: 100%;
             max-width: 850px;
             display: flex;
@@ -106,9 +129,9 @@
             position: absolute;
             top: 25px;
             right: 25px;
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            color: #fff;
+            background: rgba(255, 255, 255, 0.65);
+            border: 1px solid rgba(18, 138, 250, 0.25);
+            color: var(--ba-navy);
             border-radius: 50%;
             width: 40px;
             height: 40px;
@@ -120,25 +143,99 @@
             transition: all 0.3s;
             z-index: 100;
         }
-        .power-save-btn:hover { background: rgba(255, 255, 255, 0.2); transform: scale(1.1); }
-        .power-save-btn.active { background: rgba(105, 240, 174, 0.2); border-color: #69f0ae; }
+        .power-save-btn:hover { background: rgba(255, 255, 255, 0.95); transform: scale(1.1); }
+        .power-save-btn.active { background: rgba(0, 194, 247, 0.18); border-color: var(--ba-cyan); }
 
         h2 {
+            position: relative;
             margin-bottom: 20px;
             text-align: center;
             letter-spacing: 2px;
             font-weight: 700;
-            color: #fff;
-            text-shadow: 0 0 10px rgba(105, 240, 174, 0.5);
+            color: var(--ba-navy);
+            text-shadow: 0 0 12px rgba(18, 138, 250, 0.35);
             user-select: none;
             cursor: pointer;
             transition: transform 0.1s;
             flex-shrink: 0;
         }
-        
+
+        /* BA 标志性光环 */
+        .halo {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            width: 120px;
+            height: 40px;
+            transform: translateX(-50%) rotate(-8deg);
+            fill: none;
+            stroke: #7de3ff;
+            stroke-width: 5;
+            opacity: 0.95;
+            filter: drop-shadow(0 0 6px rgba(0, 194, 247, 0.8));
+            pointer-events: none;
+            animation: haloFloat 3.5s ease-in-out infinite;
+        }
+        @keyframes haloFloat {
+            0%, 100% { transform: translateX(-50%) rotate(-8deg) translateY(0); }
+            50% { transform: translateX(-50%) rotate(-8deg) translateY(-5px); }
+        }
+        body.power-save .halo { animation: none; }
+
+        .title-sub {
+            display: block;
+            font-size: 0.5em;
+            letter-spacing: 8px;
+            color: var(--ba-blue);
+            font-style: italic;
+            font-weight: 800;
+            text-shadow: none;
+            margin-top: 3px;
+        }
+
+        /* 佩洛洛探头 */
+        #peroroPeek {
+            position: fixed;
+            bottom: -6px;
+            right: 3vw;
+            width: min(210px, 28vw);
+            z-index: 5;
+            pointer-events: none;
+            filter: drop-shadow(0 4px 14px rgba(30, 80, 160, 0.3));
+            animation: peroroBob 4s ease-in-out infinite;
+        }
+        @keyframes peroroBob {
+            0%, 100% { transform: translateY(14px) rotate(0deg); }
+            50% { transform: translateY(0) rotate(-3deg); }
+        }
+        body.power-save #peroroPeek { animation: none; }
+
+        /* 空状态 Arona 插图 */
+        .arona-img {
+            width: 110px;
+            display: block;
+            margin: 0 auto 10px;
+            opacity: 0.9;
+            filter: drop-shadow(0 4px 10px rgba(30, 80, 160, 0.2));
+        }
+
+        /* 角色头像 */
+        .result-avatar {
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid var(--ba-blue);
+            background: linear-gradient(135deg, #d6efff, #eaf6ff);
+            box-shadow: 0 2px 8px rgba(18, 138, 250, 0.25);
+            flex-shrink: 0;
+        }
+        .result-body { flex-grow: 1; min-width: 0; }
+        .result-row { display: flex; gap: 14px; align-items: flex-start; }
+
         h2.shake {
             animation: shake 0.5s;
-            color: #ffd700;
+            color: #d4a017;
             text-shadow: 0 0 20px #ffd700;
         }
 
@@ -158,23 +255,42 @@
             flex-wrap: wrap;
         }
 
+        /* BA 风格平行四边形按钮：背景斜切，文字不倾斜 */
         .nav-btn {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            color: #ccc;
-            padding: 8px 16px;
-            border-radius: 20px;
+            position: relative;
+            background: transparent;
+            border: none;
+            color: var(--ba-text-sub);
+            padding: 8px 18px;
             cursor: pointer;
             font-size: 0.95rem;
             font-weight: bold;
-            transition: all 0.3s ease;
+            transition: color 0.3s ease;
+            z-index: 0;
         }
-        .nav-btn:hover { background: rgba(255, 255, 255, 0.15); color: #fff; }
-        .nav-btn.active {
-            background: rgba(105, 240, 174, 0.2);
-            border-color: #69f0ae;
-            color: #69f0ae;
-            box-shadow: 0 0 10px rgba(105, 240, 174, 0.1);
+        /* 深浅三角纹理（BA 风格），呼应壁纸的三角元素 */
+        .nav-btn::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.6);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3e%3cpath d='M0 14L7 0L14 14Z' fill='%23128afa' fill-opacity='.08'/%3e%3cpath d='M7 0L21 0L14 14Z' fill='%23128afa' fill-opacity='.16'/%3e%3cpath d='M14 14L21 0L28 14Z' fill='%23128afa' fill-opacity='.08'/%3e%3cpath d='M21 0L35 0L28 14Z' fill='%23128afa' fill-opacity='.16'/%3e%3cpath d='M-7 0L7 0L0 14Z' fill='%23128afa' fill-opacity='.16'/%3e%3c/svg%3e");
+            background-size: 28px 14px;
+            border: 1px solid rgba(18, 138, 250, 0.25);
+            border-radius: 8px;
+            transform: skewX(-10deg);
+            transition: all 0.3s ease;
+            z-index: -1;
+        }
+        .nav-btn:hover { color: var(--ba-blue); }
+        .nav-btn:hover::before { background-color: rgba(255, 255, 255, 0.95); }
+        .nav-btn.active { color: #ffffff; }
+        .nav-btn.active::before {
+            background-color: var(--ba-blue);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3e%3cpath d='M0 14L7 0L14 14Z' fill='%23ffffff' fill-opacity='.14'/%3e%3cpath d='M7 0L21 0L14 14Z' fill='%23063e7e' fill-opacity='.22'/%3e%3cpath d='M14 14L21 0L28 14Z' fill='%23ffffff' fill-opacity='.14'/%3e%3cpath d='M21 0L35 0L28 14Z' fill='%23063e7e' fill-opacity='.22'/%3e%3cpath d='M-7 0L7 0L0 14Z' fill='%23063e7e' fill-opacity='.22'/%3e%3c/svg%3e");
+            background-size: 28px 14px;
+            border-color: var(--ba-blue);
+            box-shadow: 0 4px 14px rgba(18, 138, 250, 0.4);
         }
 
         /* --- 页面内容 --- */
@@ -203,37 +319,38 @@
             font-size: 14px;
             outline: none;
             transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.07);
-            border: 1px solid rgba(255, 255, 255, 0.15);
-            color: #eee;
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(18, 138, 250, 0.25);
+            color: var(--ba-text);
             font-family: inherit;
         }
         input[type="text"] { flex-grow: 1; min-width: 0; }
+        input::placeholder, textarea::placeholder { color: rgba(60, 90, 130, 0.5); }
 
         .clear-btn {
             cursor: pointer;
-            background: rgba(255, 99, 71, 0.15);
-            border-color: rgba(255, 99, 71, 0.3);
+            background: rgba(255, 99, 71, 0.12);
+            border-color: rgba(255, 99, 71, 0.35);
             white-space: nowrap;
             display: flex; align-items: center; justify-content: center;
             font-weight: bold;
-            color: #ffcccb;
+            color: #d9534f;
             flex-shrink: 0;
         }
-        .clear-btn:hover { background: rgba(255, 99, 71, 0.3); }
+        .clear-btn:hover { background: rgba(255, 99, 71, 0.25); }
 
         .dynamic-select {
             flex: 1;
             min-width: 100px; cursor: pointer; appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23128afa' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat; background-position: right 15px center; background-size: 16px;
         }
-        .dynamic-select option { background-color: #1a1a2e; color: #fff; }
+        .dynamic-select option { background-color: #ffffff; color: var(--ba-text); }
 
         input[type="text"]:focus, .dynamic-select:focus, textarea:focus, .form-input:focus {
-            background: rgba(255, 255, 255, 0.15);
-            border-color: #69f0ae;
-            box-shadow: 0 0 15px rgba(105, 240, 174, 0.25);
+            background: rgba(255, 255, 255, 0.95);
+            border-color: var(--ba-blue);
+            box-shadow: 0 0 15px rgba(18, 138, 250, 0.3);
         }
 
         .form-input.error, .form-group.error {
@@ -247,45 +364,74 @@
             overflow-y: auto;
             flex-grow: 1;
             padding-right: 8px;
-            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+            scrollbar-width: thin; scrollbar-color: rgba(18, 138, 250, 0.35) transparent;
             min-height: 0;
         }
         #result::-webkit-scrollbar { width: 6px; }
-        #result::-webkit-scrollbar-thumb { background-color: rgba(255,255,255,0.3); border-radius: 10px; }
+        #result::-webkit-scrollbar-thumb { background-color: rgba(18, 138, 250, 0.35); border-radius: 10px; }
 
         .result-item {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.05);
+            position: relative;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.75);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             padding: 18px; border-radius: 16px; margin-bottom: 15px;
-            border-left: 4px solid #69f0ae;
+            border-left: 4px solid var(--ba-blue);
+            box-shadow: 0 4px 12px rgba(30, 80, 160, 0.08);
             animation: slideIn 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both;
         }
+        /* BA 风格斜切角 */
+        .result-item::after {
+            content: "";
+            position: absolute;
+            right: -1px; bottom: -1px;
+            border-style: solid;
+            border-width: 0 0 18px 18px;
+            border-color: transparent transparent rgba(18, 138, 250, 0.3) transparent;
+        }
         .result-header { display: flex; justify-content: space-between; margin-bottom: 10px; }
-        .result-key { font-size: 1.25em; font-weight: bold; color: #fff; }
+        .result-key { font-size: 1.25em; font-weight: bold; color: var(--ba-navy); }
 
         .tags-display { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-        .tag-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 20px; background: rgba(255,255,255,0.1); color: #ccc; }
-        .tag-badge.matched { background: rgba(105, 240, 174, 0.15); border-color: #69f0ae; color: #69f0ae; font-weight: 600; box-shadow: 0 0 8px rgba(105, 240, 174, 0.1); }
-        
+        .tag-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 20px; background: rgba(18, 138, 250, 0.1); color: var(--ba-text-sub); }
+        /* 学院徽章：蓝底白字 + 校徽图标 */
+        .tag-badge.school-badge {
+            background: var(--ba-blue);
+            color: #ffffff;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .tag-badge.school-badge.matched {
+            background: var(--ba-navy);
+            border: 1px solid var(--ba-cyan);
+            color: #ffffff;
+            box-shadow: 0 0 8px rgba(0, 194, 247, 0.4);
+        }
+        .school-ico { width: 14px; height: 14px; object-fit: contain; }
+        .tag-badge.matched { background: rgba(18, 138, 250, 0.18); border: 1px solid var(--ba-blue); color: var(--ba-blue); font-weight: 600; box-shadow: 0 0 8px rgba(18, 138, 250, 0.15); }
+
         /* 粮草专用金色标签 */
         .tag-badge.content-tag.gold {
-            background: rgba(255, 215, 0, 0.15);
-            border: 1px solid rgba(255, 215, 0, 0.5);
-            color: #ffd700;
-            box-shadow: 0 0 8px rgba(255, 215, 0, 0.2);
+            background: rgba(255, 215, 0, 0.18);
+            border: 1px solid rgba(200, 160, 0, 0.55);
+            color: #a07800;
+            box-shadow: 0 0 8px rgba(255, 215, 0, 0.25);
             font-weight: bold;
         }
 
-        .result-desc { font-size: 0.95em; color: #d1d5db; line-height: 1.6; white-space: pre-wrap; background: rgba(0,0,0,0.2); padding: 10px; border-radius: 8px; }
-        .empty-tip { text-align: center; color: rgba(255,255,255,0.5); margin-top: 40px; font-style: italic; }
-        
+        .result-desc { font-size: 0.95em; color: var(--ba-text); line-height: 1.6; white-space: pre-wrap; background: rgba(18, 138, 250, 0.06); padding: 10px; border-radius: 8px; }
+        .empty-tip { text-align: center; color: rgba(40, 70, 110, 0.55); margin-top: 40px; font-style: italic; }
+
         @keyframes slideIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
 
         /* --- 滚动容器 --- */
         .scroll-container {
-            padding: 10px; color: #e0e0e0; overflow-y: auto; flex-grow: 1; padding-right: 8px;
-            scrollbar-width: thin; scrollbar-color: rgba(255,255,255,0.3) transparent;
+            padding: 10px; color: var(--ba-text); overflow-y: auto; flex-grow: 1; padding-right: 8px;
+            scrollbar-width: thin; scrollbar-color: rgba(18, 138, 250, 0.35) transparent;
         }
+        .scroll-container::-webkit-scrollbar { width: 6px; }
+        .scroll-container::-webkit-scrollbar-thumb { background-color: rgba(18, 138, 250, 0.35); border-radius: 10px; }
 
         /* --- 许愿墙样式 --- */
         .wish-grid {
@@ -295,70 +441,94 @@
             padding-bottom: 20px;
         }
         .wish-card {
-            background: rgba(255, 255, 255, 0.08);
+            background: rgba(255, 255, 255, 0.75);
             border-radius: 12px;
             padding: 15px;
-            border-left: 3px solid #ff4081;
+            border-left: 3px solid var(--ba-pink);
+            box-shadow: 0 4px 12px rgba(30, 80, 160, 0.08);
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             min-height: 100px;
             transition: transform 0.2s;
         }
-        .wish-card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.12); }
+        .wish-card:hover { transform: translateY(-3px); background: rgba(255, 255, 255, 0.95); }
         .wish-text { font-size: 0.95em; margin-bottom: 10px; line-height: 1.5; font-style: italic; }
-        .wish-author { font-size: 0.85em; text-align: right; color: #69f0ae; font-weight: bold; }
+        .wish-author { font-size: 0.85em; text-align: right; color: var(--ba-blue); font-weight: bold; }
 
         /* --- 外部链接样式 --- */
         .links-grid { display: flex; flex-direction: column; gap: 15px; }
         .link-card {
-            background: linear-gradient(90deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));
-            border: 1px solid rgba(255,255,255,0.1);
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.9);
             border-radius: 16px;
             padding: 20px;
             text-decoration: none;
-            color: #fff;
+            color: var(--ba-text);
             display: flex;
             align-items: center;
+            box-shadow: 0 4px 12px rgba(30, 80, 160, 0.08);
             transition: all 0.3s;
         }
-        .link-card:hover { 
-            border-color: #69f0ae; 
-            background: linear-gradient(90deg, rgba(105, 240, 174, 0.1), rgba(105, 240, 174, 0.02));
+        .link-card:hover {
+            border-color: var(--ba-blue);
+            background: rgba(255, 255, 255, 0.95);
             transform: translateX(5px);
         }
         .link-icon { font-size: 24px; margin-right: 15px; }
-        .link-info h3 { font-size: 1.1em; color: #69f0ae; margin-bottom: 5px; }
-        .link-info p { font-size: 0.85em; color: #ccc; }
+        .link-info h3 { font-size: 1.1em; color: var(--ba-blue); margin-bottom: 5px; }
+        .link-info p { font-size: 0.85em; color: var(--ba-text-sub); }
 
         /* --- 规则与通用框 --- */
-        .rules-box { background: rgba(0, 0, 0, 0.2); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #7c4dff; }
-        .rules-box h3 { margin-bottom: 15px; color: #fff; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 10px; }
+        .rules-box { background: rgba(255, 255, 255, 0.65); border-radius: 12px; padding: 20px; margin-bottom: 20px; border-left: 4px solid #7c4dff; box-shadow: 0 4px 12px rgba(30, 80, 160, 0.08); }
+        .rules-box h3 { position: relative; padding-left: 15px; margin-bottom: 15px; color: var(--ba-navy); border-bottom: 1px solid rgba(30, 60, 110, 0.12); padding-bottom: 10px; }
+        /* BA 风格斜切色条标题 */
+        .rules-box h3::before {
+            content: "";
+            position: absolute;
+            left: 0; top: 2px; bottom: 14px;
+            width: 6px;
+            background: linear-gradient(180deg, var(--ba-cyan), var(--ba-blue));
+            transform: skewX(-12deg);
+            border-radius: 2px;
+        }
         .rules-list { padding-left: 20px; line-height: 1.8; }
         .rules-list li { margin-bottom: 8px; }
-        .tip-card { background: rgba(105, 240, 174, 0.1); border: 1px dashed #69f0ae; border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px; margin-top: 30px; }
+        .tip-card { background: rgba(18, 138, 250, 0.08); border: 1px dashed var(--ba-blue); border-radius: 12px; padding: 15px; display: flex; align-items: center; gap: 15px; margin-top: 30px; }
         .tip-icon { font-size: 24px; }
+
+        /* --- 手册页面样式 --- */
+        .hb-box { border-left-color: var(--ba-blue); }
+        .hb-box p { line-height: 1.85; margin-bottom: 10px; }
+        .hb-box h4 { color: var(--ba-navy); margin: 14px 0 8px; font-size: 1.02em; }
+        .hb-red { color: #e02020; font-weight: bold; }
+        .hb-note { font-size: 0.88em; color: var(--ba-text-sub); }
+        .hb-divider { border: none; border-top: 2px dashed rgba(18, 138, 250, 0.35); margin: 25px 0; }
+        .hb-slogan {
+            text-align: center; font-weight: bold; color: #e02020;
+            background: rgba(255, 240, 240, 0.7); border-radius: 10px; padding: 12px; margin-bottom: 15px;
+        }
 
         /* --- 表单样式 --- */
         .audit-form { display: flex; flex-direction: column; gap: 20px; padding-bottom: 20px; }
-        .form-group { background: rgba(255, 255, 255, 0.03); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.05); transition: all 0.3s; }
-        .form-label { display: block; margin-bottom: 10px; font-weight: bold; color: #69f0ae; display: flex; align-items: center; }
+        .form-group { background: rgba(255, 255, 255, 0.6); padding: 15px; border-radius: 12px; border: 1px solid rgba(255, 255, 255, 0.9); box-shadow: 0 4px 12px rgba(30, 80, 160, 0.06); transition: all 0.3s; }
+        .form-label { display: block; margin-bottom: 10px; font-weight: bold; color: var(--ba-blue); display: flex; align-items: center; }
         .required-mark { color: #ff4081; margin-left: 5px; font-size: 1.2em; line-height: 1; }
         .form-input { width: 100%; }
         textarea.form-input { resize: vertical; min-height: 80px; }
         .checkbox-group { display: flex; gap: 15px; flex-wrap: wrap; }
-        .checkbox-label { display: flex; align-items: center; gap: 5px; cursor: pointer; background: rgba(255, 255, 255, 0.1); padding: 8px 12px; border-radius: 8px; transition: background 0.2s; }
-        .checkbox-label:hover { background: rgba(255, 255, 255, 0.2); }
-        .checkbox-label input { accent-color: #69f0ae; }
+        .checkbox-label { display: flex; align-items: center; gap: 5px; cursor: pointer; background: rgba(18, 138, 250, 0.08); padding: 8px 12px; border-radius: 8px; transition: background 0.2s; }
+        .checkbox-label:hover { background: rgba(18, 138, 250, 0.18); }
+        .checkbox-label input { accent-color: var(--ba-blue); }
         .submit-btn {
-            background: linear-gradient(90deg, #69f0ae, #00c853); color: #0f172a; border: none; padding: 15px; font-size: 16px; font-weight: bold;
+            background: linear-gradient(90deg, var(--ba-blue), var(--ba-cyan)); color: #ffffff; border: none; padding: 15px; font-size: 16px; font-weight: bold;
             border-radius: 12px; cursor: pointer; transition: transform 0.2s, box-shadow 0.2s; margin-top: 10px; margin-bottom: 20px;
         }
-        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(105, 240, 174, 0.4); }
+        .submit-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(18, 138, 250, 0.45); }
 
         #toast {
-            visibility: hidden; min-width: 250px; background-color: #333; color: #fff; text-align: center; border-radius: 50px; padding: 16px;
-            position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); box-shadow: 0 5px 15px rgba(0,0,0,0.5); border: 1px solid #69f0ae;
+            visibility: hidden; min-width: 250px; background-color: rgba(255, 255, 255, 0.95); color: var(--ba-navy); text-align: center; border-radius: 50px; padding: 16px;
+            position: fixed; z-index: 1000; left: 50%; bottom: 30px; transform: translateX(-50%); box-shadow: 0 5px 15px rgba(30, 80, 160, 0.3); border: 1px solid var(--ba-blue);
         }
         #toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
         @keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
@@ -367,7 +537,7 @@
         @media screen and (max-width: 768px) {
             body { padding: 10px; }
             .container { padding: 15px; height: 95vh; max-height: none; border-radius: 16px; }
-            
+
             /* 适配手机端按钮大小 */
             .power-save-btn { top: 12px; right: 12px; width: 32px; height: 32px; font-size: 16px; }
 
@@ -381,18 +551,34 @@
             .filters-row { gap: 6px; }
             .dynamic-select { min-width: 28%; padding: 8px 24px 8px 10px; background-position: right 8px center; font-size: 13px; }
             .result-item { padding: 14px; margin-bottom: 10px; }
+            .result-avatar { width: 44px; height: 44px; }
+            .result-row { gap: 10px; }
+            #schale-container svg { width: 80vw; }
+            #peroroPeek { width: 32vw; right: 2vw; }
+            .halo { width: 90px; top: -14px; }
+            .title-sub { letter-spacing: 5px; }
         }
     </style>
 </head>
 <body>
 
+    <canvas id="bgCanvas"></canvas>
+
+    <div id="schale-container">
+        <svg version="1.1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 506.6 721.8" xml:space="preserve">
+            <path class="st0" d="M506.6,126.8h-36L377,152l32.1,67.7l18,27.2L506.6,126.8z M427.1,0h-36l-51.5,66.7L470.6,120h36L427.1,0z M86.6,481.8L135.3,680l216.2-78.2l-13-30H182.1l-77.6-117.2L86.6,481.8z M495.7,574.6L337.1,334.9l-18,27.2l2,181.9l156.7,57.8L495.7,574.6z M176.8,92.8l-18,27.2l24.9,214.9l131.2,20.8l18-27.2L176.8,92.8z"/>
+            <path class="st1" d="M470.6,120H0L79.4,0h311.8L470.6,120z M311.7,126.8l79.4,120l79.4-120L311.7,126.8z M239.7,482.1l79.2,119.7H166l-79.4-120l-79.4,120l79.4,120h311.8l79.4-120L319.1,362.1L239.7,482.1z M314.9,355.8L158.9,120L79.4,240l156,235.7L314.9,355.8z"/>
+        </svg>
+    </div>
+
     <div class="container">
         <button id="powerSaveBtn" class="power-save-btn" title="切换极简模式 (降低发热)">🔋</button>
 
-        <h2 id="mainTitle">⚡ 佩洛洛菜单</h2>
-        
+        <h2 id="mainTitle"><svg class="halo" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="20" rx="52" ry="13"/></svg>⚡ 佩洛洛菜单<span class="title-sub">PERORO MENU</span></h2>
+
         <div class="nav-tabs">
             <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 公告</button>
+            <button class="nav-btn" onclick="switchPage('handbookPage', this)">📖 手册</button>
             <button class="nav-btn" onclick="switchPage('searchPage', this)">🔍 查阅</button>
             <button class="nav-btn" onclick="switchPage('auditPage', this)">📝 审核</button>
             <button class="nav-btn" onclick="switchPage('wishPage', this)">🌟 许愿墙</button>
@@ -446,9 +632,215 @@
             </div>
         </div>
 
+        <div id="handbookPage" class="page-content">
+            <div class="scroll-container">
+
+                <div class="rules-box hb-box">
+                    <h3>💌 一封致全体同学的信</h3>
+                    <p>呀吼~☆各位新同学大家好，欢迎来到佩洛洛语妙妙屋！这里有着十分欢乐的氛围与各位优秀的同学们，欢迎所有友好的同学加入和我们一起享受语C文爱。下面，就让我来为各位新同学介绍一下我们群的各种区域和同学们可以享受到的玩法，帮助各位有语C经验和没有语C经验的同学尽快加入到我们的行列里一起玩耍。</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🏠 佩洛洛妙妙屋</h3>
+                    <p>在通过审核之后会有管理邀请你入群。这里就是主群啦，是主要的语C场所，你可以在这里皮上自己喜爱的学生，和大家一起聊天和享受语C，我们群的同学都非常有趣和友善，即便没有语C经验也可以在大家的帮助下快速进入状态，我们保证你一定可以在这里交到非常棒的朋友。当然，我们群既然是语C文爱群，那么你也可以礼貌地去主动邀请其他同学进行对戏，在妙妙屋网站中记录着大家的各种信息（xp，雷区，对戏长度等等），在邀请其他同学对戏时可以先查阅下档案里各位同学的信息，来满足各自xp同时避免踩雷。如果说有同学向你提出对戏邀请时你不方便或者不愿意，请一定要<span class="hb-red">明确拒绝！</span></p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🛁 佩洛洛休闲水疗部</h3>
+                    <p>在通过审核之后会有管理邀请你入群。水疗群顾名思义是同学们下皮聊天、互相发布瑟图进行交流的地方，如果你平时想要一些壁纸，头像，表情包之类的资源时，也可以到瑟图群进行查找或者向其他同学礼貌询问。另外，在水疗群也要注意聊天的规范，避免一些不礼貌的行为哦。</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🌾 佩洛洛地下粮仓</h3>
+                    <p>在通过审核之后会有管理邀请你入群，这里是和主群同样重要的地方！（一定要加！）和每个语C群一样，粮仓用于储存大家对戏后的记录，不管是正戏还是h戏都可以以聊天记录转发的形式发送到这里。在这里，你可以在群文件里欣赏到整理好的群内同学们的对戏，或者在其他同学的对戏中进行语C或文爱水平的学习。另外，我们还在粮仓内设立了古书馆，用于容纳各种优质的ba同人创作，欢迎新同学在这里进行分享！</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>⚔️ 佩洛洛勇者部</h3>
+                    <p>你可以通过主群公告中的群号进入这个群，这里是我们举行群戏与各种活动，游玩小游戏的地方，同时，如果想要和群友交流游戏，或者邀约开黑，也可以来这里！我们会不定期地举办各种瑟瑟或非瑟瑟的群戏，或者也会举办小到海龟汤，大到国战，跑团等各种活动，欢迎感兴趣的同学积极参与到我们的活动中玩耍哦。</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🏛️ 学生会</h3>
+                    <p>部长和各位管理员所在的地方，主要是讨论和管理群内各种事务，和策划活动，发展此群的地方。如果同学们有什么想提的意见，想玩的活动，或者在群内遇到什么不懂的或者麻烦，都可以告诉我们，我们致力于服务好每一位同学，以保证大家都能开心的玩耍。重要的是，如有空缺，我们将于月中招募新的“值日生”来参加到我们的管理任务中，在给管理们放假的同时，也可以保证更加贴近民意，满足大家当管理的体验。希望有兴趣或者有能力的同学<span class="hb-red">积极报名哦！！！</span></p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <p>以上就是本群的主要内容啦，当然有趣的还不止这些，新同学们可以亲自体验和享受，部长要代表大家给新同学们送上一句话，“我们群是积极向上，阳光欢乐的蔚蓝档案主题语C文爱部，大家都能开心满足地互相玩耍或涩涩是我们的宗旨”，愿新同学能放下烦恼和负担，和我们一起好好享受吧！</p>
+                    <p>接下来，是详细的规定与说明，请继续下翻阅览。</p>
+                </div>
+
+                <hr class="hb-divider">
+
+                <div class="rules-box hb-box">
+                    <h3>📚 语C教育手册</h3>
+                    <p>在了解所有内容前依旧还是重复一遍我们的口号：</p>
+                    <p class="hb-slogan">我们部是积极向上，阳光欢乐的蔚蓝档案语C文爱部，快乐地瑟瑟是我们活动宗旨！</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>❓ 什么是语C</h3>
+                    <p>语C，意为语言Cosplay，本质上是一种扮演，即在聊天中模仿自己所扮演的角色的语气，在括号中以各种手法描写动作，最终达到以半小说的方式来表达出这个角色的动作，语言等。</p>
+                    <h4>通俗概括</h4>
+                    <p>在聊天中模仿角色语气，以括号中的描述体现角色动作，以场景不同随机应变，在聊天中与其他人的模仿角色进行聊天，互动。</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>📖 语C相关名词</h3>
+                    <ul class="rules-list">
+                        <li><strong>皮：</strong>所扮演角色。</li>
+                        <li><strong>下皮：</strong>指进行三次元本人的发言时，带上“/（）.b”等后缀的行为。</li>
+                        <li><strong>皮力：</strong>形容模仿所皮角色是否相像的词汇。</li>
+                        <li><strong>OOC：</strong>角色崩坏，即做出与角色性格不符的行为和发言。</li>
+                        <li><strong>控戏：</strong>无视他人的暗示或明示，控制戏的发展，只按照自己的意愿推演剧情。</li>
+                        <li><strong>一设：</strong>官方的角色设定。</li>
+                        <li><strong>二设：</strong>玩家社区所衍生出的相关设定。</li>
+                        <li><strong>剧情：</strong>一般指对戏前事先预定好内容的行为。</li>
+                    </ul>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🎭 语C基础素质</h3>
+                    <p>扮演好所皮角色是语C的基础素质，BA中的每个学生都是独一无二的存在，都有其独特的闪光点和具有个性的性格，同学们在进行语C时，请尊重原作，合理发挥。从基础角度来说也需要做到以下事情。</p>
+                    <h4>3.1 了解角色性格，知道自己所扮演的学生究竟是怎样的人。</h4>
+                    <p>例：黑见芹香，傲娇猫猫，有少女心思，为了阿拜多斯一人打多份工，是个要强的孩子，但内心却有关心人的温柔。</p>
+                    <h4>3.2 对自己所扮演角色负责，不凸显刻板印象，合适合理发挥角色性格。</h4>
+                    <p>既然选择了角色，便要对角色负责，不能将刻板印象成为主观印象，如未花的怪力少女、渚的塞瑞士卷、真琴的猴王。以上的那些只是角色的一个侧面性格，绝对不代表全部。对于角色性格以及特点的体现可以适量优化，但不能不知所谓。</p>
+                    <h4>3.3 分清角色的一设二设，合理使用，不要入脑。</h4>
+                    <p>例：砂狼白子，二设为狂暴雷普狼，但这只是二设，在对戏中如果当作一设使用，则构成了角色崩坏，还会影响同学们的对戏体验。</p>
+                    <h4>3.4 遵守群规和礼仪，不控戏不毁戏，理性理智。</h4>
+                    <p>同学们请记住，语C作为一种多人的娱乐，归根结底是“我”陪大家一起娱乐，而不是大家陪“我”一起娱乐，想享受“主角”一样的待遇，以自我为中心等都是错误的想法</p>
+                    <p>至于对自己皮力没有自信的同学和想要提升皮力的同学，我们鼓励在群中多作扮演和聊天，同学们绝对不会冷眼以待的。</p>
+                    <p>此外，本群也并非禁止使用二设，只是杜绝二设入脑。</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🤝 语C聊天礼仪</h3>
+                    <p>同学们无论是在皮上发言还是在皮下发言，都请注意礼貌发言，礼仪待人。</p>
+                    <p>同时遵守礼仪也是本群的规则，请同学们不要违背礼仪。</p>
+                    <h4>4.1 违反本群礼仪的行为如下：</h4>
+                    <p><span class="hb-red">引战</span>，<span class="hb-red">涉政</span>，控戏，<span class="hb-red">严重OOC</span>，抽象，KY，小团体，争论战力，关系绑定，骚扰，涉G，强度拉踩，人身攻击，真人代入，<span class="hb-red">自我中心</span>，<span class="hb-red">二设入脑</span>，恶意迫害同学，<span class="hb-red">散播负能量</span>，不利于群内同学们和谐的话，将本人对一些角色的恶意代入皮。</p>
+                    <p class="hb-note"><span class="hb-red">标红</span>的是恶劣行为，如果触犯容易被直接警告。</p>
+                    <h4>关于违规的处罚</h4>
+                    <p>提醒2次=1次警告，第二次警告按照严重程度禁言，第三次踢出。情节严重者将直接清退处置。</p>
+                    <h4>4.2 关系与言语</h4>
+                    <p>同学们所皮的角色，可能会与其他角色发生关系与冲突，可能是学校、部活之间，也可能是个人之间，这很正常，但请适可而止和保持理性。</p>
+                    <p>此外，过激的话语很可能会透过所皮的角色，对对方皮下造成伤害与不适。</p>
+                    <p>礼貌交往，适度玩笑是语C还是普通群乃至于是现实都要遵守的条例，这样才能实现同学们都能愉快游玩的良好环境。</p>
+                    <h4>附项：关于绑定</h4>
+                    <p>同学间在交往中定然会产生关系，但是，请不要在公屏中表现出对某位同学过分的占有欲。绑定，便是在过分占有欲中所表现出的极端行为，单听名字就知道，绑定就是把某位同学跟自己绑定在一起，营造出“非她不可”的唯一感。这对小屋来说是非常不好的行为，每个人都是独立的个体，请尊重这里的同学，这样别人才能尊重你</p>
+                    <h4>4.3 日常与瑟瑟</h4>
+                    <p>本部是语C与文爱共存的场所，所以希望同学们尊重自己所皮的角色，喜欢瑟瑟的同学们和喜欢日常的同学们也请互相包容，好好相处。</p>
+                    <h4>4.4 关于水聊群的聊天规范</h4>
+                    <p>水聊群——顾名思义，是可以下皮聊很多包括但不限于BA内容的地方。但即使如此，在和大家的互动中，同学们也需要注意自己的形象。</p>
+                    <p>而为了保护大家的安全，维护聊天秩序，烦请大家的聊天尽可能不要涉及涉三内容，例如：</p>
+                    <p>①照片：任何真人照/Cosplay照与会暴露个人隐私的风景照/食物照。<br>
+                    ②涉及政治/涉及宗教信仰的内容。<br>
+                    ③个人信息：如住址/身高/体重/性别/年龄等。<br>
+                    ④关于学校/工作/生活上的各类信息：如成绩/学历/工作内容/工资/旅游/出行安排/所在地址等。但是可以通过半上皮的方式说出来一小部分，比如“我去九寨沟旅游了”，可以批皮替换成“我去山海经看风景了”。</p>
+                    <p>除上以外，以下内容的话语也需要注意：</p>
+                    <p>①任何可能引战的话题，切勿拉踩。<br>
+                    ②倒垃圾，倒苦水等宣泄负能量的言语。<br>
+                    ③对皮套或某同学的刻板印象。产粮与日常不同，大家不要跳脸其他同学。而同学们也要注意自己的言语可能影响她人对你的印象。<br>
+                    ④尽量少在聊天中提到成员的圈名，以免不知道的人根本不明白是在指谁。<br>
+                    ⑤公屏未搭上戏，被突然进行涩涩行为的人；或者小窗遭遇不礼貌的骚扰，拒绝无效的人。心里感觉不适，可以向管理员举报<br>
+                    ⑥不得在本部进行挖人行为（指带人退群去其他社团），违者踢出。也尽量少在本群内讨论其他社团，过多会遭到警告。<br>
+                    ⑦私下开群请和管理进行报备<br>
+                    ⑧管理员也是群友，并无责任与义务承担毫无根据的负面情绪与恶意，请不要过度打扰管理员。</p>
+                    <h4>4.5 关于主群的聊天规范</h4>
+                    <p>主群是要求任何时刻都完全上皮的地方，请在主群扮演角色时遵守以下规则：</p>
+                    <p>①请勿在主群使用其他剧组的表情包。<br>
+                    ②请勿在主群过于OOC，亦或者说进行和自己写的皮解完全不同的扮演。<br>
+                    ③主群可以瑟瑟，但是请学会读空气，并不是所有人都喜欢在对正戏的群戏的时候被突然插入色戏。</p>
+                    <p>如果某一位成员收到过不少关于OOC的投诉、亦或者在管理们判断不合适的情况下会由管理进行提醒，如果提醒无效会被强制下皮。</p>
+                    <p>最后，希望同学们多多体谅她人，读空气，做一个好孩子，哪些话题可以说，哪些话题不可以说，心里要有个底。</p>
+                    <p>如果认为群聊天内容不当的话，请立刻召唤管理员吧！</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>📋 补充说明</h3>
+                    <p>首先，需要知道的是，学生会的管理与同学们拥有的是同等的权力，并无特权。</p>
+                    <p>管理员们拥有对规则的最终解释权，但并不归于特权内，对于规则不明朗部分的所有执行方式管理们会在遵守现有规则的情况下遵循一个“劝善，柔和，方便群友”的方式来进行解释，而不会刻意在遇到没有写在规则内的问题时为难任何一位群友。</p>
+                    <h4>5.1 关于犯错：</h4>
+                    <p>关于本群的规则和违反规则的处理，有在群规中记录。</p>
+                    <p>对于犯错的同学，学生会并非会严苛对待，劝善才是目的，但道歉和当事人原谅并不是问题的结束，希望同学们在道歉后能认识到自己的错误并加以改正，不要犯下同样的错误。</p>
+                    <p>而对于多次犯错的同学和屡教不改的同学，学生会则会严肃处理，还请理解。</p>
+                    <h4>5.2 关于涉三：</h4>
+                    <p>同学们在一些话题中，或多或少的会主动分享自己在现实之中的一些或愉快或难过或是平常事的事情，这也是社交的一环，但是，不论水疗还是主群，关于涉三其实都是不赞同的，还是希望大家尽可能少涉三乃至于不涉三，一起愉悦游玩。</p>
+                    <h4>5.3 关于三忙：</h4>
+                    <p>简而概述，三忙是指因三次元中的事情过于繁忙而无暇达成本部的活跃指标，于情于理的情况下设定的“免死金牌”。</p>
+                    <p>挂上三忙牌子需要与通知管理，挂上三忙，该同学所皮角色相当于让出，可以被其他同学所皮，且三忙期限结束时如果原皮被占则需要写皮解选新皮。如果三忙回归时原本的皮没有被占，则不可以另选新皮。如回归时正处于换皮期，并且原皮没有被占，想要换皮的情况下可以省略掉下掉三忙时原本的换回原皮的步骤直接申请换皮。</p>
+                    <p>三忙期结束时也请告知管理，以免出现皮表中本角色的皮依旧空置的状态。</p>
+                    <p>为了避免换皮期前下掉三忙几天再次挂上占皮的问题，三忙的期限最短持续到下个换皮期。</p>
+                    <p>三忙期间禁止主群、限制水群发言，请将时间用在更重要的地方，过多发言的情况下可能会被禁言到规定的最短三忙期结束，当然接受私下的说明，如果管理们认为的确是忙碌期提前结束，那么也可以提前下掉三忙。</p>
+                    <p>擅自挂三忙、三忙期间违规等行为会酌情着重处罚。</p>
+                    <p>为了避免重皮现象，三忙期间如果想要继续在水群活跃需要将群昵称改为任意形式的“杂鱼酱”，下皮期间不要求头像，但是依旧按照三忙要求减少三忙期间活跃。</p>
+                    <h4>5.4 关于皮力：</h4>
+                    <p>同学们对于自己所扮演的角色或多或少都会有着属于自己的理解，或许这些理解会让自己的角色表现上有些与原作对应不上，但是在原作的基础上合理延伸，合理发挥，也是本部的一环，也就是说，部分OOC在允许的范围之内。</p>
+                    <p>但是，严重OOC，仍是禁止的事项。</p>
+                    <h4>5.5 关于散播负能量：</h4>
+                    <p>情绪的爆发在所难免，只是请别在公屏爆发，本部是愉快瑟瑟的场所，不是垃圾桶。有问题的话，管理会倾听，但也不要将管理当作垃圾桶。谢谢配合。</p>
+                    <h4>5.6 关于退群：</h4>
+                    <p>退群需要提前告知管理，一声不吭的退群往往会带来麻烦，其中也包括那些赌气退群的行为。对于这种行为，只会允许两次，第三次便不会让回来了。</p>
+                    <h4>5.7 关于产粮：</h4>
+                    <p>本部是和谐的地方，愉快的瑟瑟是本部的宗旨，所以希望XP相同的同学一起玩的开心，XP不同的同学相互理解，不跳脸不引战。</p>
+                    <p>在粮仓发粮时必须标注上【Tag】和【产粮】，其中Tag是为了提醒大家不要误入，存在XP冲突的同学在吃粮前请注意，Tag已经提醒你了，所以看到不喜欢的粮也不要公开指责。</p>
+                    <p>而粮仓只能发自己目前所皮的角色所产的粮，若是换皮，则在三天换皮期之内允许发上个皮所产的粮，之后可以发出，但是仅作收录，不会算作产粮。</p>
+                    <h4>5.8 关于对戏：</h4>
+                    <p>明确拒绝不想对的戏是基本要求，本部是愉快瑟瑟的地方，不愉快的瑟瑟是对难受的那一方的冒犯。如果不好意思说的话，可以先选择不回复对方，去找任意一位管理转达。不要因为对方是管理乃至是群主就不好意思乃至说不敢拒绝，管理们会妥善处理你的诉求，请放心。而关于对戏的长短，无论是句段或是屏，只要玩的开心就行，无需在意太多，把自己心意投入进去，文字便会有了温度。</p>
+                    <p>在主群对戏时，尽量使用自己的皮进行对戏，而不是其他。若有个人需要，可申请以临时皮进行对戏，细则参考主群公告。</p>
+                    <p>在对戏时尊重同学意愿，发粮时必须参与方都同意。</p>
+                    <p>特殊情况请申请，如行为上的不妥被指出请及时改正。</p>
+                    <h4>5.9 关于重口：</h4>
+                    <p>18-G的粮需要着重标出，且在公屏不允许谈论涉及G向内容，具体的限度由在场的学生会成员判断，如有过线会踩刹车的。喜欢G向内容的同学可以跟同好小窗私聊，<span class="hb-red">那种东西小范围享受就可以了</span>。</p>
+                    <p>不喜欢G向内容的同学看到Tag后完全可以不去看，人各有所异，不要忘了每个所在这里的学生都是活生生的人，无论是施虐方还是受虐方，都是个人自己的意愿。</p>
+                    <h4>5.10 关于活跃度考核</h4>
+                    <p>因为本群不能重皮，为了保证大家多数情况下都能和喜欢的角色互动、抑或是皮自己想要皮的角色，主群每个月都会进行活跃度考核以保证在皮上的人有足够的活跃。目前的考核要求为每个月产出一篇粮（具体要求见粮仓公告）。</p>
+                    <p>月底换皮期到来时，未满足活跃度要求的同学所皮角色将会对新人与群内成员开放换皮，若在上个月也未产粮，则在换皮期外也可被新人或三忙回归的同学顶皮。如遇到被人顶皮的情况，本人可选择三忙或换成其它皮。简单来说就是不产粮的话就会有失去皮的危险期哦！还请多多注意。</p>
+                    <p>另外，未产粮的同学进行换皮时也无法占其它未产粮同学的皮，所以如果想要更自由地选择角色的话也请加油产粮哦。</p>
+                    <p>每月活跃度检查的期限也是换皮期开始，即每月月末最后三天发的粮不计入活跃。</p>
+                    <h4>5.11 关于投诉与处理</h4>
+                    <p>如果对于群内情况有什么不满的话可以通过联系管理/使用水群公告内链接的方式来表达，请不要在群内直接进行言语上的冲突，如果学生会接到了投诉后经过讨论发现的确有这方面的问题，会进行相应的对策（例如整改、提醒、警告等），并将处理结果反馈给投诉人，还请信任我们。</p>
+                </div>
+
+                <div class="rules-box hb-box">
+                    <h3>🎪 特殊活动</h3>
+                    <h4>6.1 换皮</h4>
+                    <p>在每月月末最后三天到次月的3号为止，会有一场换皮活动，此时想要换皮的同学需要写出所换角色的皮解提交给任意管理。</p>
+                    <p>提交皮解可于月月末最后三天的零点开始进行，提交后会立即更新皮表信息，有心仪的皮还请行动快一些哦！</p>
+                    <p>可以换皮的对象为：空皮或截至当月换皮期开始前未产粮且不是新人的同学的皮。</p>
+                    <p>注意：提交了皮解不代表可以立刻开始换皮，要到次月1号0点才可以开始换皮。</p>
+                    <p>以下为皮解具体问题：</p>
+                    <ul class="rules-list">
+                        <li>简单介绍一下你想要皮的这个角色吧。</li>
+                        <li>和我们聊一聊你喜欢她的原因？在剧情和角色上是如何表现出来的。</li>
+                        <li>你认为扮演好她需要注意哪些方面？并且如何与群内的同学们相处。</li>
+                    </ul>
+                    <p>换皮将会从1号持续到3号，在这三天内若觉得不适应新皮可以换回去，一旦过了3号，就不能再换皮了。</p>
+                    <p>进入本部不超过三天的新生，倘若觉得当前角色不适应或发现了想要扮演的学生，则可以进行一次换皮，新生换皮依旧需要向管理提交皮解。</p>
+                    <h4>6.2 活动</h4>
+                    <p>不定期组织各种或正经或涩涩的活动，届时会有公告详细介绍。</p>
+                    <h4>6.3 请假</h4>
+                    <p>参加了活动的同学若有特殊原因而导致将会缺席，需要向组织活动的管理说明。</p>
+                    <p>若是未请假而缺席活动的次数达到三次，则会列入活动黑名单，以后不得参加活动。</p>
+                </div>
+
+                <div class="tip-card">
+                    <span class="tip-icon">🎉</span>
+                    <div class="tip-text">最后，祝同学们玩的开心｡:.ﾟヽ(*´∀`)ﾉﾟ.:｡</div>
+                </div>
+
+                <div class="rules-box hb-box" style="margin-top:20px;">
+                    <h3>🗒️ 更新笔记10.0</h3>
+                    <p>更新了活跃，换皮相关规定</p>
+                </div>
+
+            </div>
+        </div>
+
         <div id="wishPage" class="page-content">
             <div class="scroll-container">
-                <h3 style="margin-bottom:20px; text-align:center; color:#ffd700;">✨ 大家的愿望 ✨</h3>
+                <h3 style="margin-bottom:20px; text-align:center; color:#d4a017;">✨ 大家的愿望 ✨</h3>
                 <div id="wishContainer" class="wish-grid">
                     </div>
             </div>
@@ -509,7 +901,7 @@
                         <label class="form-label">5. 语c文爱生涯/经验？<span class="required-mark">*</span></label>
                         <input type="text" id="q5" class="form-input" placeholder="例如：2年，经验丰富...">
                     </div>
-                    
+
                     <div class="form-group" id="group-q6-reason">
                         <label class="form-label">6. 选角原因<span class="required-mark">*</span></label>
                         <textarea id="q6_reason" class="form-input" rows="3" placeholder="你想要扮演这个角色的原因是什么？"></textarea>
@@ -528,24 +920,220 @@
                         <label class="form-label">9. 自戏 (200字以上)<span class="required-mark">*</span></label>
                         <textarea id="q7" class="form-input" rows="6" placeholder="请在此处输入自戏内容 (禁止与管理对戏选项)..."></textarea>
                     </div>
-                    
+
                     <button class="submit-btn" onclick="copyAuditForm()">📋 生成并复制审核单</button>
                 </div>
             </div>
         </div>
     </div>
 
+    <img id="peroroPeek" src="assets/peroro.png" alt="佩洛洛">
+
     <div id="toast"></div>
 
     <script>
+        // --- 0. 背景动画（来自 Wallpaper Engine 壁纸素材：网格 + 三角闪烁） ---
+        const bgCanvas = document.getElementById('bgCanvas');
+        const bgCtx = bgCanvas.getContext('2d');
+        let bgAnimId = null;
+
+        const GridModule = (function(){
+            const GRID = {
+                cell: 200, smallGap: 20, lineWidth: 1,
+                color: 'rgba(255, 255, 255, 0.65)',
+                plusColor: 'rgba(255, 255, 255, 0.65)',
+                plusSize: 6, plusLineWidth: 2
+            };
+            function draw(ctx){
+                const cw = window.innerWidth, ch = window.innerHeight;
+                const cell = GRID.cell, gap = GRID.smallGap, halfGap = gap * 0.5;
+                const centerX = cw * 0.5, centerY = ch * 0.5;
+                const offsetX = centerX - Math.floor(centerX / cell + 0.5) * cell;
+                const offsetY = centerY - Math.floor(centerY / cell + 0.5) * cell;
+                ctx.save();
+                ctx.lineWidth = GRID.lineWidth;
+                ctx.strokeStyle = GRID.color;
+                ctx.beginPath();
+                const kxStart = Math.floor((0 - offsetX) / cell) - 1;
+                const kxEnd = Math.ceil((cw - offsetX) / cell) + 1;
+                for(let kx = kxStart; kx <= kxEnd; kx++){
+                    const x = offsetX + kx * cell;
+                    ctx.moveTo(x + 0.5, 0.5); ctx.lineTo(x + 0.5, ch + 0.5);
+                }
+                ctx.stroke();
+                ctx.beginPath();
+                const kyStart = Math.floor((0 - offsetY) / cell) - 1;
+                const kyEnd = Math.ceil((ch - offsetY) / cell) + 1;
+                for(let ky = kyStart; ky <= kyEnd; ky++){
+                    const y = offsetY + ky * cell;
+                    ctx.moveTo(0.5, y + 0.5); ctx.lineTo(cw + 0.5, y + 0.5);
+                }
+                ctx.stroke();
+                ctx.lineWidth = GRID.plusLineWidth;
+                ctx.strokeStyle = GRID.plusColor;
+                for(let kx = kxStart; kx <= kxEnd; kx++){
+                    const gx = offsetX + kx * cell;
+                    for(let ky = kyStart; ky <= kyEnd; ky++){
+                        const gy = offsetY + ky * cell;
+                        if(gx < -cell || gx > cw + cell || gy < -cell || gy > ch + cell) continue;
+                        if(((kx + ky) & 1) !== 1) continue;
+                        const clearX = Math.round(gx - halfGap) + 0.5;
+                        const clearY = Math.round(gy - halfGap) + 0.5;
+                        ctx.clearRect(clearX, clearY, gap, gap);
+                        const s = Math.min(GRID.plusSize, Math.max(0, (gap / 2) - 1));
+                        if(s > 0){
+                            ctx.beginPath();
+                            ctx.moveTo(gx - s + 0.5, gy + 0.5); ctx.lineTo(gx + s + 0.5, gy + 0.5);
+                            ctx.moveTo(gx + 0.5, gy - s + 0.5); ctx.lineTo(gx + 0.5, gy + s + 0.5);
+                            ctx.stroke();
+                        }
+                    }
+                }
+                ctx.restore();
+            }
+            return { draw, GRID };
+        })();
+
+        const TriangleModule = (function(){
+            const DEFAULT = { cell: 200, triangleGap: 30, opacities: [0.28,0.18,0.1], interval: 2000, fadeDuration: 600, zeroFraction: 0.75 };
+            let cache = null;
+            function ensureCache(cw, ch, cell){
+                if(!cache) cache = { w: cw, h: ch, cell: cell, data: {}, lastUpdate: 0, interval: DEFAULT.interval, fadeDuration: DEFAULT.fadeDuration, zeroFraction: DEFAULT.zeroFraction };
+                if(cache.w !== cw || cache.h !== ch || cache.cell !== cell){ cache.w = cw; cache.h = ch; cache.cell = cell; cache.data = {}; }
+                return cache;
+            }
+            function refreshTargets(keys, now){
+                const total = keys.length;
+                const numZeros = Math.round(Math.max(0, Math.min(1, cache.zeroFraction||0)) * total);
+                const idx = keys.slice();
+                for(let i=idx.length-1;i>0;i--){ const j = Math.floor(Math.random()*(i+1)); const t = idx[i]; idx[i]=idx[j]; idx[j]=t; }
+                const zeros = new Set(idx.slice(0, numZeros));
+                for(const key of keys){
+                    if(!(key in cache.data)) cache.data[key] = { current: 0, target: null, lastChange: now };
+                    const obj = cache.data[key];
+                    const newTarget = zeros.has(key) ? 0 : DEFAULT.opacities[Math.floor(Math.random()*DEFAULT.opacities.length)];
+                    if(newTarget !== obj.target){ obj.target = newTarget; obj.lastChange = now; }
+                }
+            }
+            function getOpacityFor(key, now){
+                if(!(key in cache.data)) cache.data[key] = { current: 0, target: null, lastChange: now };
+                const obj = cache.data[key];
+                const elapsed = now - obj.lastChange;
+                const dur = Math.max(1, cache.fadeDuration||DEFAULT.fadeDuration);
+                const t = Math.min(1, elapsed / dur);
+                const opacity = obj.current + ((obj.target||0) - obj.current) * t;
+                if(t >= 1) obj.current = obj.target||0;
+                return opacity;
+            }
+            function drawCell(ctx, x, y, cell, h, gap, opacity){
+                if(!opacity || opacity <= 0) return;
+                ctx.fillStyle = `rgba(255,255,255,${opacity})`;
+                const shrink = gap / 2;
+                const half = cell/2;
+                const p = Math.min(0.45, shrink / Math.max(1, half));
+                const cxTop = x + cell/2 + 0.5, cyTop = y - h + 0.5;
+                const cxLeft = x + 0.5, cxRight = x + cell + 0.5, cyBase = y + 0.5;
+                const gx = (cxTop + cxLeft + cxRight) / 3;
+                const gy = (cyTop + cyBase + cyBase) / 3;
+                ctx.beginPath();
+                ctx.moveTo(cxTop + (gx - cxTop) * p, cyTop + (gy - cyTop) * p);
+                ctx.lineTo(cxLeft + (gx - cxLeft) * p, cyBase + (gy - cyBase) * p);
+                ctx.lineTo(cxRight + (gx - cxRight) * p, cyBase + (gy - cyBase) * p);
+                ctx.closePath(); ctx.fill();
+                const cyTopDown = y + h + 0.5;
+                const gyDown = (cyTopDown + cyBase + cyBase) / 3;
+                ctx.beginPath();
+                ctx.moveTo(cxTop + (gx - cxTop) * p, cyTopDown + (gyDown - cyTopDown) * p);
+                ctx.lineTo(cxLeft + (gx - cxLeft) * p, cyBase + (gyDown - cyBase) * p);
+                ctx.lineTo(cxRight + (gx - cxRight) * p, cyBase + (gyDown - cyBase) * p);
+                ctx.closePath(); ctx.fill();
+            }
+            function drawTiledTriangles(ctx){
+                const cw = window.innerWidth, ch = window.innerHeight;
+                const cell = GridModule.GRID.cell;
+                const h = cell * Math.sqrt(3)/2; const gap = DEFAULT.triangleGap;
+                const countX = Math.floor(cw / cell); const startX = (cw - countX*cell)/2;
+                const countY = Math.floor(ch / h); const startY = (ch - countY*h)/2;
+                ensureCache(cw, ch, cell);
+                const now = performance.now();
+                if(cache.interval !== 0 && ((now - cache.lastUpdate) >= cache.interval)){
+                    cache.lastUpdate = now;
+                    const keys = [];
+                    for(let r=-1;r<=countY+1;r++) for(let c=-1;c<=countX+1;c++) keys.push(r+':'+c);
+                    refreshTargets(keys, now);
+                }
+                ctx.save();
+                for(let r=-1;r<=countY+1;r++){
+                    const y = startY + r*h; const rowOffset = (r%2===0)?0:cell/2;
+                    for(let c=-1;c<=countX+1;c++){
+                        const x = startX + c*cell + rowOffset;
+                        const opacity = getOpacityFor(r+':'+c, now);
+                        drawCell(ctx, x, y, cell, h, gap, opacity);
+                    }
+                }
+                ctx.restore();
+            }
+            return { drawTiledTriangles };
+        })();
+
+        function sizeBgCanvas(){
+            const dpr = window.devicePixelRatio || 1;
+            bgCanvas.style.width = window.innerWidth + 'px';
+            bgCanvas.style.height = window.innerHeight + 'px';
+            bgCanvas.width = Math.round(window.innerWidth * dpr);
+            bgCanvas.height = Math.round(window.innerHeight * dpr);
+            bgCtx.setTransform(dpr,0,0,dpr,0,0);
+        }
+        function bgLoop(){
+            bgCtx.clearRect(0,0,bgCanvas.width,bgCanvas.height);
+            GridModule.draw(bgCtx);
+            TriangleModule.drawTiledTriangles(bgCtx);
+            bgAnimId = requestAnimationFrame(bgLoop);
+        }
+        function startBgAnim(){
+            if(bgAnimId === null){ sizeBgCanvas(); bgAnimId = requestAnimationFrame(bgLoop); }
+        }
+        function stopBgAnim(){
+            if(bgAnimId !== null){ cancelAnimationFrame(bgAnimId); bgAnimId = null; }
+        }
+        window.addEventListener('resize', () => { if(bgAnimId !== null) sizeBgCanvas(); });
+
         // --- 1. 配置区域 ---
         const filtersConfig = [
             { id: 'school', label: '学院' },
             { id: 'length', label: '长度' },
             { id: 'tendency', label: '倾向' },
-            { id: 'content', label: '粮草' } 
+            { id: 'content', label: '粮草' }
         ];
-        let database = {}; 
+        // 学院名 → 校徽图标映射（图标来自 SchaleDB 游戏素材）
+        const SCHOOL_ICON_MAP = [
+            ['阿拜多斯', 'ABYDOS'], ['千年', 'MILLENNIUM'], ['格黑娜', 'GEHENNA'],
+            ['圣三一', 'TRINITY'], ['百鬼夜行', 'HYAKKIYAKO'], ['山海经', 'SHANHAIJING'],
+            ['赤冬', 'REDWINTER'], ['SRT', 'SRT'], ['瓦尔基里', 'VALKYRIE'],
+            ['阿里乌斯', 'ARIUS'], ['联邦学生会', 'ETC'], ['狂猎', 'ETC'],
+            ['海兰德', 'ETC'], ['克罗诺斯', 'ETC'], ['十字神明', 'ETC'],
+            ['七囚人', 'ETC'], ['什亭之匣', 'ETC']
+        ];
+        function schoolIconFor(val) {
+            if (!val) return null;
+            for (const [prefix, file] of SCHOOL_ICON_MAP) {
+                if (val.startsWith(prefix)) return 'assets/school_' + file + '.png';
+            }
+            return 'assets/school_ETC.png';
+        }
+
+        // 角色名 → 学生头像 ID 映射（头像来自 SchaleDB 游戏素材，NPC/未实装角色使用佩洛洛占位）
+        const CHAR_AVATAR = {"妮可":10139,"胡桃":10140,"月雪 宫子":10038,"空井 咲":20014,"霞泽 美游":10039,"风仓 萌绘":20018,"狐坂 若藻":10033,"一之濑 明日奈":16001,"室笠 茜":13000,"角楯 花凛":20001,"飞鸟马 时":10062,"乙花 堇":10012,"猫冢 响":20000,"白石 歌原":23004,"天童 爱丽丝":10015,"才羽 桃井":13011,"才羽 绿":10016,"花冈 柚子":10018,"和泉元 艾米":10001,"明星 日鞠":20020,"各务 千寻":20013,"小涂 真纪":10007,"小钩 晴":23003,"音濑 小玉":26001,"早濑 优香":13010,"生盐 诺亚":10052,"调月 莉音":20041,"黑崎 小雪":10063,"下江 小春":10020,"伊落 玛丽":23008,"圣园 未花":10059,"杏山 和纱":10049,"柚鸟 夏":10029,"栗村 爱莉":23000,"伊原木 好美":26005,"桐藤 渚":20024,"河驹风 兰舞":16018,"百合园 圣娅":10110,"歌住 樱子":10061,"若叶 日向":10036,"古关 忧":10035,"圆堂 志美子":26004,"鹫见 芹娜":26003,"仲正 一花":10077,"剑先 鹤城":10013,"羽川 莲见":13003,"静山 真白":20003,"宇泽 玲纱":10068,"浦和 花子":23007,"白洲 梓":10019,"阿慈谷 日富美":10003,"春原 心奈":10050,"春原 瞬":10011,"朱城 瑠美":10069,"鹿山 丽情":10104,"近卫 南":10070,"龙华 妃咲":20039,"丹花 伊吹":16014,"京极 皋月":20040,"枣 伊吕波":20016,"羽沼 真琴":20033,"爱清 枫香":23001,"牛牧 朱莉":26002,"伊草 遥香":16000,"浅黄 睦月":13006,"陆八魔 阿露":10000,"鬼方 佳代子":13005,"冰室 濑名":20012,"下仓 惠":10060,"狮子堂 泉":10009,"鳄渊 明里":13002,"黑馆 晴奈":10002,"天雨 亚子":20008,"火宫 千夏":26000,"空崎 日奈":10004,"银镜 伊织":10006,"橘 光":10117,"橘 望":10118,"内海 青叶":16017,"樱井 美代":10127,"若狭 冬":10128,"薄叶 律":20050,"白尾 绘里":10125,"板垣 庚":10126,"中务 桐乃":13012,"合欢垣 吹雪":16008,"尾刃 康娜":20023,"勇美 枫":20015,"春日 椿":13009,"水羽 三森":10034,"久田 泉奈":10014,"千鸟 满":16009,"大野 月咏":10040,"不破 莲华":10082,"勘解由小路 紫":10081,"御稜 名草":10119,"桐生 桔梗":10083,"朝比奈 菲娜":16004,"河和 静子":23006,"和乐 千世":13001,"桑上 果穗":10065,"三善 贵音":10131,"佐城 巴":16007,"秋泉 红叶":13013,"连河 切里诺":10017,"天见 和香":26006,"间宵 时雨":10055,"安守 实梨":20026,"十六夜 野宫":13004,"奥空 绫音":23005,"小鸟游 星野":10005,"砂狼 白子":10010,"砂狼 白子(色彩)":10100,"黑见 芹香":13008,"戒野 美咲":10041,"梯 昴":10130,"槌永 日和":20017,"秤 亚津子":10042,"锭前 纱织":10048};
+        // Kivo wiki 鉴赏栏差分头像（NPC / 未实装 / 音译不同的角色，取图集第一张差分）
+        const KIVO_AVATAR = {"七度 雪乃":"k64.png","音葵":"k67.png","清澄 晶":"k253.png","申谷 海":"k270.png","普拉娜":"k173.png","阿罗娜":"k104.png","川流 诗乃":"k193.png","风卷 舞":"k165.png","空":"k105.png","奥茹":"k336.png","索芙":"k337.png","马路库特":"k502.png","野正 莱依":"k342.png","丰见 小鸟":"k211.png","KEI":"k518.png","朝日 花江":"k98.png","苍森 美弥":"k129.png","漆原 辉夜":"k390.png","宫内 叶":"k605.png","乌头尾 阳子":"k602.png","五百雀 和美":"k601.png","鹰野主 翠子":"k600.png","旗见 绘里香":"k159.png","朝雾 周防":"k367.png","椎名 纺":"k372.png","衣斐 莱娜":"k550.png","裕美":"k562.png","志真 心华":"k378.png","葛叶":"k174.png","七稜 菖蒲":"k529.png","里滨 海夏":"k127.png","土生 蓟":"k530.png","箭吹 棕榈":"k321.png","雏芥子(虞姬)":"k331.png","不知火 花耶":"k169.png","岩仓 步美":"k168.png","扇喜 葵":"k171.png","李":"k276.png","灰音":"k275.png","由良木 桃香":"k184.png","池仓 玛丽娜":"k45.png","荒槇 八云":"k309.png","姬木 梅露":"k264.png","栀子 梦":"k288.png","立木 迈亚":"k558.png","七神凛":"k183.png","美甘 宁瑠":"k138.png","羽咋翼":"k587.png","守月 玲美":"k181.png","药子 沙耶":"k88.png","元宫 千秋":"k347.png","夜樱 绮良良":"k163.png","赤司 淳子":"k103.png","天地 妮娅":"k126.png","笑面教授":"k386.png","艾因":"k335.png","美玲":"k588.png"};
+        function avatarFor(key) {
+            const id = CHAR_AVATAR[key];
+            if (id) return 'assets/avatars/' + id + '.webp';
+            const kf = KIVO_AVATAR[key];
+            return kf ? 'assets/avatars/' + kf : 'assets/favicon.png';
+        }
+
+        let database = {};
         let wishData = [];
         const selectElements = {};
         const searchInput = document.getElementById('searchInput');
@@ -557,12 +1145,12 @@
         let isPowerSave = false;
         let seasonalInterval = null;
         const powerSaveBtn = document.getElementById('powerSaveBtn');
-        
+
         function initPowerSave() {
             // 从本地存储读取状态，实现记忆功能
             isPowerSave = localStorage.getItem('peroro_power_save') === 'true';
             applyPowerSaveState();
-            
+
             // 绑定按钮点击事件
             powerSaveBtn.addEventListener('click', () => {
                 isPowerSave = !isPowerSave;
@@ -578,23 +1166,25 @@
                 powerSaveBtn.classList.add('active');
                 powerSaveBtn.innerText = '🍃';
                 powerSaveBtn.title = "关闭极简模式";
-                
-                // 开启极简模式时，清空屏幕现存粒子，并彻底关闭定时器
+
+                // 开启极简模式时，清空屏幕现存粒子，并彻底关闭定时器与背景动画
                 document.querySelectorAll('.seasonal-particle').forEach(p => p.remove());
                 if (seasonalInterval) {
                     clearInterval(seasonalInterval);
                     seasonalInterval = null;
                 }
+                stopBgAnim();
             } else {
                 document.body.classList.remove('power-save');
                 powerSaveBtn.classList.remove('active');
                 powerSaveBtn.innerText = '🔋';
                 powerSaveBtn.title = "开启极简模式 (降低发热)";
-                
-                // 关闭极简模式时，重新启动季节特效定时器
+
+                // 关闭极简模式时，重新启动季节特效定时器与背景动画
                 if (!seasonalInterval) {
                     startSeasonalEffects();
                 }
+                startBgAnim();
             }
         }
 
@@ -603,29 +1193,35 @@
             try {
                 const response = await fetch('data.json');
                 const data = await response.json();
-                
+
                 database = data.database || {};
                 wishData = data.wishData || [];
-                
+
                 initFilters();
                 performSearch();
                 renderWishWall();
-                
+
             } catch (err) {
                 console.error("加载数据失败:", err);
-                display.innerHTML = "<div class='empty-tip' style='color:#ff4081'>❌ 无法加载 data.json，请检查文件</div>";
+                let hint = "";
+                if (location.protocol === 'file:') {
+                    hint = "<br><small>检测到网页是本地直接打开的（file:// 协议），浏览器会拦截对本地 data.json 的读取，筛选器也因此无法生成。<br>这不是文件损坏——请部署到 Cloudflare Pages 后访问，或在本地用服务器方式打开（如在本目录运行 python -m http.server）。</small>";
+                } else {
+                    hint = "<br><small>请确认 data.json 与 index.html 位于同一目录（" + err.message + "）</small>";
+                }
+                display.innerHTML = "<div class='empty-tip' style='color:#ff4081'>❌ 无法加载 data.json，请检查文件" + hint + "</div>";
             }
         }
 
         // --- 3. 初始化筛选器 ---
         function initFilters() {
             document.getElementById('statusFilter').addEventListener('change', performSearch);
-            
+
             filtersConfig.forEach(config => {
                 const select = document.createElement('select');
                 select.className = 'dynamic-select';
                 select.dataset.key = config.id;
-                
+
                 select.innerHTML = `<option value="all">全部${config.label}</option>`;
 
                 if (config.id === 'length') {
@@ -667,21 +1263,21 @@
 
             display.innerHTML = "";
             let foundCount = 0;
-            
+
             if (!searchText && Object.keys(activeFilters).length === 0 && statusVal === 'all') {
-                 display.innerHTML = "<div class='empty-tip'>请搜索或选择筛选条件...</div>";
+                 display.innerHTML = "<div class='empty-tip'><img class='arona-img' src='assets/arona.png' alt='Arona'>请搜索或选择筛选条件...</div>";
                  return;
             }
 
             for (let key in database) {
                 const item = database[key];
-                
+
                 if (item.tags && item.tags.content === "隐藏") continue;
 
-                const isTextMatch = !searchText || 
-                                    key.toLowerCase().includes(searchText) || 
+                const isTextMatch = !searchText ||
+                                    key.toLowerCase().includes(searchText) ||
                                     (item.desc && item.desc.toLowerCase().includes(searchText));
-                
+
                 const isUnoccupied = item.desc && item.desc.includes("状态: 未被占用");
                 let isStatusMatch = true;
                 if (statusVal === 'occupied' && isUnoccupied) isStatusMatch = false;
@@ -691,7 +1287,7 @@
                 for (let fKey in activeFilters) {
                     const reqVal = activeFilters[fKey];
                     const itemVal = item.tags ? (item.tags[fKey] || "") : "";
-                    
+
                     if (fKey === 'length') {
                         if (!itemVal.split('/').includes(reqVal)) { isFilterMatch = false; break; }
                     } else {
@@ -705,20 +1301,21 @@
                 }
             }
 
-            if (foundCount === 0) display.innerHTML = "<div class='empty-tip' style='color:#ff8a80'>❌ 未找到匹配项</div>";
+            if (foundCount === 0) display.innerHTML = "<div class='empty-tip' style='color:#ff8a80'><img class='arona-img' src='assets/arona.png' alt='Arona'>❌ 未找到匹配项</div>";
         }
 
         function renderItem(key, data, activeFilters) {
             const itemDiv = document.createElement("div");
             itemDiv.className = "result-item";
-            
+
             let tagsHtml = '';
             if (data.tags) {
                 filtersConfig.forEach(config => {
                     const val = data.tags[config.id];
                     if (val && val !== '待定') {
                         let badgeClass = 'tag-badge';
-                        
+                        let iconHtml = '';
+
                         if (activeFilters[config.id] && (val === activeFilters[config.id] || val.includes(activeFilters[config.id]))) {
                             badgeClass += ' matched';
                         }
@@ -726,16 +1323,26 @@
                             badgeClass += ' content-tag';
                             if (val === '有粮') badgeClass += ' gold';
                         }
+                        if (config.id === 'school') {
+                            badgeClass += ' school-badge';
+                            const icon = schoolIconFor(val);
+                            if (icon) iconHtml = `<img class="school-ico" src="${icon}" alt="">`;
+                        }
 
-                        tagsHtml += `<span class="${badgeClass}">${val}</span>`;
+                        tagsHtml += `<span class="${badgeClass}">${iconHtml}${val}</span>`;
                     }
                 });
             }
 
             itemDiv.innerHTML = `
-                <div class="result-header"><span class="result-key">${key}</span></div>
-                <div class="tags-display">${tagsHtml}</div>
-                <div class="result-desc">${data.desc || "暂无描述"}</div>
+                <div class="result-row">
+                    <img class="result-avatar" src="${avatarFor(key)}" alt="" loading="lazy" onerror="this.src='assets/favicon.png';this.onerror=null;">
+                    <div class="result-body">
+                        <div class="result-header"><span class="result-key">${key}</span></div>
+                        <div class="tags-display">${tagsHtml}</div>
+                        <div class="result-desc">${data.desc || "暂无描述"}</div>
+                    </div>
+                </div>
             `;
             display.appendChild(itemDiv);
         }
@@ -743,7 +1350,7 @@
         // --- 5. 渲染许愿墙 ---
         function renderWishWall() {
             if (!wishData || wishData.length === 0) {
-                wishContainer.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#aaa;'>暂无愿望，快去联系管理员添加吧~</div>";
+                wishContainer.innerHTML = "<div style='grid-column:1/-1;text-align:center;color:#7a8ba0;'>暂无愿望，快去联系管理员添加吧~</div>";
                 return;
             }
             wishContainer.innerHTML = wishData.map(wish => `
@@ -786,20 +1393,20 @@
         }
 
         function copyAuditForm() {
-            const req = [ 
-                {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'}, 
-                {id:'q6_reason'}, {id:'q6_char'}, {id:'q6_interact'}, 
+            const req = [
+                {id:'q1'}, {id:'q2'}, {id:'q3'}, {id:'q5'},
+                {id:'q6_reason'}, {id:'q6_char'}, {id:'q6_interact'},
                 {id:'q7'}
             ];
             let err = false, first = null;
-            
+
             req.forEach(f => {
                 const el = document.getElementById(f.id);
                 const val = el.value.trim();
                 let groupId = 'group-' + f.id;
-                
+
                 if (!val) {
-                    err = true; 
+                    err = true;
                     el.classList.add('error');
                     if(document.getElementById(groupId)) document.getElementById(groupId).classList.add('error');
                     if(!first) first = f.id;
@@ -813,8 +1420,8 @@
             });
 
             const q4Checked = document.querySelectorAll('input[name="q4"]:checked');
-            if (!q4Checked.length) { 
-                err = true; document.getElementById('group-q4').classList.add('error'); 
+            if (!q4Checked.length) {
+                err = true; document.getElementById('group-q4').classList.add('error');
                 if(!first) first = 'group-q4';
             }
 
@@ -831,7 +1438,7 @@
             }
 
             const text = `【入群审核卡】\n--------------------------------\n1. 倾向：${document.getElementById('q1').value}\n2. XP：${document.getElementById('q2').value}\n3. 雷区：${document.getElementById('q3').value}\n4. 长度：${Array.from(q4Checked).map(c=>c.value).join('/')}\n5. 经验：${document.getElementById('q5').value}\n6. 选角原因：${document.getElementById('q6_reason').value}\n7. 角色性格：${document.getElementById('q6_char').value}\n8. 互动方式：${document.getElementById('q6_interact').value}\n9. 自戏：${document.getElementById('q7').value}\n--------------------------------`;
-            
+
             navigator.clipboard.writeText(text).then(() => showToast("✅ 审核单已复制！")).catch(() => showToast("❌ 复制失败"));
         }
 
@@ -862,7 +1469,7 @@
         function startSeasonalEffects() {
             const m = new Date().getMonth() + 1;
             let char = (m>=3 && m<=5)?'🌸':(m>=6 && m<=8)?'🍃':(m>=9 && m<=11)?'🍁':'❄️';
-            
+
             // 清理旧的定时器，防止叠加
             if (seasonalInterval) clearInterval(seasonalInterval);
             seasonalInterval = setInterval(() => createParticle(char, 'seasonal'), 400);
@@ -889,7 +1496,7 @@
         document.getElementById('mainTitle').addEventListener('click', function() {
             this.classList.add('shake'); setTimeout(() => this.classList.remove('shake'), 500);
         });
-        
+
         const konamiCode = ['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'b', 'a'];
         let konamiIndex = 0;
         document.addEventListener('keydown', (e) => {
@@ -907,7 +1514,7 @@
         document.getElementById('searchInput').addEventListener('input', performSearch);
 
         // --- 启动顺序 ---
-        initPowerSave(); // 优先读取用户偏好并应用
+        initPowerSave(); // 优先读取用户偏好并应用（内部会按需启动背景动画）
         loadData();
         initAutoSave();
 
