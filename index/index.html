@@ -160,37 +160,15 @@
             flex-shrink: 0;
         }
 
-        /* BA 标志性光环 */
-        .halo {
-            position: absolute;
-            top: -20px;
-            left: 50%;
-            width: 120px;
-            height: 40px;
-            transform: translateX(-50%) rotate(-8deg);
-            fill: none;
-            stroke: #7de3ff;
-            stroke-width: 5;
-            opacity: 0.95;
-            filter: drop-shadow(0 0 6px rgba(0, 194, 247, 0.8));
-            pointer-events: none;
-            animation: haloFloat 3.5s ease-in-out infinite;
-        }
-        @keyframes haloFloat {
-            0%, 100% { transform: translateX(-50%) rotate(-8deg) translateY(0); }
-            50% { transform: translateX(-50%) rotate(-8deg) translateY(-5px); }
-        }
-        body.power-save .halo { animation: none; }
-
-        .title-sub {
+        /* Logo 图片标题 */
+        #logoImg {
             display: block;
-            font-size: 0.5em;
-            letter-spacing: 8px;
-            color: var(--ba-blue);
-            font-style: italic;
-            font-weight: 800;
-            text-shadow: none;
-            margin-top: 3px;
+            margin: 0 auto;
+            height: 88px;
+            width: auto;
+            filter: drop-shadow(0 4px 12px rgba(18, 138, 250, 0.3));
+            user-select: none;
+            -webkit-user-drag: none;
         }
 
         /* 佩洛洛探头 */
@@ -555,8 +533,7 @@
             .result-row { gap: 10px; }
             #schale-container svg { width: 80vw; }
             #peroroPeek { width: 32vw; right: 2vw; }
-            .halo { width: 90px; top: -14px; }
-            .title-sub { letter-spacing: 5px; }
+            #logoImg { height: 62px; }
         }
     </style>
 </head>
@@ -574,7 +551,7 @@
     <div class="container">
         <button id="powerSaveBtn" class="power-save-btn" title="切换极简模式 (降低发热)">🔋</button>
 
-        <h2 id="mainTitle"><svg class="halo" viewBox="0 0 120 40" xmlns="http://www.w3.org/2000/svg"><ellipse cx="60" cy="20" rx="52" ry="13"/></svg>⚡ 佩洛洛菜单<span class="title-sub">PERORO MENU</span></h2>
+        <h2 id="mainTitle"><img id="logoImg" src="assets/logo.png" alt="PeroroMenu"></h2>
 
         <div class="nav-tabs">
             <button class="nav-btn active" onclick="switchPage('rulesPage', this)">📜 公告</button>
