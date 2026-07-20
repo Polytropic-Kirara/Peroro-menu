@@ -371,31 +371,53 @@
         .result-key { font-size: 1.25em; font-weight: bold; color: var(--ba-navy); }
 
         .tags-display { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 12px; }
-        .tag-badge { font-size: 0.8em; padding: 4px 10px; border-radius: 20px; background: rgba(18, 138, 250, 0.1); color: var(--ba-text-sub); }
-        /* 学院徽章：蓝底白字 + 校徽图标 */
-        .tag-badge.school-badge {
-            background: var(--ba-blue);
-            color: #ffffff;
+        /* 标签统一为斜切三角纹理背景（与选项卡一致） */
+        .tag-badge {
+            position: relative;
             display: inline-flex;
             align-items: center;
-            gap: 5px;
+            font-size: 0.8em;
+            padding: 4px 12px;
+            color: var(--ba-text-sub);
+            z-index: 0;
         }
-        .tag-badge.school-badge.matched {
-            background: var(--ba-navy);
-            border: 1px solid var(--ba-cyan);
-            color: #ffffff;
+        .tag-badge::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-color: rgba(255, 255, 255, 0.6);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3e%3cpath d='M0 14L7 0L14 14Z' fill='%23128afa' fill-opacity='.08'/%3e%3cpath d='M7 0L21 0L14 14Z' fill='%23128afa' fill-opacity='.16'/%3e%3cpath d='M14 14L21 0L28 14Z' fill='%23128afa' fill-opacity='.08'/%3e%3cpath d='M21 0L35 0L28 14Z' fill='%23128afa' fill-opacity='.16'/%3e%3cpath d='M-7 0L7 0L0 14Z' fill='%23128afa' fill-opacity='.16'/%3e%3c/svg%3e");
+            background-size: 28px 14px;
+            border: 1px solid rgba(18, 138, 250, 0.25);
+            border-radius: 6px;
+            transform: skewX(-10deg);
+            z-index: -1;
+        }
+        .tag-badge.matched { color: var(--ba-blue); font-weight: 600; }
+        .tag-badge.matched::before { border-color: var(--ba-blue); box-shadow: 0 0 8px rgba(18, 138, 250, 0.25); }
+
+        /* 学院徽章：蓝色三角纹理 + 校徽图标（同选项卡选中态） */
+        .tag-badge.school-badge { color: #ffffff; gap: 5px; }
+        .tag-badge.school-badge::before {
+            background-color: var(--ba-blue);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3e%3cpath d='M0 14L7 0L14 14Z' fill='%23ffffff' fill-opacity='.14'/%3e%3cpath d='M7 0L21 0L14 14Z' fill='%23063e7e' fill-opacity='.22'/%3e%3cpath d='M14 14L21 0L28 14Z' fill='%23ffffff' fill-opacity='.14'/%3e%3cpath d='M21 0L35 0L28 14Z' fill='%23063e7e' fill-opacity='.22'/%3e%3cpath d='M-7 0L7 0L0 14Z' fill='%23063e7e' fill-opacity='.22'/%3e%3c/svg%3e");
+            border-color: var(--ba-blue);
+        }
+        .tag-badge.school-badge.matched { color: #ffffff; }
+        .tag-badge.school-badge.matched::before {
+            background-color: var(--ba-navy);
+            border-color: var(--ba-cyan);
             box-shadow: 0 0 8px rgba(0, 194, 247, 0.4);
         }
         .school-ico { width: 14px; height: 14px; object-fit: contain; }
-        .tag-badge.matched { background: rgba(18, 138, 250, 0.18); border: 1px solid var(--ba-blue); color: var(--ba-blue); font-weight: 600; box-shadow: 0 0 8px rgba(18, 138, 250, 0.15); }
 
-        /* 粮草专用金色标签 */
-        .tag-badge.content-tag.gold {
-            background: rgba(255, 215, 0, 0.18);
-            border: 1px solid rgba(200, 160, 0, 0.55);
-            color: #a07800;
+        /* 粮草专用金色标签（金色三角纹理） */
+        .tag-badge.content-tag.gold { color: #8a6d00; font-weight: bold; }
+        .tag-badge.content-tag.gold::before {
+            background-color: rgba(255, 235, 150, 0.55);
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' width='28' height='14'%3e%3cpath d='M0 14L7 0L14 14Z' fill='%23c8a000' fill-opacity='.12'/%3e%3cpath d='M7 0L21 0L14 14Z' fill='%23c8a000' fill-opacity='.24'/%3e%3cpath d='M14 14L21 0L28 14Z' fill='%23c8a000' fill-opacity='.12'/%3e%3cpath d='M21 0L35 0L28 14Z' fill='%23c8a000' fill-opacity='.24'/%3e%3cpath d='M-7 0L7 0L0 14Z' fill='%23c8a000' fill-opacity='.24'/%3e%3c/svg%3e");
+            border-color: rgba(200, 160, 0, 0.55);
             box-shadow: 0 0 8px rgba(255, 215, 0, 0.25);
-            font-weight: bold;
         }
 
         .result-desc { font-size: 0.95em; color: var(--ba-text); line-height: 1.6; white-space: pre-wrap; background: rgba(18, 138, 250, 0.06); padding: 10px; border-radius: 8px; }
