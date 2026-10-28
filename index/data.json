@@ -206,7 +206,7 @@
         "school": "十字神明",
         "length": "句/段",
         "tendency": "主动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "艾因": {
@@ -215,7 +215,7 @@
         "school": "十字神明",
         "length": "句/段",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "马路库特": {
@@ -246,7 +246,7 @@
         "school": "千年(C&C)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "室笠 茜": {
@@ -264,7 +264,7 @@
         "school": "千年(C&C)",
         "length": "段/长段",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "飞鸟马 时": {
@@ -354,7 +354,7 @@
         "school": "千年(游戏部)",
         "length": "句/段/屏",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "花冈 柚子": {
@@ -399,7 +399,7 @@
         "school": "千年(真理部)",
         "length": "段/长段/屏",
         "tendency": "皆可(偏主动)",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "小钩 晴": {
@@ -457,11 +457,11 @@
       }
     },
     "羽咋 翼": {
-      "desc": " XP:纯爱,年上,贴贴\n雷区:NTR 重口",
+      "desc": "目前无人认领\n状态: 未被占用",
       "tags": {
-        "school": "千年",
-        "length": "句/段/长段",
-        "tendency": "主动",
+        "school": "千年(伪科学部)",
+        "length": "待定",
+        "tendency": "待定",
         "content": "无粮"
       }
     },
@@ -493,7 +493,7 @@
         "school": "圣三一(修女会)",
         "length": "句/段/长段",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "圣园 未花": {
@@ -529,7 +529,7 @@
         "school": "圣三一(甜点部)",
         "length": "段/长段/屏",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "伊原木 好美": {
@@ -592,7 +592,7 @@
         "school": "圣三一(图书委员会)",
         "length": "句/段/长段/屏",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "圆堂 志美子": {
@@ -664,7 +664,7 @@
         "school": "圣三一(正义委)",
         "length": "句/段",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "宇泽 玲纱": {
@@ -704,11 +704,11 @@
       }
     },
     "阿慈谷 日富美": {
-      "desc": "目前无人认领\n状态: 未被占用",
+      "desc": " XP:纯爱,年上,贴贴\n雷区:NTR 重口",
       "tags": {
         "school": "圣三一(补课部)",
-        "length": "待定",
-        "tendency": "待定",
+        "length": "句/段/长段",
+        "tendency": "主动",
         "content": "无粮"
       }
     },
@@ -785,7 +785,7 @@
         "school": "山海经(玄龙门)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "宫内 叶": {
@@ -803,7 +803,7 @@
         "school": "山海经(雏鸟组)",
         "length": "段/长段/屏",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "五百雀 和美": {
@@ -861,7 +861,7 @@
         "school": "格黑娜(万魔殿)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "羽沼 真琴": {
@@ -1005,7 +1005,7 @@
         "school": "格黑娜(美食研)",
         "length": "段/屏",
         "tendency": "主动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "天雨 亚子": {
@@ -1027,12 +1027,12 @@
       }
     },
     "空崎 日奈": {
-      "desc": "XP:清水\n雷区:排泄,物化。",
+      "desc": "目前无人认领\n状态: 未被占用",
       "tags": {
         "school": "格黑娜(风纪委)",
-        "length": "句/段",
-        "tendency": "主动",
-        "content": "有粮"
+        "length": "待定",
+        "tendency": "待定",
+        "content": "无粮"
       }
     },
     "银镜 伊织": {
@@ -1090,7 +1090,7 @@
         "school": "海兰德铁道学院",
         "length": "段/长段",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "橘 望": {
@@ -1251,7 +1251,7 @@
         "school": "狂猎(神秘学研究会)",
         "length": "段/长段/屏",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "衣斐 莱娜": {
@@ -1681,7 +1681,7 @@
         "school": "赤冬(知识解放战线)",
         "length": "句/段",
         "tendency": "皆可",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "仁木 安娜": {
@@ -1739,7 +1739,7 @@
         "school": "阿拜多斯",
         "length": "句/段",
         "tendency": "被动",
-        "content": "有粮"
+        "content": "无粮"
       }
     },
     "栀子 梦": {
