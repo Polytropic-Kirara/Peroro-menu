@@ -947,51 +947,58 @@
       .wish-card {
         background: var(--card-bg);
         border: 1px solid var(--card-border);
-        border-radius: 16px;
-        padding: 14px 15px;
+        border-left: 4px solid #ff7bbf;
+        border-radius: 15px;
+        padding: 14px 16px;
         display: flex;
-        align-items: flex-start;
-        gap: 11px;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 9px;
         box-shadow: 0 4px 12px rgba(30, 80, 160, 0.06);
-        transition: transform 0.2s ease, background 0.2s ease;
+        transition: transform 0.2s ease, background 0.2s ease, border-color 0.2s ease;
       }
       .wish-card:hover {
         transform: translateY(-3px);
         background: var(--card-hover);
-      }
-      .wish-avatar {
-        width: 42px;
-        height: 42px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 2px solid #ff7bbf;
-        flex-shrink: 0;
-        background: var(--pill-bg);
-      }
-      .wish-main {
-        flex: 1;
-        min-width: 0;
+        border-color: #ff7bbf;
       }
       .wish-meta {
         display: flex;
         align-items: center;
         justify-content: space-between;
-        margin-bottom: 5px;
+        gap: 8px;
       }
       .wish-author {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
         font-size: 12.5px;
         color: var(--ba-blue);
-        font-weight: 700;
+        font-weight: 800;
+      }
+      .wish-dot {
+        width: 7px;
+        height: 7px;
+        border-radius: 50%;
+        background: #ff7bbf;
+        flex-shrink: 0;
       }
       .wish-tag {
         font-size: 10.5px;
-        color: var(--ba-text-muted);
+        font-weight: 700;
+        padding: 2px 8px;
+        border-radius: 999px;
+        background: rgba(255, 123, 191, 0.14);
+        color: #ec4899;
+      }
+      body.theme-plana .wish-tag {
+        color: #f472b6;
       }
       .wish-text {
         font-size: 13.5px;
-        line-height: 1.5;
-        padding: 9px 12px;
-        border-radius: 4px 13px 13px 13px;
+        line-height: 1.55;
+        padding: 10px 13px;
+        border-radius: 6px 13px 13px 13px;
         background: var(--xp-bg);
         color: var(--ba-text);
       }
@@ -3100,17 +3107,7 @@
         showToast(`已带入意向角色：「${charName}」`);
       }
 
-      // --- 5. 渲染 MomoTalk 风格许愿墙 ---
-      function findWishAvatar(text) {
-        if (!text) return "assets/arona.png";
-        for (const key in database) {
-          if (!isValidStudentEntry(key, database[key])) continue;
-          const parts = key.split(" ").filter((p) => p.length >= 2);
-          if (parts.some((p) => text.includes(p))) return avatarFor(key);
-        }
-        return "assets/arona.png";
-      }
-
+      // --- 5. 渲染纯文本便签式许愿墙（无头像依赖，方便直接维护 wishData） ---
       function renderWishWall() {
         if (!wishData || wishData.length === 0) {
           wishContainer.innerHTML =
@@ -3119,16 +3116,13 @@
         }
         wishContainer.innerHTML = wishData
           .map(
-            (wish) => `
+            (wish, idx) => `
               <div class="wish-card">
-                <img class="wish-avatar" src="${findWishAvatar(wish.text)}" alt="" loading="lazy" onerror="this.src='assets/favicon.png';this.onerror=null;">
-                <div class="wish-main">
-                  <div class="wish-meta">
-                    <span class="wish-author">${escapeHtml(wish.author)}</span>
-                    <span class="wish-tag">MomoTalk</span>
-                  </div>
-                  <div class="wish-text">“${escapeHtml(wish.text)}”</div>
+                <div class="wish-meta">
+                  <span class="wish-author"><span class="wish-dot"></span>${escapeHtml(wish.author)}</span>
+                  <span class="wish-tag">WISH #${String(idx + 1).padStart(2, "0")}</span>
                 </div>
+                <div class="wish-text">“${escapeHtml(wish.text)}”</div>
               </div>
             `,
           )
